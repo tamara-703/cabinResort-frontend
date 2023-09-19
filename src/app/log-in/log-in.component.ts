@@ -28,6 +28,7 @@ export class LogInComponent implements OnInit, OnDestroy {
     accountNonLocked: false,
     credentialsNonExpired: false,
   };
+  
 
 
 
@@ -53,7 +54,6 @@ ngOnInit(): void {
 
 logInUser(){
   this.service.getUserInfo().subscribe(response => {
-    console.log(response)
     this.logIn = response;
 
     console.log("After fetching" , this.logIn);
