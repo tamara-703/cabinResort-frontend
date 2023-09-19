@@ -9,9 +9,10 @@ import { Environment } from 'src/app/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class LogInService { private userUrl = Environment.EnvironmentURL; //Gets URL based on environment 
+export class LogInService {
 
-httpOptions = {
+  private userUrl = Environment.EnvironmentURL; //Gets URL based on environment
+  httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json', 'allow': 'PUT' })
 };
 
@@ -20,7 +21,17 @@ constructor(
   private messageService: MessageService) {}
 
 
-  
+  getUserInfo(): Observable<any> {
+    // Send request to the API to get the user info
+    return this.http.get<any>(`${this.userUrl}/user/profile`, {withCredentials: true})
+      .pipe(
+        // Handle errors
+        catchError(this.handleError<any>(`userinfo not found`))
+      );
+  }
+
+
+
     /** GET User by id. Will 404 if id not found */
     getUser(): Observable<GuestId> {
       const url = `${this.userUrl}/user/profile`;
