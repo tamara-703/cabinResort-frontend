@@ -10,7 +10,7 @@ export class AppComponent {
   title = 'cabin-resort';
   visible: boolean = false;
 
-  
+
 
   showDialog() {
     this.visible = true;
