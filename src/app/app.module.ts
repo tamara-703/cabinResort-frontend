@@ -12,10 +12,9 @@ import { RippleModule } from 'primeng/ripple';
 import { PrimeNGConfig } from 'primeng/api';
 import { LogInComponent } from './log-in/log-in.component';
 import { DialogModule } from 'primeng/dialog';
-import { NoopAnimationPlayer } from '@angular/animations';
 import { LogInService } from './log-in/services/log-in.service';
 import { UsersService } from './users/services/users.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
       // ......
@@ -30,7 +29,7 @@ const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
     CabinsComponent,
     UsersComponent,
     LogInComponent
-    
+
   ],
   imports: [
     BrowserModule,
@@ -43,10 +42,13 @@ const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
     HttpClientModule
   ],
   providers: [{
-    provide: APP_INITIALIZER,
+    provide: {
+      APP_INITIALIZER,
+      HTTP_INTERCEPTORS
+    },
     useFactory: initializeAppFactory,
     deps: [PrimeNGConfig],
-    multi: true,
+    multi: true
  },
  LogInService,
  UsersService

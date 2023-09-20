@@ -6,6 +6,7 @@ import { GuestId } from 'src/app/users';
 import { MessageService } from 'src/app/message.service';
 import { Environment } from 'src/app/environment';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,8 +14,17 @@ export class LogInService {
 
   private userUrl = Environment.EnvironmentURL; //Gets URL based on environment
   httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json', 'allow': 'PUT' })
+  headers: new HttpHeaders({ 'Content-Type': 'application/json',
+                              'allow': 'PUT',
+                              'withCredentials': 'true'})
 };
+
+/*
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'POST,GET,PUT,DELETE',
+  'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization',
+  'Authorization': 'Basic ' + btoa('username:password'),
+*/
 
 constructor(
   private http: HttpClient,

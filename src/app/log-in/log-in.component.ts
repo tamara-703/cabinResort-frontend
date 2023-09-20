@@ -53,6 +53,7 @@ ngOnInit(): void {
 
 
 logInUser(){
+  console.log("invoked");
   this.service.getUserInfo().subscribe(response => {
     this.logIn = response;
 
@@ -64,6 +65,12 @@ logInUser(){
     }
   })
 
+}
+
+logOutUser()
+{
+  localStorage.clear();
+  //reload page
 }
 
 
