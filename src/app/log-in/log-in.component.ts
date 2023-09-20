@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { LogInService } from './services/log-in.service';
-import { GuestId, LogIn, Authority} from '../users';
+import { GuestId, Authority} from '../users';
 import { NgModule } from '@angular/core';
 import { AppComponent } from '../app.component';
 
@@ -28,7 +28,7 @@ export class LogInComponent implements OnInit, OnDestroy {
     accountNonLocked: false,
     credentialsNonExpired: false,
   };
-  
+
 
 
 

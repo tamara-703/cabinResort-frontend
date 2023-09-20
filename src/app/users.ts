@@ -59,23 +59,23 @@ export interface ImageId {
 }
 
 
-export interface LogIn{
-  username: string
-  password: string
+export interface Cabin {
+  id: number
+  sleeps: number
+  price: number
+  description: string
+  capacity: number
+  cabinlocation: Cabinlocation
+  cabin_name: string
+  image_id: ImageId
+  amenities_id: AmenitiesId
+  no_rooms: number
+  no_bathrooms: number
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export interface Cabinlocation {
+  stateId: string
+  address: string
+  city: string
+  zip: string
+}
