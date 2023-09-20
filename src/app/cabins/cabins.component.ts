@@ -25,7 +25,7 @@ export class CabinsComponent implements OnInit{
 
   getByStateId(stateId: string)
   {
-
+    //implement fetch by state id
   }
 
 }
