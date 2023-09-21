@@ -1,5 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms'; //form validation
 import { LogInService } from './services/log-in.service';
 import { GuestId, Authority} from '../users';
 import { NgModule } from '@angular/core';
@@ -10,7 +10,7 @@ import { AppComponent } from '../app.component';
   templateUrl: './log-in.component.html',
   styleUrls: ['./log-in.component.css']
 })
-export class LogInComponent implements OnInit, OnDestroy {
+export class LogInComponent implements OnDestroy {
   logIn: GuestId = {
     id: 0,
     username: "",
@@ -30,6 +30,7 @@ export class LogInComponent implements OnInit, OnDestroy {
   };
 
 
+  @Output() userInfo = new EventEmitter<GuestId>();
 
 
 constructor(
@@ -37,19 +38,6 @@ constructor(
   private appComponent: AppComponent
 ){}
 
-
-
-ngOnInit(): void {
-
-  // this.service.getUserInfo().subscribe(response => {
-  //   console.log(response)
-  //   this.logIn = response;
-
-
-  //   console.log("After fetching" , this.logIn);
-  // })
-
-}
 
 
 logInUser(){
@@ -65,6 +53,15 @@ logInUser(){
     }
   })
 
+}
+
+
+sendOutUserInfo()
+{
+  if(this.logIn.id != 0)
+  {
+    this.userInfo.emit(this.logIn);
+  }
 }
 
 logOutUser()

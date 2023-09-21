@@ -79,3 +79,9 @@ export interface Cabinlocation {
   city: string
   zip: string
 }
+
+export interface State {
+  name: string
+  code: string
+  flag: string
+}

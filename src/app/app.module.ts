@@ -15,6 +15,7 @@ import { DialogModule } from 'primeng/dialog';
 import { LogInService } from './log-in/services/log-in.service';
 import { UsersService } from './users/services/users.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { DropdownModule } from 'primeng/dropdown';
 
 const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
       // ......
@@ -39,7 +40,8 @@ const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
     RippleModule,
     DialogModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    DropdownModule
   ],
   providers: [{
     provide: {
