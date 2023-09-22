@@ -27,4 +27,10 @@ export class CabinsService {
       return this.http.get<Cabin[]>(`${this.base_url}/homepage/${stateId}`);
 
   }
+
+  //get cabin by id
+  getCabinById(cabinId: number) : Observable<Cabin>
+  {
+    return this.http.get<Cabin>(`${this.base_url}/homepage/reserve/${cabinId}`);
+  }
 }

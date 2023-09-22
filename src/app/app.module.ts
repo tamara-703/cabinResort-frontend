@@ -16,6 +16,8 @@ import { LogInService } from './log-in/services/log-in.service';
 import { UsersService } from './users/services/users.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { DropdownModule } from 'primeng/dropdown';
+import { ReserveComponent } from './reserves/reserve/reserve.component';
+import { PasswordModule } from 'primeng/password';
 
 const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
       // ......
@@ -29,7 +31,8 @@ const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
     HomeComponent,
     CabinsComponent,
     UsersComponent,
-    LogInComponent
+    LogInComponent,
+    ReserveComponent
 
   ],
   imports: [
@@ -41,7 +44,8 @@ const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
     DialogModule,
     FormsModule,
     HttpClientModule,
-    DropdownModule
+    DropdownModule,
+    PasswordModule
   ],
   providers: [{
     provide: {

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CabinsService } from './services/cabins.service';
 import { Cabinlocation, State } from '../users';
+import { Router } from '@angular/router';
+import { AppComponent } from '../app.component';
 
 
 @Component({
@@ -22,23 +24,10 @@ export class CabinsComponent implements OnInit{
   visibleData: boolean = false;
 
 
-  constructor(private service: CabinsService) {}
+  constructor(private service: CabinsService, private router: Router, private appComponent: AppComponent) {}
 
 
   ngOnInit(): void {
-
-    // try{
-    // this.service.getAllCabins().subscribe(response => {
-
-    //   this.cabinData = response;
-    //   this.populateCabinOptions();
-
-
-    // })}
-    // catch(error)
-    // {
-    //   console.error("Data could not be loaded ", error);
-    // }
 
     this.states = [
       {name: "Texas", code: "TX", flag: "https://cdn.britannica.com/51/4651-004-B1024BD2/flags-Texas-independence-motif-flag-Mexico-star-1845.jpg"},
@@ -49,25 +38,6 @@ export class CabinsComponent implements OnInit{
     ]
 
   }
-
-  // populateCabinOptions()
-  // {
-  //   console.log("Loading data into method " , this.cabinData);
-
-  //   if(this.cabinData != null)
-  //   {
-  //     for(let i = 0; i < this.cabinData.length; i++)
-  //     {
-  //       this.cabinOptions[i] = {
-  //         stateId: this.cabinData[i].cabinloc.stateId,
-  //         address: this.cabinData[i].cabinloc.address,
-  //         city: this.cabinData[i].cabinloc.city,
-  //         zip: this.cabinData[i].cabinloc.zip
-  //       }
-  //     }
-  //   }
-
-  // }
 
   getByStateId()
   {
@@ -83,10 +53,24 @@ export class CabinsComponent implements OnInit{
         this.visibleData = true;
       })
     }
+  }
+
+  navigateToReservePage(id: number)
+  {
+    if(localStorage.getItem("username") === null)
+    {
+      this.appComponent.visible = true;
+
+    } else
+    {
+      this.router.navigate([`reserve/${id}`]);
+    }
+  }
 
 
-
-
+  clearStorage()
+  {
+    localStorage.clear();
   }
 
 }

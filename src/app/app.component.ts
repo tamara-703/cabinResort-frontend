@@ -1,5 +1,4 @@
-import { Component, Output } from '@angular/core';
-import { GuestId } from './users';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,10 +6,7 @@ import { GuestId } from './users';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'cabin-resort';
   visible: boolean = false;
-
-
 
   showDialog() {
     this.visible = true;

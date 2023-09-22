@@ -7,7 +7,7 @@
     <i class="pi pi-user"></i>
   </span>
   <br />
-  <input pInputText placeholder="Password" name="password" />
+    <input pInputText placeholder="Password" name="password" />
   <br />
   <p-button
     type="submit"
@@ -15,3 +15,7 @@
     styleClass="p-button-raised p-button-secondary"
   ></p-button>
 </form>
+
+<div class="card flex justify-content-center">
+  <p-password [(ngModel)]="value" [toggleMask]="true"></p-password>
+</div>

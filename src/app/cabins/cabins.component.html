@@ -10,8 +10,11 @@
   <ul *ngFor="let item of cabinData">
     <li >{{item.cabin_name}}</li>
     <li>{{item.price}}</li>
+    <p-button label="reserve" styleClass="p-button-raised p-button-secondary" class="navButton" (click)="navigateToReservePage(item.id)"></p-button>
   </ul>
 </div>
+
+<button (click)="clearStorage()">Clear</button>
 
 
 

@@ -31,6 +31,7 @@ export class LogInComponent implements OnDestroy {
 
 
   @Output() userInfo = new EventEmitter<GuestId>();
+  value!: string;
 
 
 constructor(
@@ -50,6 +51,8 @@ logInUser(){
     if(this.logIn.id != 0)
     {
       this.appComponent.visible = false;
+      localStorage.setItem('username',this.logIn.username)
+      localStorage.setItem('password',this.logIn.password)
     }
   })
 
