@@ -1,0 +1,132 @@
+.container1 {
+    display: flex;
+    align-items: center;
+  }
+  
+  .container2 {
+    display: flex;
+    align-items: center;
+    padding-top: 30px;
+    padding-left: 650px;
+    background-color: #f6f4f2;
+    
+  }
+ 
+
+    
+  
+  .container1 #logoL {
+    width: 460px; /* Adjust width as needed */
+    height: 565px; /* Adjust height as needed */
+    margin-right: 10px;
+  }
+
+ 
+  .homeTitle {
+    
+        color: #3c3c3c;
+        font-family: Times New Roman;
+        font-size: 40px;
+        font-size: 50px;
+        font-weight: 300;
+        letter-spacing: .53px;
+        line-height: 1;
+        margin: 0 0 29px;
+        padding: 0;
+        text-align: center;
+    
+
+  }
+  .homedesc {
+    color: #3c3c3c;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 22px;
+    line-height: 32px;
+}
+  .container1 imageR {
+    width: 100px; /* Adjust width as needed */
+    height: 131px; /* Adjust height as needed */
+    margin-right: 10px;
+  }
+
+  .container1 input {
+    width: 200px; /* Adjust width as needed */
+    padding: 10px;
+  }
+  
+  .container1 hr {
+    width: 100%;
+    border: 1px solid #000; /* Horizontal line style */
+  }
+  .container1 #logoR {
+    width: 500px; /* Adjust width as needed */
+    height: 531px; /* Adjust height as needed */
+    margin-right: 10px;
+  }
+  .container3 .imageR {
+        width: 320px;
+        height: 300px;
+    }
+  .container3 {
+    align-items: stretch;
+    display: flex;
+    justify-content: center;
+   background-color: #f6f4f2;
+ }
+ 
+  .container3 .cabindesc {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    margin: 0 6px;
+    width: 320px;
+}
+.container3 .cabindescimg{
+    
+        display: inline-block;
+        vertical-align: top;
+        
+            position: relative;
+            overflow: hidden;
+            
+                -o-object-fit: cover;
+                object-fit: cover;
+                width: 100%;
+            
+}
+.container3 .cabindesctext{
+    
+        align-items: flex-start;
+        display: flex;
+        flex: 1 1;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 24px;
+    
+}
+.container3 .cabindesctextTitle{
+    
+        font-size: 20px;
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: .5px;
+        line-height: 24.5px;
+        line-height: 24px;
+        margin: 0;
+        padding: 0;
+    
+}
+.container3 .cabindesctextDesc{
+
+   
+        margin: 8px 0 0;
+    
+}
+.footer{
+    display: flex;
+    align-items: center;
+    padding-top: 30px;
+    padding-left: 650px;
+    background-color: #f6f4f2;
+}
+  
