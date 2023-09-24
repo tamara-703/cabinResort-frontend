@@ -1,6 +1,12 @@
 <div>
   <div class="card flex justify-content-center">
     <p-dropdown [options]="states" [(ngModel)]="selectedState" optionLabel="name" [filter]="true" filterBy="name" [showClear]="true" placeholder="Select a State" (click)="getByStateId()">
+      <ng-template pTemplate="selectedItem">
+        <div class="flex align-items-center gap-2" *ngIf="selectedState">
+            <img src={{selectedState.flag}} style="width: 18px" [class]="'flag flag-' + selectedState.code.toLowerCase()"/>
+          <div>{{selectedState.name}}</div>
+        </div>
+      </ng-template>
     </p-dropdown>
   </div>
 </div>
@@ -15,14 +21,3 @@
 </div>
 
 <button (click)="clearStorage()">Clear</button>
-
-
-
-<!--
-  <ng-template pTemplate="selectedItem">
-        <div class="flex align-items-center gap-2" *ngIf="selectedState">
-          <img src="https://cdn.britannica.com/51/4651-004-B1024BD2/flags-Texas-independence-motif-flag-Mexico-star-1845.jpg" style="width: 18px" />
-          <div></div>
-        </div>
-      </ng-template>
--->

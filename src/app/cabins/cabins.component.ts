@@ -33,8 +33,8 @@ export class CabinsComponent implements OnInit{
       {name: "Texas", code: "TX", flag: "https://cdn.britannica.com/51/4651-004-B1024BD2/flags-Texas-independence-motif-flag-Mexico-star-1845.jpg"},
       {name: "Pennsylvania", code: "PA", flag: "https://higherusa.com/pub/media/catalog/product//p/e/pennsylvania-flag.jpg"},
       {name: "Ohio", code: "OH", flag: "https://static.vecteezy.com/system/resources/previews/002/492/652/original/ohio-officially-flag-free-vector.jpg"},
-      {name: "North Carolina", code: "NC", flag: "https://cdn.britannica.com/85/3085-004-29C93A89/design-independence-Union-flag-convention-state-North-April-12-1776.jpg"},
-      {name: "California", code: "CA", flag: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Flag_of_California.svg/800px-Flag_of_California.svg.png"},
+      {name: "Georgia", code: "GA", flag: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Flag_of_Georgia_%28U.S._state%29.svg/1200px-Flag_of_Georgia_%28U.S._state%29.svg.png"},
+      {name: "Washington", code: "WA", flag: "https://visionwear.com/wp-content/uploads/2011/09/9673_1_3_2.gif"},
     ]
 
   }

@@ -1,1 +1,47 @@
-<p>reserve works!</p>
+<div class="heading">
+  <h1>{{cabinData.cabin_name}}</h1>
+</div>
+
+<!--rating template-->
+<div class="rating-container">
+<div class="card flex justify-content-center">
+  <p-rating [(ngModel)]="value" [readonly]="true" [cancel]="false">
+      <ng-template pTemplate="cancel">
+          <img src="https://primefaces.org/cdn/primeng/images/demo/rating/cancel.png" width="25px" height="25px" />
+      </ng-template>
+      <ng-template pTemplate="onicon">
+          <img src="https://primefaces.org/cdn/primeng/images/demo/rating/custom-icon-active.png" width="25px" height="25px" />
+      </ng-template>
+      <ng-template pTemplate="officon">
+          <img src="https://primefaces.org/cdn/primeng/images/demo/rating/custom-icon.png" width="25px" height="25px" />
+      </ng-template>
+  </p-rating>
+</div>
+  <p> - {{cabinData.cabinloc.city}}, {{cabinData.cabinloc.stateId}}</p>
+</div>
+
+<div>
+  <p-button label="Save" styleClass="p-button-raised p-button-rounded p-button-text p-button-danger p-button-help" icon="pi pi-heart"></p-button>
+</div>
+
+<!-- <div class="row">
+  <div class="column" *ngFor="let img of imgArray">
+    <img src={{img}} >
+  </div>
+</div> -->
+
+<div class="main-container">
+  <img src={{firstImg}} style="max-width: 700px; height: 500px; margin-left: 150px; margin-top: 50px;">
+  <div class="sub-container">
+    <img [src]="secondImg">
+  <img [src]="thirdImg">
+</div>
+<div class="sub-container" >
+  <img [src]="fourthImg">
+  <img [src]="fifthImg">
+</div>
+<!-- <div class="sub-container" >
+  <img [src]="secondImg">
+  <img [src]="thirdImg">
+</div> -->
+</div>

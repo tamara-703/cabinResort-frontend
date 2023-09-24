@@ -18,6 +18,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { DropdownModule } from 'primeng/dropdown';
 import { ReserveComponent } from './reserves/reserve/reserve.component';
 import { PasswordModule } from 'primeng/password';
+import { RatingModule } from 'primeng/rating';
 
 const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
       // ......
@@ -45,7 +46,8 @@ const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
     FormsModule,
     HttpClientModule,
     DropdownModule,
-    PasswordModule
+    PasswordModule,
+    RatingModule
   ],
   providers: [{
     provide: {

@@ -1,0 +1,56 @@
+.rating-container {
+  display: flex;
+}
+
+/* Import google font */
+@import url(
+'https://fonts.googleapis.com/css2?family=Yaldevi:wght@200;300;400;500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.main-container {
+  display: flex;
+
+}
+
+.sub-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 100px;
+}
+
+.sub-container img {
+  width: 300px;
+  height: 200px;
+  padding: 10px;
+}
+
+/* .row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding: 0 4px;
+  justify-content: center;
+}
+
+/* Create two equal columns that sit next to each other */
+.column {
+  -ms-flex: 50%;
+  flex: 50%;
+
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 500px;
+}
