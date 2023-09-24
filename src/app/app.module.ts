@@ -1,7 +1,7 @@
 import { APP_INITIALIZER,NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -19,6 +19,8 @@ import { DropdownModule } from 'primeng/dropdown';
 import { ReserveComponent } from './reserves/reserve/reserve.component';
 import { PasswordModule } from 'primeng/password';
 import { RatingModule } from 'primeng/rating';
+import { CardModule } from 'primeng/card';
+import { CalendarModule } from 'primeng/calendar';
 
 const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
       // ......
@@ -47,7 +49,11 @@ const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
     HttpClientModule,
     DropdownModule,
     PasswordModule,
-    RatingModule
+    RatingModule,
+    CardModule,
+    CalendarModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [{
     provide: {

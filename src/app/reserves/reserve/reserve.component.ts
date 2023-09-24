@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CabinsService } from 'src/app/cabins/services/cabins.service';
 
 @Component({
@@ -12,16 +13,18 @@ export class ReserveComponent {
   idParam: number = 0;
   cabinData: any;
   imgArray_1: string[] = [];
-  imgArray_2: string[] = [];
   img: string = "";
   firstImg: string = "";
   secondImg: string = "";
   thirdImg: string = "";
   fourthImg: string = "";
   fifthImg: string = "";
-  value: number = 5;
+  checkIn: number = 0;
+  checkOut: number = 0;
+  isCheckoutValid: boolean = false;
+  value: number = Math.floor((Math.random() * 5 - 1 + 1) + 1);
 
-  constructor(private route: ActivatedRoute, private service: CabinsService) {
+  constructor(private route: ActivatedRoute, private service: CabinsService, private router: Router) {
 
     route.params.subscribe(params => {
       this.idParam = params['id'];
@@ -53,19 +56,27 @@ export class ReserveComponent {
       this.fifthImg = this.imgArray_1[0];
       this.imgArray_1.shift();
 
-
-      // this.imgArray_2.push(this.imgArray_1[0]);
-      // // console.log(this.imgArray_2)
-      // this.imgArray_1.shift(); //removed second image
-      // // console.log(this.imgArray_1)
-      // this.imgArray_2.push(this.imgArray_1[0]);
-      // this.imgArray_1.shift();
-
-      // console.log(this.imgArray_1);
-      // console.log(this.imgArray_2);
-
     })
 
   }
+
+  reserve()
+  {
+    if(this.checkOut < this.checkIn)
+    {
+      this.isCheckoutValid = true;
+    }
+    console.log("check in " , this.checkIn);
+
+    console.log("check out ", this.checkOut);
+
+    
+  }
+
+  cancel()
+  {
+    this.router.navigate(['home']);
+  }
+
 
 }
