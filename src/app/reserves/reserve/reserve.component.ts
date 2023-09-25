@@ -2,16 +2,20 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CabinsService } from 'src/app/cabins/services/cabins.service';
+import { ReserveService } from '../services/reserve.service';
+import { GuestId } from 'src/app/users';
+import { LogInService } from 'src/app/log-in/services/log-in.service';
 
 @Component({
   selector: 'app-reserve',
   templateUrl: './reserve.component.html',
   styleUrls: ['./reserve.component.css']
 })
-export class ReserveComponent {
+export class ReserveComponent implements OnInit {
 
   idParam: number = 0;
   cabinData: any;
+  userData: any;
   imgArray_1: string[] = [];
   img: string = "";
   firstImg: string = "";
@@ -24,7 +28,11 @@ export class ReserveComponent {
   isCheckoutValid: boolean = false;
   value: number = Math.floor((Math.random() * 5 - 1 + 1) + 1);
 
-  constructor(private route: ActivatedRoute, private service: CabinsService, private router: Router) {
+  constructor(private route: ActivatedRoute,
+              private cabinService: CabinsService,
+              private router: Router,
+              private reserveService: ReserveService,
+              private logInService: LogInService) {
 
     route.params.subscribe(params => {
       this.idParam = params['id'];
@@ -32,7 +40,7 @@ export class ReserveComponent {
       console.log("incoming param " , this.idParam);
     })
 
-    service.getCabinById(this.idParam).subscribe(response => {
+    cabinService.getCabinById(this.idParam).subscribe(response => {
       this.cabinData = response;
 
       console.log(this.cabinData);
@@ -60,6 +68,22 @@ export class ReserveComponent {
 
   }
 
+  //tried to get user info on init, but it gave me 401. It's not recognizing a user is logged in. How can we fix that? 
+  ngOnInit(): void {
+    this.logInService.getUser().subscribe(data => {
+      this.userData = data;
+
+      console.log(this.userData);
+    })
+  }
+
+
+  //for @Output testing (@Output decorator in the log in component)
+  receiveUserLogIn(userData: GuestId)
+  {
+    console.log(userData);
+  }
+
   reserve()
   {
     if(this.checkOut < this.checkIn)
@@ -70,7 +94,6 @@ export class ReserveComponent {
 
     console.log("check out ", this.checkOut);
 
-    
   }
 
   cancel()
