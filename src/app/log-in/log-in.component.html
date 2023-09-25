@@ -2,18 +2,17 @@
   <span class="p-inputgroup-addon">
     <i class="pi pi-user"></i>
   </span>
-  <input pInputText placeholder="Username" name="username" />
+  <input pInputText placeholder="Username" name="username" [(ngModel)]="logIn.username"/>
   <span class="p-inputgroup-addon">
     <i class="pi pi-user"></i>
   </span>
   <br />
-    <input pInputText placeholder="Password" name="password" />
+    <input pInputText placeholder="Password" name="password" [(ngModel)]="logIn.password"/>
   <br />
   <p-button
     type="submit"
     label="Log-In"
     styleClass="p-button-raised p-button-secondary"
-    (click)="sendOutUserInfo()"
   ></p-button>
 </form>
 

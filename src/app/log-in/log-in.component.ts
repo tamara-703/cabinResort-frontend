@@ -29,8 +29,6 @@ export class LogInComponent implements OnDestroy {
     credentialsNonExpired: false,
   };
 
-
-  @Output() userInfo = new EventEmitter<GuestId>();
   value!: string;
 
 
@@ -42,8 +40,8 @@ constructor(
 
 
 logInUser(){
-  console.log("invoked");
-  this.service.getUserInfo().subscribe(response => {
+  console.log("username ", this.logIn.username, " password ", this.logIn.password)
+  this.service.getUserInfo(this.logIn.username, this.logIn.password).subscribe(response => {
     this.logIn = response;
 
     console.log("After fetching" , this.logIn);
@@ -51,20 +49,13 @@ logInUser(){
     if(this.logIn.id != 0)
     {
       this.appComponent.visible = false;
-      localStorage.setItem('username',this.logIn.username)
-      localStorage.setItem('password',this.logIn.password)
+      sessionStorage.setItem('username',this.logIn.username)
+      sessionStorage.setItem('password',this.logIn.password)
+      sessionStorage.setItem('userId', String(this.logIn.id))
+      //sessionstorage
     }
   })
 
-}
-
-
-sendOutUserInfo()
-{
-  if(this.logIn.id != 0)
-  {
-    this.userInfo.emit(this.logIn);
-  }
 }
 
 logOutUser()

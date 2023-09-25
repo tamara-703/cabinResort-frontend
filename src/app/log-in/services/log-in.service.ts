@@ -12,18 +12,18 @@ import { Environment } from 'src/app/environment';
 })
 export class LogInService {
 
+
+
   private userUrl = Environment.EnvironmentURL; //Gets URL based on environment
-  httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json',
-                              'allow': 'PUT',
-                              'withCredentials': 'true'})
-};
+
 
 /*
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'POST,GET,PUT,DELETE',
   'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization',
   'Authorization': 'Basic ' + btoa('username:password'),
+  'allow': 'PUT',
+                              'withCredentials': 'true',
 */
 
 constructor(
@@ -31,9 +31,16 @@ constructor(
   private messageService: MessageService) {}
 
 
-  getUserInfo(): Observable<any> {
+  getUserInfo(username:string, password:string): Observable<any> {
+
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json',
+                                  'Authorization': 'Basic ' + btoa(`${username}:${password}`)
+                                  }) //`${}:${}`
+    };
+
     // Send request to the API to get the user info
-    return this.http.get<any>(`${this.userUrl}/user/profile`, {withCredentials: true})
+    return this.http.get<any>(`${this.userUrl}/user/profile`, httpOptions)
       .pipe(
         // Handle errors
         catchError(this.handleError<any>(`userinfo not found`))

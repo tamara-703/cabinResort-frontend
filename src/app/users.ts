@@ -21,7 +21,7 @@ export interface Authority {
 }
 
 
-export interface Reservaions {
+export interface Reservations {
   id: number
   reserved_cabin_id: ReservedCabinId
   check_out: string
