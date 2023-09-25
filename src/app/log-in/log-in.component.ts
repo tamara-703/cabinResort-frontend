@@ -41,6 +41,7 @@ constructor(
 
 logInUser(){
   console.log("username ", this.logIn.username, " password ", this.logIn.password)
+  sessionStorage.setItem('unencrypted pass',this.logIn.password)
   this.service.getUserInfo(this.logIn.username, this.logIn.password).subscribe(response => {
     this.logIn = response;
 
@@ -52,7 +53,6 @@ logInUser(){
       sessionStorage.setItem('username',this.logIn.username)
       sessionStorage.setItem('password',this.logIn.password)
       sessionStorage.setItem('userId', String(this.logIn.id))
-      //sessionstorage
     }
   })
 

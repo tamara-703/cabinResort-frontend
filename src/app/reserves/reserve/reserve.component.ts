@@ -29,80 +29,82 @@ export class ReserveComponent implements OnInit {
   isCheckoutValid: boolean = false;
   value: number = Math.floor((Math.random() * 5 - 1 + 1) + 1);
 
-  // reservation: Reservations = {
-  //   id: 0,
-  //   reserved_cabin_id: {
-  //     id: 0,
-  // sleeps: 0,
-  // price: 0,
-  // description: "",
-  // capacity: 0,
-  // cabin_name: "",
-  // no_rooms: 0,
-  // no_bathrooms: 0,
-  // amenities_id: {
-  //   id: 0,
-  //   patio: false,
-  //   fireplace: false,
-  //   kitchen: false,
-  //   jacuzzi: false,
-  //   outdoor_hot_shower: false,
-  //   outdoor_furniture: false,
-  //   pet_friendly: false
-  // },
-  // image_id: {
-  //   id: 0,
-  // url: ""
-  // }
-  //   },
-  //   check_out: "",
-  //   check_in: "",
-  //   guest_id:
-  //   {
-  //     id: 0,
-  //     username: "",
-  //     password: "",
-  //     email: "",
-  //     phone: "",
-  //     address: "",
-  //     language: "",
-  //     role: "",
-  //     enabled: true,
-  //     last_name: "",
-  //     first_name: "",
-  //     authorities: Authority[{
-  //       authority: ""
-  //     }]
-  //     accountNonExpired: boolean
-  //     accountNonLocked: boolean
-  //     credentialsNonExpired: boolean
-  //   }
-  // }
+  reservation: Reservations = {
+    id: 0,
+    reserved_cabin_id: {
+      id: 0,
+      sleeps: 0,
+      price: 0,
+      description: "",
+      capacity: 0,
+      cabin_name: "",
+      no_rooms: 0,
+      no_bathrooms: 0,
+      amenities_id: {
+    id: 0,
+    patio: false,
+    fireplace: false,
+    kitchen: false,
+    jacuzzi: false,
+    outdoor_hot_shower: false,
+    outdoor_furniture: false,
+    pet_friendly: false
+  },
+  image_id: {
+    id: 0,
+  url: ""
+  }
+    },
+    check_out: "",
+    check_in: "",
+    guest_id:
+    {
+      id: 0,
+      username: "",
+      password: "",
+      email: "",
+      phone: "",
+      address: "",
+      language: "",
+      role: "",
+      enabled: true,
+      last_name: "",
+      first_name: "",
+      authorities: [{authority: ""}],
+      accountNonExpired: false,
+      accountNonLocked: false,
+      credentialsNonExpired: false
+    }
+  }
 
   constructor(private route: ActivatedRoute,
               private cabinService: CabinsService,
               private router: Router,
               private reserveService: ReserveService,
-              private logInService: LogInService) {
+              private logInService: LogInService) {}
 
-    route.params.subscribe(params => {
+  //tried to get user info on init, but it gave me 401. It's not recognizing a user is logged in. How can we fix that?
+  ngOnInit(): void {
+
+    //getting param id (cabin id)
+    this.route.params.subscribe(params => {
       this.idParam = params['id'];
 
       console.log("incoming param " , this.idParam);
     })
 
-    cabinService.getCabinById(this.idParam).subscribe(response => {
+    this.cabinService.getCabinById(this.idParam).subscribe(response => {
       this.cabinData = response;
 
-      console.log(this.cabinData);
+      console.log("cabin data in reserve component " , this.cabinData);
 
       this.img = this.cabinData.image_id.url;
       this.imgArray_1 = this.img.split(",");
-      console.log(this.imgArray_1.length);
+
       this.firstImg = this.imgArray_1[0];
-      console.log(this.firstImg)
+
       this.imgArray_1.shift();
-      console.log(this.imgArray_1.length) //removed first image
+
       this.secondImg = this.imgArray_1[0];
       this.imgArray_1.shift(); //removed second image
 
@@ -117,15 +119,12 @@ export class ReserveComponent implements OnInit {
 
     })
 
-  }
-
-  //tried to get user info on init, but it gave me 401. It's not recognizing a user is logged in. How can we fix that?
-  ngOnInit(): void {
-    this.logInService.getUser().subscribe(data => {
-      this.userData = data;
-
-      console.log(this.userData);
+    //get user data by
+    this.logInService.getUserById(this.userId).subscribe(response => {
+      this.userData = response;
+      console.log("user data in reserve component " , this.userData);
     })
+
   }
 
   reserve()
@@ -134,6 +133,8 @@ export class ReserveComponent implements OnInit {
     {
       this.isCheckoutValid = true;
     }
+
+    
 
 
 

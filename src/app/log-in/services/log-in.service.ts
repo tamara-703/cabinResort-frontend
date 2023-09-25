@@ -36,7 +36,7 @@ constructor(
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json',
                                   'Authorization': 'Basic ' + btoa(`${username}:${password}`)
-                                  }) //`${}:${}`
+                                  })
     };
 
     // Send request to the API to get the user info
@@ -45,6 +45,15 @@ constructor(
         // Handle errors
         catchError(this.handleError<any>(`userinfo not found`))
       );
+  }
+
+  getUserById(userId: number) : Observable<GuestId>
+  {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json',
+      'Authorization': 'Basic ' + btoa(`${sessionStorage.getItem('username')}:${sessionStorage.getItem('unencrypted pass')}`)})
+    }
+        return this.http.get<GuestId>(`${this.userUrl}/user/profile/${userId}`, httpOptions)
   }
 
 
