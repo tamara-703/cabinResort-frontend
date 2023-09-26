@@ -64,15 +64,10 @@
         </span>
 
         <ng-template pTemplate="footer">
-            <p-button label="Reserve" icon="pi pi-check" (click)="reserve()" [disabled]="isCheckoutValid"></p-button>
+            <p-toast></p-toast>
+            <p-button label="Reserve" [loading]="isReservationValid"  icon="pi pi-check" (click)="reserve()" [disabled]="isCheckoutValid"></p-button>
             <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{ 'margin-left': '.5em' }" (click)="cancel()"></p-button>
         </ng-template>
     </p-card>
   </div>
-
-
-
-
-
-
 </div>

@@ -3,8 +3,9 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CabinsService } from 'src/app/cabins/services/cabins.service';
 import { ReserveService } from '../services/reserve.service';
-import { GuestId, Reservations } from 'src/app/users';
+import { Reservations } from 'src/app/users';
 import { LogInService } from 'src/app/log-in/services/log-in.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-reserve',
@@ -15,6 +16,8 @@ export class ReserveComponent implements OnInit {
 
   idParam: number = 0;
   userId: number = Number(sessionStorage.getItem('userId'));
+  username: any = sessionStorage.getItem('username');
+  password: any = sessionStorage.getItem('password');
   cabinData: any;
   userData: any;
   imgArray_1: string[] = [];
@@ -27,6 +30,7 @@ export class ReserveComponent implements OnInit {
   checkIn: number = 0;
   checkOut: number = 0;
   isCheckoutValid: boolean = false;
+  isReservationValid: boolean = false;
   value: number = Math.floor((Math.random() * 5 - 1 + 1) + 1);
 
   reservation: Reservations = {
@@ -67,13 +71,8 @@ export class ReserveComponent implements OnInit {
       address: "",
       language: "",
       role: "",
-      enabled: true,
       last_name: "",
-      first_name: "",
-      authorities: [{authority: ""}],
-      accountNonExpired: false,
-      accountNonLocked: false,
-      credentialsNonExpired: false
+      first_name: ""
     }
   }
 
@@ -81,9 +80,9 @@ export class ReserveComponent implements OnInit {
               private cabinService: CabinsService,
               private router: Router,
               private reserveService: ReserveService,
-              private logInService: LogInService) {}
+              private logInService: LogInService,
+              private messageService: MessageService) {}
 
-  //tried to get user info on init, but it gave me 401. It's not recognizing a user is logged in. How can we fix that?
   ngOnInit(): void {
 
     //getting param id (cabin id)
@@ -134,10 +133,69 @@ export class ReserveComponent implements OnInit {
       this.isCheckoutValid = true;
     }
 
-    
+    console.log("In reserve")
+
+    this.reservation = {
+      id: 0,
+    reserved_cabin_id: {
+      id: this.cabinData.id,
+      sleeps: this.cabinData.sleeps,
+      price: this.cabinData.price,
+      description: this.cabinData.description,
+      capacity: this.cabinData.capacity,
+      cabin_name: this.cabinData.cabin_name,
+      no_rooms: this.cabinData.no_rooms,
+      no_bathrooms: this.cabinData.no_bathrooms,
+      amenities_id: {
+      id: this.cabinData.amenities_id.id,
+    patio: this.cabinData.amenities_id.patio,
+    fireplace: this.cabinData.amenities_id.fireplace,
+    kitchen: this.cabinData.amenities_id.kitchen,
+    jacuzzi: this.cabinData.amenities_id.jacuzzi,
+    outdoor_hot_shower: this.cabinData.amenities_id.outdoor_hot_shower,
+    outdoor_furniture: this.cabinData.amenities_id.outdoor_furniture,
+    pet_friendly: this.cabinData.amenities_id.pet_friendly
+  },
+  image_id: {
+    id: this.cabinData.image_id.id,
+  url: this.cabinData.image_id.image_urls
+  }
+    },
+    check_out: String(this.checkOut),
+    check_in: String(this.checkIn),
+    guest_id:
+    {
+      id: this.userId,
+      username: this.username,
+      password: this.password,
+      email: this.userData.email,
+      phone: this.userData.phone,
+      address: this.userData.address,
+      language: this.userData.language,
+      role: this.userData.role,
+      last_name: this.userData.last_name,
+      first_name: this.userData.first_name
+    }
+
+    }
+
+    this.reserveService.createReservation(this.reservation).subscribe(response => {
+      console.log("create success!")
+      this.isReservationValid = true;
+      const severity = 'success';
 
 
+      setTimeout(() => {
+        this.isReservationValid = false;
+        this.messageService.add({severity:severity,summary:'Success',detail:'Reservation was a success'});
+    }, 2000);
 
+    setTimeout(() => {
+      this.router.navigate(['users']);
+    },5000)
+
+
+    })
   }
 
   cancel()

@@ -26,7 +26,18 @@ export interface Reservations {
   reserved_cabin_id: ReservedCabinId
   check_out: string
   check_in: string
-  guest_id: GuestId
+  guest_id: {
+    id: number,
+    username: string,
+    password: string,
+    email: string,
+    phone: string,
+    address: string,
+    language: string,
+    role: string,
+    last_name: string,
+    first_name: string
+  }
 }
 
 export interface ReservedCabinId {
