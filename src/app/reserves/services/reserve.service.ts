@@ -13,18 +13,16 @@ export class ReserveService {
 
   constructor(private http: HttpClient) { }
 
-  httpOptions = {
-
-    headers: new HttpHeaders({ 'Content-Type': 'application/json', 'allow': 'PUT' })
-
-  };
-
 
   createReservation(reservation: Reservations) : Observable<Reservations>
   {
-    return this.http.post<Reservations>(`${this.base_url}/user/reservations`,reservation, this.httpOptions).pipe(
-      tap((newReservation: Reservations) => `added Warehouse w/ id=${newReservation.id}`)
-    )
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json',
+                                  'Authorization': 'Basic ' + btoa(`${reservation.guest_id.username}:${sessionStorage.getItem('unencrypted pass')}`)
+                                  })
+    };
+
+    return this.http.post<Reservations>(`${this.base_url}/user/reservations`,reservation, httpOptions);
 
 
   }

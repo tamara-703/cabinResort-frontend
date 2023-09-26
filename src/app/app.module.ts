@@ -9,7 +9,7 @@ import { CabinsComponent } from './cabins/cabins.component';
 import { UsersComponent } from './users/users.component';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
-import { PrimeNGConfig } from 'primeng/api';
+import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { LogInComponent } from './log-in/log-in.component';
 import { DialogModule } from 'primeng/dialog';
 import { LogInService } from './log-in/services/log-in.service';
@@ -21,6 +21,7 @@ import { PasswordModule } from 'primeng/password';
 import { RatingModule } from 'primeng/rating';
 import { CardModule } from 'primeng/card';
 import { CalendarModule } from 'primeng/calendar';
+import { ToastModule } from 'primeng/toast';
 
 const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
       // ......
@@ -53,7 +54,8 @@ const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
     CardModule,
     CalendarModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastModule
   ],
   providers: [{
     provide: {
@@ -65,7 +67,8 @@ const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
     multi: true
  },
  LogInService,
- UsersService
+ UsersService,
+ MessageService
 ],
   bootstrap: [AppComponent]
 })
