@@ -4,6 +4,7 @@ import { LogInService } from './services/log-in.service';
 import { GuestId, Authority} from '../users';
 import { NgModule } from '@angular/core';
 import { AppComponent } from '../app.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-log-in',
@@ -29,12 +30,14 @@ export class LogInComponent implements OnDestroy {
     credentialsNonExpired: false,
   };
 
-  value!: string;
+ 
+
 
 
 constructor(
   private service: LogInService,
-  private appComponent: AppComponent
+  private appComponent: AppComponent,
+  private router: Router
 ){}
 
 
@@ -67,6 +70,14 @@ logOutUser()
 
 ngOnDestroy(): void {
 
+}
+
+
+createUser(){
+  this.appComponent.visible = false;
+  this.logIn.username = "";
+  this.logIn.password = ""
+  this.router.navigate(["/newUser"]);
 }
 
 

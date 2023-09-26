@@ -10,6 +10,7 @@ export class AppComponent {
   visible: boolean = false;
 
   constructor(private router: Router){
+
   }
 
   showDialog() {
@@ -19,5 +20,7 @@ export class AppComponent {
     else {
       this.visible = true;
     }
+
+
   }
 }

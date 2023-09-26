@@ -1,15 +1,15 @@
 import { APP_INITIALIZER,NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { CabinsComponent } from './cabins/cabins.component';
 import { UsersComponent } from './users/users.component';
+import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
-import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { LogInComponent } from './log-in/log-in.component';
 import { DialogModule } from 'primeng/dialog';
 import { LogInService } from './log-in/services/log-in.service';
@@ -21,11 +21,9 @@ import { PasswordModule } from 'primeng/password';
 import { RatingModule } from 'primeng/rating';
 import { CardModule } from 'primeng/card';
 import { CalendarModule } from 'primeng/calendar';
-<<<<<<< HEAD
 import { CreateUserComponent } from './create-user/create-user.component';
-=======
 import { ToastModule } from 'primeng/toast';
->>>>>>> 9391ddb87bf785b1e5e427fb5cf9f2695fcba179
+import { InputTextModule } from 'primeng/inputtext';
 
 const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
       // ......
@@ -41,7 +39,7 @@ const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
     UsersComponent,
     LogInComponent,
     ReserveComponent,
-    CreateUserComponent
+    CreateUserComponent,
 
   ],
   imports: [
@@ -60,7 +58,9 @@ const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
     CalendarModule,
     FormsModule,
     ReactiveFormsModule,
-    ToastModule
+    ToastModule,
+    InputTextModule,
+    NoopAnimationsModule
   ],
   providers: [{
     provide: {
