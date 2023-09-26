@@ -21,6 +21,7 @@ import { PasswordModule } from 'primeng/password';
 import { RatingModule } from 'primeng/rating';
 import { CardModule } from 'primeng/card';
 import { CalendarModule } from 'primeng/calendar';
+import { CreateUserComponent } from './create-user/create-user.component';
 
 const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
       // ......
@@ -35,7 +36,8 @@ const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
     CabinsComponent,
     UsersComponent,
     LogInComponent,
-    ReserveComponent
+    ReserveComponent,
+    CreateUserComponent
 
   ],
   imports: [
