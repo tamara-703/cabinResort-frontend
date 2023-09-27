@@ -62,36 +62,10 @@ export class CabinsComponent implements OnInit{
     if(sessionStorage.getItem("username") === null)
     {
       this.appComponent.visible = true;
-
     } else
     {
       this.router.navigate([`reserve/${id}`]);
     }
-  }
-
-
-  logout()
-  {
-    if(sessionStorage.getItem('username') != null)
-    {
-      sessionStorage.clear();
-
-      setTimeout(() => {
-
-        this.isLogout = true;
-        this.messageService.add({severity:'warn',summary:'logout',detail:'logout was successful'})
-
-      }, 4000);
-
-      setTimeout(() => {
-
-
-
-        this.router.navigate(['home']);
-
-      }, 2000);
-    }
-
   }
 
 }

@@ -1,0 +1,46 @@
+#logIn {
+    height: 100%;
+    
+    align-items: center;
+}
+
+#logInForm {
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+    height: 100%;
+    width: 50%;
+    margin: auto;
+    border-color:deeppink;
+    border-radius: 3px;
+    border-style: dotted;
+}
+
+.logInContainer {
+    height: 30px;
+    margin-bottom: 15px;
+
+}
+
+.logInSpan {
+    height: 100%;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.logInInput {
+    height: 52.8px;
+    width: 246px;
+    margin-bottom: auto;
+
+}
+
+.p-password-panel {
+    height: 100%;
+    width: 100%;
+}
+
+#logInSubmit {
+    margin-top: 15px;
+    margin-bottom: 20px;
+}

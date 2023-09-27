@@ -81,10 +81,7 @@ export class ReserveComponent implements OnInit {
               private router: Router,
               private reserveService: ReserveService,
               private logInService: LogInService,
-              private messageService: MessageService) {}
-
-  ngOnInit(): void {
-
+              private messageService: MessageService) {
     //getting param id (cabin id)
     this.route.params.subscribe(params => {
       this.idParam = params['id'];
@@ -123,6 +120,11 @@ export class ReserveComponent implements OnInit {
       this.userData = response;
       console.log("user data in reserve component " , this.userData);
     })
+
+              }
+
+  ngOnInit(): void {
+
 
   }
 

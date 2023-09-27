@@ -1,21 +1,50 @@
-<form class="p-inputgroup" (ngSubmit)="logInUser()">
-  <span class="p-inputgroup-addon">
-    <i class="pi pi-user"></i>
-  </span>
-  <input pInputText placeholder="Username" name="username" [(ngModel)]="logIn.username"/>
-  <span class="p-inputgroup-addon">
-    <i class="pi pi-user"></i>
-  </span>
-  <br />
-    <input pInputText placeholder="Password" name="password" [(ngModel)]="logIn.password"/>
-  <br />
-  <p-button
-    type="submit"
-    label="Log-In"
-    styleClass="p-button-raised p-button-secondary"
-  ></p-button>
-</form>
+<div id="logIn">
+  <div id="logInForm">
+    <h1>Log In</h1>
 
-<!-- <div class="card flex justify-content-center">
-  <p-password [(ngModel)]="value" [toggleMask]="true"></p-password>
-</div> -->
+    <div class="logInContainer">
+      <span class="p-float-label logInSpan">
+        <input
+          class="logInInput"
+          pInputText
+          name="username"
+          [(ngModel)]="logIn.username"
+        />
+
+        <label htmlFor="username">Username</label>
+      </span>
+    </div>
+
+    <br />
+
+    <div class="logInContainer">
+      <span class="p-float-label logInSpan">
+        <p-password
+          class="logInInput"
+          name="password"
+          [(ngModel)]="logIn.password"
+          [toggleMask]="true"
+          [feedback]="false"
+        ></p-password>
+
+        <label htmlFor="password">Password</label>
+      </span>
+    </div>
+
+    <p-button
+      id="logInSubmit"
+      type="submit"
+      label="Log In"
+      styleClass="p-button-raised p-button-primary"
+      (click)="logInUser()"
+    ></p-button>
+
+    <h4>Create an Account if you do not have one!</h4>
+
+    <p-button
+      label="Create Account"
+      styleClass="p-button-secondary"
+      (click)="createUser()"
+    ></p-button>
+  </div>
+</div>
