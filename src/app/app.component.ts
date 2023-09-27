@@ -16,7 +16,7 @@ export class AppComponent {
   showDialog() {
     if (sessionStorage.getItem("username")) {
       this.router.navigate(["/users"]);
-    } 
+    }
     else {
       this.visible = true;
     }

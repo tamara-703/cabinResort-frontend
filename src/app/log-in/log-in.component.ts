@@ -30,7 +30,7 @@ export class LogInComponent implements OnDestroy {
     credentialsNonExpired: false,
   };
 
- 
+
 
 
 
@@ -59,14 +59,13 @@ logInUser(){
     }
   })
 
-}
+  setTimeout(() => {
 
-logOutUser()
-{
-  localStorage.clear();
-  //reload page
-}
+    this.router.navigate(['users'])
 
+  }, 2000);
+
+}
 
 ngOnDestroy(): void {
 
