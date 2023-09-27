@@ -3,6 +3,7 @@ import { CabinsService } from './services/cabins.service';
 import { Cabinlocation, State } from '../users';
 import { Router } from '@angular/router';
 import { AppComponent } from '../app.component';
+import { MessageService } from 'primeng/api';
 
 
 @Component({
@@ -22,9 +23,10 @@ export class CabinsComponent implements OnInit{
     flag: ""
   }
   visibleData: boolean = false;
+  isLogout: boolean = false;
 
 
-  constructor(private service: CabinsService, private router: Router, private appComponent: AppComponent) {}
+  constructor(private service: CabinsService, private router: Router, private appComponent: AppComponent, private messageService: MessageService) {}
 
 
   ngOnInit(): void {
@@ -57,7 +59,7 @@ export class CabinsComponent implements OnInit{
 
   navigateToReservePage(id: number)
   {
-    if(localStorage.getItem("username") === null)
+    if(sessionStorage.getItem("username") === null)
     {
       this.appComponent.visible = true;
 
@@ -68,9 +70,28 @@ export class CabinsComponent implements OnInit{
   }
 
 
-  clearStorage()
+  logout()
   {
-    localStorage.clear();
+    if(sessionStorage.getItem('username') != null)
+    {
+      sessionStorage.clear();
+
+      setTimeout(() => {
+
+        this.isLogout = true;
+        this.messageService.add({severity:'warn',summary:'logout',detail:'logout was successful'})
+
+      }, 4000);
+
+      setTimeout(() => {
+
+
+
+        this.router.navigate(['home']);
+
+      }, 2000);
+    }
+
   }
 
 }
