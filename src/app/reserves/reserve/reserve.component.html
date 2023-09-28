@@ -45,16 +45,22 @@
 
     <br />
 
-    <ul style="list-style-type: none;">
-      <li><h4>beds</h4></li>
-      <li><h4>bathrooms</h4></li>
-    </ul>
+
+      <div>
+        <p style="font-size: 20px;"><mat-icon>bed</mat-icon> {{cabinData.no_rooms}} beds</p>
+        <p style="font-size: 20px;"><mat-icon>bathroom</mat-icon> {{cabinData.no_bathrooms}} bathrooms</p>
+      </div>
+
 
     <h1 style="border-top: 1px solid black; padding: 10px;">Features</h1>
-    <ul style="list-style-type: none;">
-      <li>feature1 - something here</li>
-      <li>feature1 - something here</li>
-      <li>feature1 - something here</li>
+    <ul>
+      <li *ngIf="cabinData.amenities_id.fireplace"><p><mat-icon>fireplace</mat-icon>  Fireplace -- something here</p></li>
+      <li *ngIf="cabinData.amenities_id.jacuzzi"><p><mat-icon>hot_tub</mat-icon>  Jacuzzi -- something here</p></li>
+      <li *ngIf="cabinData.amenities_id.kitchen"><p><mat-icon>countertops</mat-icon>  Kitchen -- something here</p></li>
+      <li *ngIf="cabinData.amenities_id.outdoor_furniture"><p><mat-icon>chair_alt</mat-icon>  Outdoor Furniture -- something here</p></li>
+      <li *ngIf="cabinData.amenities_id.outdoor_shower"><p><mat-icon>shower</mat-icon>  Outdoor Shower -- something here</p></li>
+      <li *ngIf="cabinData.amenities_id.patio"><p><mat-icon>deck</mat-icon>  Patio -- something here</p></li>
+      <li *ngIf="cabinData.amenities_id.pet_friendly"><p><mat-icon>pets</mat-icon>  Pet Friendly -- something here</p></li>
     </ul>
   </div>
 
