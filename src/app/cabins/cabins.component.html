@@ -12,10 +12,19 @@
 </div>
 
 
-<div *ngIf="visibleData">
-  <ul *ngFor="let item of cabinData">
-    <li >{{item.cabin_name}}</li>
-    <li>{{item.price}}</li>
-    <p-button label="reserve" styleClass="p-button-raised p-button-secondary" class="navButton" (click)="navigateToReservePage(item.id)"></p-button>
-  </ul>
-</div>
+
+  <div *ngIf="visibleData" class="cabins-container">
+
+    <div>
+      <img src="https://hipcamp-res.cloudinary.com/f_auto,c_limit,w_1120,q_60/v1691019285/campground-photos/zsl3ih3pgxhqi0ady0ua.jpg" alt="cabinImg" width="300px">
+    </div>
+
+    <ul *ngFor="let item of cabinData" style="list-style-type: none;">
+      <li><h1>{{item.cabin_name}}</h1></li>
+      <li><p>sleeps - {{item.sleeps}} . capacity - {{item.capacity}}</p></li>
+      <li><p>{{item.description}}</p></li>
+
+      <li>{{item.price}}</li>
+      <p-button label="reserve" styleClass="p-button-raised p-button-secondary" class="navButton" (click)="navigateToReservePage(item.id)"></p-button>
+    </ul>
+  </div>

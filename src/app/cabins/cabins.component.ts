@@ -13,7 +13,10 @@ import { MessageService } from 'primeng/api';
 })
 export class CabinsComponent implements OnInit{
 
-  cabinData: any[] = [];
+  cabinData: any;
+  images: string = "";
+  firstImage: string = "";
+  imgsArray: string[] = [];
 
   cabinOptions: Cabinlocation[] = [];
   states: any | undefined;
@@ -51,6 +54,15 @@ export class CabinsComponent implements OnInit{
         this.cabinData = response;
 
         console.log(this.cabinData);
+
+        this.images = this.cabinData[0].image_id.url;
+
+        this.imgsArray = this.images.split(",");
+
+        console.log(this.imgsArray)
+
+        this.firstImage = this.imgsArray[0];
+
 
         this.visibleData = true;
       })
