@@ -36,14 +36,29 @@
 </div>
 </div>
 
-<div class="reserve-container" [formGroup]="reserveForm">
+<div class="reserve-container" style="display: flex;">
 
-  <div>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni quasi unde nihil consequatur vitae voluptate neque assumenda ullam
-    perspiciatis eum deserunt culpa tenetur optio alias debitis, atque, ipsam nesciunt molestiae!
+  <div style="padding: 50px; margin: 50px 100px;">
+    <h1 style="border-bottom: 1px solid black;">About this place</h1>
+    <p>{{cabinData.description}}</p>
+    <p style="padding: 5px; border-bottom: 1px solid black;"> {{cabinData.cabinloc.address}} |  {{cabinData.cabinloc.city}} | {{cabinData.cabinloc.stateId}}</p>
+
+    <br />
+
+    <ul style="list-style-type: none;">
+      <li><h4>beds</h4></li>
+      <li><h4>bathrooms</h4></li>
+    </ul>
+
+    <h1 style="border-top: 1px solid black; padding: 10px;">Features</h1>
+    <ul style="list-style-type: none;">
+      <li>feature1 - something here</li>
+      <li>feature1 - something here</li>
+      <li>feature1 - something here</li>
+    </ul>
   </div>
 
-  <div class="card flex justify-content-center" style="margin: 100px 980px;">
+  <div class="card flex justify-content-center" style="margin: 100px 280px;">
     <p-card header="${{cabinData.price}} night" subheader="sleeps: {{cabinData.sleeps}}" [style]="{ width: '360px'}">
         <ng-template pTemplate="header">
             <img src="../../../assets/logo.png" alt="logo" style="width: 200px;">

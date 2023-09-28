@@ -31,8 +31,3 @@ body {
   height: 200px;
   padding: 10px;
 }
-
-.reserve-container {
-  display: flex;
-  justify-content: space-between;
-}

@@ -15,7 +15,6 @@ import { MessageService } from 'primeng/api';
 export class ReserveComponent implements OnInit {
 
   idParam: number = 0;
-  reserveForm: FormGroup;
   userId: number = Number(sessionStorage.getItem('userId'));
   username: any = sessionStorage.getItem('username');
   password: any = sessionStorage.getItem('password');
@@ -84,6 +83,7 @@ export class ReserveComponent implements OnInit {
               private logInService: LogInService,
               private messageService: MessageService,
               private formBuilder: FormBuilder) {
+
     //getting param id (cabin id)
     this.route.params.subscribe(params => {
       this.idParam = params['id'];
@@ -91,11 +91,7 @@ export class ReserveComponent implements OnInit {
       console.log("incoming param " , this.idParam);
     })
 
-    //form control
-    this.reserveForm = this.formBuilder.group({
-      checkIn: ["", Validators.required],
-      checkOut: ["", Validators.required]
-    })
+
 
     this.cabinService.getCabinById(this.idParam).subscribe(response => {
       this.cabinData = response;
@@ -129,7 +125,7 @@ export class ReserveComponent implements OnInit {
       console.log("user data in reserve component " , this.userData);
     })
 
-              }
+  }
 
   ngOnInit(): void {
 
