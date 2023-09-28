@@ -4,6 +4,7 @@ import { Cabinlocation, State } from '../users';
 import { Router } from '@angular/router';
 import { AppComponent } from '../app.component';
 import { MessageService } from 'primeng/api';
+import { Cabin, CabinReserve } from '../users';
 
 
 @Component({
@@ -15,8 +16,10 @@ export class CabinsComponent implements OnInit{
 
   cabinData: any;
   images: string = "";
-  firstImage: string = "";
+  firstImages: string[] = [];
   imgsArray: string[] = [];
+  reserveCabins: any;
+
 
   cabinOptions: Cabinlocation[] = [];
   states: any | undefined;
@@ -44,29 +47,96 @@ export class CabinsComponent implements OnInit{
 
   }
 
-  getByStateId()
-  {
+  // getByStateId()
+  // {
 
-    if(this.selectedState != null)
-    {
+  //   if(this.selectedState != null)
+  //   {
+  //     this.service.getCabinByStateId(this.selectedState.code).subscribe(response => {
+
+  //       this.cabinData = response;
+
+  //       console.log(this.cabinData);
+
+  //       for(let i = 0; i < this.cabinData.length; i++)
+  //       {
+  //         this.images = this.cabinData[i].image_id.url;
+  //         this.imgsArray.push(...this.images.split(","));
+  //       }
+
+  //       console.log(this.imgsArray)
+
+  //       for(let i = 0; i < this.cabinData.length; i+5)
+  //       {
+  //         this.firstImages.push(this.imgsArray[i])
+  //       }
+
+  //       console.log(typeof this.firstImages)
+
+
+  //       this.visibleData = true;
+  //     })
+  //   }
+  // }
+
+  getByStateId() {
+
+
+
+    if (this.selectedState != null) {
+
       this.service.getCabinByStateId(this.selectedState.code).subscribe(response => {
 
         this.cabinData = response;
 
-        console.log(this.cabinData);
+        console.log("cabin data\n" , this.cabinData)
 
-        this.images = this.cabinData[0].image_id.url;
-
-        this.imgsArray = this.images.split(",");
-
-        console.log(this.imgsArray)
-
-        this.firstImage = this.imgsArray[0];
-
+        this.reserveCabins = this.getCabinForReserve(this.cabinData);
 
         this.visibleData = true;
+
       })
+
     }
+
+
+
+  }
+
+  getCabinForReserve(cabins: Cabin[]): CabinReserve[] {
+
+
+    let tempCabin: CabinReserve;
+
+    let tempCabins: CabinReserve[] = [];
+
+    for (let cabin of cabins) {
+
+      this.imgsArray = cabin.image_id.url.split(",");
+
+      tempCabin = {
+      id : cabin.id,
+      sleeps : cabin.sleeps,
+      price : cabin.price,
+      description : cabin.description,
+      capacity : cabin.capacity,
+      cabinlocation : cabin.cabinlocation,
+      cabin_name : cabin.cabin_name,
+      image : this.imgsArray[0],
+      amenities_id : cabin.amenities_id,
+      no_rooms : cabin.no_rooms,
+      no_bathrooms : cabin.no_bathrooms
+      }
+
+      tempCabins.push(tempCabin);
+
+
+    }
+
+    console.log("reserve cabin data\n" , tempCabins)
+
+    return tempCabins;
+
   }
 
   navigateToReservePage(id: number)
