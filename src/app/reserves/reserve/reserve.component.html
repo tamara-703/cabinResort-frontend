@@ -36,7 +36,7 @@
 </div>
 </div>
 
-<div class="reserve-container">
+<div class="reserve-container" [formGroup]="reserveForm">
 
   <div>
     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni quasi unde nihil consequatur vitae voluptate neque assumenda ullam
@@ -51,12 +51,17 @@
 
         <div style="display: flex;">
           <span style="flex: 1;">
-            <p>Check In<p-calendar [(ngModel)]="checkIn"></p-calendar></p>
-          </span>
-          <span style="flex: 1;">
-            <p>Check out<p-calendar [(ngModel)]="checkOut"></p-calendar></p>
+            <label for="checkIn">Check In<p-calendar [(ngModel)]="checkIn"></p-calendar></label>
           </span>
 
+          <span style="flex: 1;">
+            <label for="checkOut">Check out<p-calendar [(ngModel)]="checkOut"></p-calendar></label>
+          </span>
+
+        </div>
+
+        <div *ngIf="checkIn === null || checkOut === null">
+          check in & check out are required
         </div>
 
         <span style="flex: 1; color: red;" *ngIf="isCheckoutValid">
@@ -65,7 +70,7 @@
 
         <ng-template pTemplate="footer">
             <p-toast></p-toast>
-            <p-button label="Reserve" [loading]="isReservationValid"  icon="pi pi-check" (click)="reserve()" [disabled]="isCheckoutValid"></p-button>
+            <p-button label="Reserve" [loading]="isReservationValid"  icon="pi pi-check" (click)="reserve()"></p-button>
             <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{ 'margin-left': '.5em' }" (click)="cancel()"></p-button>
         </ng-template>
     </p-card>

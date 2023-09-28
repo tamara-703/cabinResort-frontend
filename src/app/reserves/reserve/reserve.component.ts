@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CabinsService } from 'src/app/cabins/services/cabins.service';
 import { ReserveService } from '../services/reserve.service';
@@ -15,6 +15,7 @@ import { MessageService } from 'primeng/api';
 export class ReserveComponent implements OnInit {
 
   idParam: number = 0;
+  reserveForm: FormGroup;
   userId: number = Number(sessionStorage.getItem('userId'));
   username: any = sessionStorage.getItem('username');
   password: any = sessionStorage.getItem('password');
@@ -81,12 +82,19 @@ export class ReserveComponent implements OnInit {
               private router: Router,
               private reserveService: ReserveService,
               private logInService: LogInService,
-              private messageService: MessageService) {
+              private messageService: MessageService,
+              private formBuilder: FormBuilder) {
     //getting param id (cabin id)
     this.route.params.subscribe(params => {
       this.idParam = params['id'];
 
       console.log("incoming param " , this.idParam);
+    })
+
+    //form control
+    this.reserveForm = this.formBuilder.group({
+      checkIn: ["", Validators.required],
+      checkOut: ["", Validators.required]
     })
 
     this.cabinService.getCabinById(this.idParam).subscribe(response => {
@@ -136,6 +144,7 @@ export class ReserveComponent implements OnInit {
     }
 
     console.log("In reserve")
+    console.log("check in: ", this.checkIn, " check out: ", this.checkOut)
 
     this.reservation = {
       id: 0,
@@ -181,23 +190,23 @@ export class ReserveComponent implements OnInit {
 
     }
 
-    this.reserveService.createReservation(this.reservation).subscribe(response => {
-      console.log("create success!")
-      this.isReservationValid = true;
-      const severity = 'success';
+    // this.reserveService.createReservation(this.reservation).subscribe(response => {
+    //   console.log("create success!")
+    //   this.isReservationValid = true;
+    //   const severity = 'success';
 
 
-      setTimeout(() => {
-        this.isReservationValid = false;
-        this.messageService.add({severity:severity,summary:'Success',detail:'Reservation was a success'});
-    }, 2000);
+    //   setTimeout(() => {
+    //     this.isReservationValid = false;
+    //     this.messageService.add({severity:severity,summary:'Success',detail:'Reservation was a success'});
+    // }, 2000);
 
-    setTimeout(() => {
-      this.router.navigate(['users']);
-    },5000)
+    // setTimeout(() => {
+    //   this.router.navigate(['users']);
+    // },5000)
 
 
-    })
+    // })
   }
 
   cancel()
