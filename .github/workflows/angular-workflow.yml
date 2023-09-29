@@ -42,8 +42,8 @@ jobs:
         run: npm install --build-from-resource
 
       - name: Build
-        working-directory: dist/cabin-resort
-        run: npm run build
+        # working-directory: dist/cabin-resort
+        run: npm run build --prod
 
       - name: deploy
         run: aws s3 sync src/* s3://project2-cabin-fever
