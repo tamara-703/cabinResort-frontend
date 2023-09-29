@@ -38,8 +38,8 @@ jobs:
           node-version: 16
 
       - name: Install dependencies
-        working-directory: cabinResort-frontend/
-        run: npm install
+        # working-directory: cabinResort-frontend/
+        run: npm install --build-from-resource
 
       - name: Build
         working-directory: dist/cabin-resort
