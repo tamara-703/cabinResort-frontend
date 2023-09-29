@@ -42,7 +42,7 @@ jobs:
         run: npm install
 
       - name: Build
-        working-directory: cabinResort-frontend/
+        working-directory: dist/cabin-resort
         run: npm run build
 
       - name: deploy
