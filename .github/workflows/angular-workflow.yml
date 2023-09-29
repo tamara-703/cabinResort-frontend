@@ -46,7 +46,7 @@ jobs:
         run: npm run build --prod
 
       - name: deploy
-        run: aws s3 sync cabinResort-frontend/ s3://project2-cabin-fever/
+        run: aws s3 sync cabin-resort/dist/cabin-resort s3://project2-cabin-fever/
 
 
 
