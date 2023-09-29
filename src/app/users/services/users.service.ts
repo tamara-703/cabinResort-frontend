@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { GuestId } from 'src/app/users';
+import { GuestId, newUser } from 'src/app/dataFormat';
 import { MessageService } from 'src/app/message.service';
 import { Environment } from 'src/app/environment';
 
@@ -47,10 +47,12 @@ export class UsersService {
   //////// Save methods //////////
 
   /** POST: add a new User to the server */
-  addUser(user: GuestId): Observable<GuestId> {
-    return this.http.post<GuestId>(this.userUrl, user, this.httpOptions).pipe(
-      tap((newUser: GuestId) => this.log(`added User w/ id=${newUser.id}`)),
-      catchError(this.handleError<GuestId>('addUser'))
+  addUser(user: newUser): Observable<newUser> {
+    console.log(user);
+    const url = `${this.userUrl}/homepage/signup`;
+    return this.http.post<newUser>(url, user).pipe(
+      tap((newUser: newUser) => this.log(`added User`)),
+      catchError(this.handleError<newUser>('addUser'))
     );
   }
 

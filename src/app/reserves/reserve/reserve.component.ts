@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CabinsService } from 'src/app/cabins/services/cabins.service';
 import { ReserveService } from '../services/reserve.service';
-import { Reservations } from 'src/app/users';
+import { Reservations } from 'src/app/dataFormat';
 import { LogInService } from 'src/app/log-in/services/log-in.service';
 import { MessageService } from 'primeng/api';
 

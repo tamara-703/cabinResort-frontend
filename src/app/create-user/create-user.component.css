@@ -1,0 +1,29 @@
+.form {
+    margin-top: 10px;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.innerForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    border-color:deeppink;
+    border-radius: 3px;
+    border-style: dotted;
+
+}
+
+.inputBox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.title {
+    width: 150px;
+    float: right
+}

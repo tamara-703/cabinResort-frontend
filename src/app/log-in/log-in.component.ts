@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms'; //form validation
 import { LogInService } from './services/log-in.service';
-import { GuestId, Authority} from '../users';
+import { GuestId, Authority} from '../dataFormat';
 import { NgModule } from '@angular/core';
 import { AppComponent } from '../app.component';
 import { Router } from '@angular/router';

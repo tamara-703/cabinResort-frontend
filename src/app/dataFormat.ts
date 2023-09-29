@@ -96,3 +96,16 @@ export interface State {
   code: string
   flag: string
 }
+
+
+export interface newUser {
+  username: string
+  password: string
+  email: string
+  phone: string
+  address: string
+  language: string
+  role: string
+  last_name: string
+  first_name: string
+}
