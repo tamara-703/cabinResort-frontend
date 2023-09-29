@@ -27,7 +27,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
            # AWS Access Key ID. Provide this key if you want to assume a role using access keys rather than a web identity token.
-          aws-access-key-id: ${{ secrets.project2_ACCESS_KEY_ID }}
+          aws-access-key-id: ${{ secrets.PROJECT2_ACCESS_KEY_ID }}
           # AWS Secret Access Key. Required if aws-access-key-id is provided.
           aws-secret-access-key: ${{ secrets.PROJECT2_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
