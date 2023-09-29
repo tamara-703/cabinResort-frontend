@@ -38,15 +38,15 @@ jobs:
           node-version: 16
 
       - name: Install dependencies
-        working-directory: bvanek/
+        working-directory: cabinResort-frontend/
         run: npm install
 
       - name: Build
-        working-directory: bvanek/
+        working-directory: cabinResort-frontend/
         run: npm run build
 
       - name: deploy
-        run: aws s3 sync bvanek/dist/bvanek s3://bvanek-origin/
+        run: aws s3 sync src/* s3://project2-cabin-fever
 
 
 
