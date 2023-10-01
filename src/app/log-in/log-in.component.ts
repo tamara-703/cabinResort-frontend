@@ -57,20 +57,18 @@ logInUser(){
       this.appComponent.visible = false;
       sessionStorage.setItem('username',this.logIn.username);
       sessionStorage.setItem('password',this.logIn.password);
-      sessionStorage.setItem('userId', String(this.logIn.id));
-
-      setTimeout(() => {
-
+      sessionStorage.setItem('userId', String(this.logIn.id))
         this.router.navigate(['users'])
-        this.messageService.add({severity:'success',summary:'Account Created',detail:'Your Account Was Sucessfuly Created'});
-          
-      }, 2000);
+        this.messageService.add({severity:'success',summary:'Log-In Successful',detail:'You Sucessfully logged in!'});
     }
     else{
       this.messageService.add({severity:'error',summary:'Invalid Credentials',detail:'Check To See If Username and Password Are Correct'});
       
     }
   })
+}
+else{
+  this.messageService.add({severity:'error',summary:'Invalid Credentials',detail:'Must Provide A Username and Password'});
 }
 }
 
