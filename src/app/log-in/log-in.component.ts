@@ -45,8 +45,9 @@ constructor(
 
 
 logInUser(){
+
   if(this.logIn.username && this.logIn.password){
-  console.log("username ", this.logIn.username, " password ", this.logIn.password)
+  console.log("component username ", this.logIn.username, " component password ", this.logIn.password)
   sessionStorage.setItem('unencrypted pass',this.logIn.password)
   this.service.getUserInfo(this.logIn.username, this.logIn.password).subscribe(response => {
     this.logIn = response;
@@ -54,21 +55,24 @@ logInUser(){
     console.log("After fetching" , this.logIn);
 
     if(this.logIn.id != 0){
+      this.messageService.add({severity:'success',summary:'Account Created',detail:'You were successfully logged in!'});
       this.appComponent.visible = false;
       sessionStorage.setItem('username',this.logIn.username);
       sessionStorage.setItem('password',this.logIn.password);
       sessionStorage.setItem('userId', String(this.logIn.id));
 
+
+
       setTimeout(() => {
 
         this.router.navigate(['users'])
-        this.messageService.add({severity:'success',summary:'Account Created',detail:'Your Account Was Sucessfuly Created'});
-          
+
+
       }, 2000);
     }
     else{
       this.messageService.add({severity:'error',summary:'Invalid Credentials',detail:'Check To See If Username and Password Are Correct'});
-      
+
     }
   })
 }

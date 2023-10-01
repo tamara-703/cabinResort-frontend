@@ -33,6 +33,8 @@ constructor(
 
   getUserInfo(username:string, password:string): Observable<any> {
 
+    console.log("username ", username, " password ", password)
+
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json',
                                   'Authorization': 'Basic ' + btoa(`${username}:${password}`)
