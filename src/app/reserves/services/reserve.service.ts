@@ -22,6 +22,9 @@ export class ReserveService {
                                   })
     };
 
+    reservation.check_in = reservation.check_in.substring(0,15)
+    reservation.check_out = reservation.check_out.substring(0,15);
+
     return this.http.post<Reservations>(`${this.base_url}/user/reservations`,reservation, httpOptions);
 
 

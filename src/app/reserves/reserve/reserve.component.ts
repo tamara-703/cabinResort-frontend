@@ -186,23 +186,23 @@ export class ReserveComponent implements OnInit {
 
     }
 
-    // this.reserveService.createReservation(this.reservation).subscribe(response => {
-    //   console.log("create success!")
-    //   this.isReservationValid = true;
-    //   const severity = 'success';
+    this.reserveService.createReservation(this.reservation).subscribe(response => {
+      console.log("create success!")
+      this.isReservationValid = true;
+      const severity = 'success';
 
 
-    //   setTimeout(() => {
-    //     this.isReservationValid = false;
-    //     this.messageService.add({severity:severity,summary:'Success',detail:'Reservation was a success'});
-    // }, 2000);
+      setTimeout(() => {
+        this.isReservationValid = false;
+        this.messageService.add({severity:severity,summary:'Success',detail:'Reservation was a success'});
+    }, 2000);
 
-    // setTimeout(() => {
-    //   this.router.navigate(['users']);
-    // },5000)
+    setTimeout(() => {
+      this.router.navigate(['users']);
+    },5000)
 
 
-    // })
+    })
   }
 
   cancel()
