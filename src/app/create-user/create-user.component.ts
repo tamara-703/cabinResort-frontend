@@ -4,6 +4,7 @@ import { Password } from 'primeng/password';
 import { UsersService } from '../users/services/users.service';
 import { LogInService } from '../log-in/services/log-in.service';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-create-user',
@@ -14,7 +15,8 @@ export class CreateUserComponent {
   constructor(
     private userService: UsersService,
     private logInService: LogInService,
-    private router: Router) {
+    private router: Router,
+    private messageService: MessageService) {
   }
 
 
@@ -38,7 +40,7 @@ export class CreateUserComponent {
   createUserValidate() {
     let create: Boolean = true;
     if (!(this.newUser.password == this.confirmPassword)) {
-      console.log("pass no work")
+      this.messageService.add({severity:'error',summary:'Invalid Password',detail:'Passwords Must Match'});
       create = false;
 
     }
@@ -46,12 +48,12 @@ export class CreateUserComponent {
     this.newUser.email.toLowerCase();
     if (!(this.newUser.email.includes("@") &&
       (this.newUser.email.includes(".com") || this.newUser.email.includes(".net") || this.newUser.email.includes(".edu")))) {
-      console.log("email no work")
+      this.messageService.add({severity:'error',summary:'Invalid Email',detail:'Provided Email Is Invalid'});
       create = false;
     }
 
     if (this.newUser.username.toLowerCase() == "taken") {
-      console.log("user no work")
+      this.messageService.add({severity:'error',summary:'Username Taken',detail:'This Username Is Taken'});
       create = false;
     }
 
@@ -62,11 +64,10 @@ export class CreateUserComponent {
       this.newUser.email === "" ||
       this.newUser.phone === "" ||
       this.newUser.address === "") {
-      console.log("blank");
+      this.messageService.add({severity:'error',summary:'Blank Field',detail:'No Fields may remain Blank'});
     }
 
     if (create) {
-      console.log("all good");
       this.createUser();
     }
 
@@ -75,7 +76,7 @@ export class CreateUserComponent {
 
 
   createUser() {
-    console.log("creating user");
+    
     this.userService.addUser(this.newUser).subscribe(respnse => {
       console.log(this.newUser.password);
       console.log(this.newUser.username);
@@ -87,7 +88,7 @@ export class CreateUserComponent {
     
         if(response!= null)
         {
-        
+          this.messageService.add({severity:'success',summary:'Account Created',detail:'Your Account Was Sucessfuly Created'});
           sessionStorage.setItem('username',logIn.username)
           sessionStorage.setItem('password',logIn.password)
           sessionStorage.setItem('userId', String(logIn.id))

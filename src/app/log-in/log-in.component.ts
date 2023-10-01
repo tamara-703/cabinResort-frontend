@@ -5,6 +5,7 @@ import { GuestId, Authority} from '../dataFormat';
 import { NgModule } from '@angular/core';
 import { AppComponent } from '../app.component';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-log-in',
@@ -37,12 +38,14 @@ export class LogInComponent implements OnDestroy {
 constructor(
   private service: LogInService,
   private appComponent: AppComponent,
-  private router: Router
+  private router: Router,
+  private messageService: MessageService
 ){}
 
 
 
 logInUser(){
+  if(this.logIn.username && this.logIn.password){
   console.log("username ", this.logIn.username, " password ", this.logIn.password)
   sessionStorage.setItem('unencrypted pass',this.logIn.password)
   this.service.getUserInfo(this.logIn.username, this.logIn.password).subscribe(response => {
@@ -50,21 +53,25 @@ logInUser(){
 
     console.log("After fetching" , this.logIn);
 
-    if(this.logIn.id != 0)
-    {
+    if(this.logIn.id != 0){
       this.appComponent.visible = false;
-      sessionStorage.setItem('username',this.logIn.username)
-      sessionStorage.setItem('password',this.logIn.password)
-      sessionStorage.setItem('userId', String(this.logIn.id))
+      sessionStorage.setItem('username',this.logIn.username);
+      sessionStorage.setItem('password',this.logIn.password);
+      sessionStorage.setItem('userId', String(this.logIn.id));
+
+      setTimeout(() => {
+
+        this.router.navigate(['users'])
+        this.messageService.add({severity:'success',summary:'Account Created',detail:'Your Account Was Sucessfuly Created'});
+          
+      }, 2000);
+    }
+    else{
+      this.messageService.add({severity:'error',summary:'Invalid Credentials',detail:'Check To See If Username and Password Are Correct'});
+      
     }
   })
-
-  setTimeout(() => {
-
-    this.router.navigate(['users'])
-
-  }, 2000);
-
+}
 }
 
 ngOnDestroy(): void {

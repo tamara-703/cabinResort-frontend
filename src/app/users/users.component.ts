@@ -36,7 +36,7 @@ export class UsersComponent {
     {
       sessionStorage.clear();
 
-      this.messageService.add({severity:'warn',summary:'logged out',detail:'you have been logged out'});
+      this.messageService.add({severity:'info',summary:'logged out',detail:'you have been logged out'});
 
       setTimeout(() => {
 
