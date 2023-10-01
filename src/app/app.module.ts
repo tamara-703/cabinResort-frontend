@@ -25,6 +25,7 @@ import { CreateUserComponent } from './create-user/create-user.component';
 import { ToastModule } from 'primeng/toast';
 import { InputTextModule } from 'primeng/inputtext';
 
+
 const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
       // ......
       primeConfig.ripple = true;

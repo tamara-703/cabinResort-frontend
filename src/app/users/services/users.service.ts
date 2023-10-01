@@ -23,16 +23,6 @@ export class UsersService {
     private http: HttpClient,
     private messageService: MessageService) {}
 
-  /** GET warehouse from the server 
-  getUser(): Observable<Warehouse[]> {
-    return this.http.get<Warehouse[]>(this.warehouseUrl)
-      .pipe(
-        tap(_ => this.log('fetched Warehouses')),
-        catchError(this.handleError<Warehouse[]>('getWarehouses', []))
-      );
-  }
-  */
-
 
   /** GET User by id. Will 404 if id not found */
   getUser(id: number): Observable<GuestId> {
@@ -42,6 +32,21 @@ export class UsersService {
       catchError(this.handleError<GuestId>(`getuser id=${id}`))
     );
   }
+
+    /** GET User by id. Will 404 if id not found */
+    getUsername(username: String): Boolean {
+      const url = `${this.userUrl}/homepage/newuser/${username}`;
+      let user = this.http.get<String>(url).pipe(
+        tap(_ => this.log(`fetched User id=${username}`)));
+      console.log(user);
+      if(username){
+        console.log("true");
+          return true;
+      }
+      console.log("false");
+      return false;
+
+    }
 
 
   //////// Save methods //////////
@@ -101,3 +106,4 @@ export class UsersService {
     this.messageService.add(`UserService: ${message}`);
   }
 }
+

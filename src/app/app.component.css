@@ -1,15 +1,29 @@
-#appLogo{
-    width: 60px; 
-    height: 60px;
+#appLogo {
+    width: 100px;
+    height: 100px;
     margin-right: 30px;
 }
 
-#appTitle{
+#appTitle {
+    width: 100%;
     display: flex;
-    align-items: center;
 }
 
-#logInContainer{
+
+
+#logInContainer {
     height: 100%;
     width: 100%
+}
+
+nav {width: 100%;
+    float: left;
+}
+
+.navButton {
+    float: left;
+}
+
+.navUser {
+    float: right;
 }
