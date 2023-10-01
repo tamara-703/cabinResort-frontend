@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, catchError } from 'rxjs';
-import { Cabin } from 'src/app/users';
+import { Cabin } from 'src/app/dataFormat';
 import { Environment } from 'src/app/environment';
 
 @Injectable({

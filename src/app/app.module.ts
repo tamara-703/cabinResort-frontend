@@ -26,6 +26,7 @@ import { ToastModule } from 'primeng/toast';
 import { InputTextModule } from 'primeng/inputtext';
 import { MatIconModule } from '@angular/material/icon'
 
+
 const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
       // ......
       primeConfig.ripple = true;

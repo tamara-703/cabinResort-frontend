@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CabinsService } from './services/cabins.service';
-import { Cabinlocation, State } from '../users';
+import { Cabinlocation, State } from '../dataFormat';
 import { Router } from '@angular/router';
 import { AppComponent } from '../app.component';
 import { MessageService } from 'primeng/api';

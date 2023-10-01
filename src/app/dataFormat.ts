@@ -97,28 +97,15 @@ export interface State {
   flag: string
 }
 
-export interface CabinReserve {
 
-  id: number
-
-  sleeps: number
-
-  price: number
-
-  description: string
-
-  capacity: number
-
-  cabinlocation: Cabinlocation
-
-  cabin_name: string
-
-  image: string
-
-  amenities_id: AmenitiesId
-
-  no_rooms: number
-
-  no_bathrooms: number
-
+export interface newUser {
+  username: string
+  password: string
+  email: string
+  phone: string
+  address: string
+  language: string
+  role: string
+  last_name: string
+  first_name: string
 }
