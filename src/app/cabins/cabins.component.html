@@ -5,8 +5,8 @@
     <p-dropdown [options]="states" [(ngModel)]="selectedState" optionLabel="name" [filter]="true" filterBy="name" [showClear]="true" placeholder="Select a State" (click)="getByStateId()">
       <ng-template pTemplate="selectedItem">
         <div class="flex align-items-center gap-2" *ngIf="selectedState">
-            <img src={{selectedState.flag}} style="width: 18px" [class]="'flag flag-' + selectedState.code.toLowerCase()"/>
-          <div>{{selectedState.name}}</div>
+            <img src={{states.flag}} style="width: 18px" [class]="'flag flag-' + states.code.toLowerCase()"/>
+          <div>{{selectedState}}</div>
         </div>
       </ng-template>
     </p-dropdown>

@@ -4,7 +4,7 @@ import { Cabinlocation, State } from '../dataFormat';
 import { Router } from '@angular/router';
 import { AppComponent } from '../app.component';
 import { MessageService } from 'primeng/api';
-import { Cabin, CabinReserve } from '../users';
+import { Cabin, CabinReserve } from '../dataFormat';
 
 
 @Component({
@@ -23,11 +23,7 @@ export class CabinsComponent implements OnInit{
 
   cabinOptions: Cabinlocation[] = [];
   states: any | undefined;
-  selectedState: State = {
-    name: "",
-    code: "",
-    flag: ""
-  }
+  selectedState: string = "";
   visibleData: boolean = false;
   isLogout: boolean = false;
 
@@ -81,11 +77,9 @@ export class CabinsComponent implements OnInit{
 
   getByStateId() {
 
-
-
     if (this.selectedState != null) {
 
-      this.service.getCabinByStateId(this.selectedState.code).subscribe(response => {
+      this.service.getCabinByStateId(this.states.code).subscribe(response => {
 
         this.cabinData = response;
 
