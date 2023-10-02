@@ -3,14 +3,14 @@
   <!--navigation buttons and logo that is present throughout the entire app-->
   <p-button pRipple label="Home" styleClass="p-button-raised p-button-secondary" routerLink="home"
     class="navButton"></p-button>
-  <p-button pRipple label="Cabins" styleClass="p-button-raised p-button-secondary" class="navButton"
+  <p-button pRipple label="Reserve A Cabin" styleClass="p-button-raised p-button-secondary" class="navButton"
     routerLink="/cabins"></p-button>
   <p-button class="navUser" icon="pi pi-user" styleClass="p-button-rounded p-button-info p-button-outlined"
     (click)="showDialog()"></p-button>
 </nav>
 <div id="appTitle">
   <img id="appLogo" class="images title" src="../assets/logo.png" alt="Cabin Logo">
-  <h1 class="title header">Cabin Fever Resorts</h1>
+  <h1 class="title-header">Cabin Fever Resorts</h1>
 </div>
 <router-outlet></router-outlet>
 

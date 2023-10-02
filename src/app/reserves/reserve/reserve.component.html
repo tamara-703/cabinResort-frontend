@@ -70,28 +70,32 @@
             <img src="../../../assets/logo.png" alt="logo" style="width: 200px;">
         </ng-template>
 
-        <div style="display: flex;">
-          <span style="flex: 1;">
-            <label for="checkIn">Check In<p-calendar [(ngModel)]="checkIn"></p-calendar></label>
-          </span>
+        <form [formGroup]="calenderForm">
+          <div style="display: flex;">
+            <span style="flex: 1;">
+              <label for="checkIn">Check In<p-calendar [(ngModel)]="checkIn" [required]="true" formControlName="checkIn"></p-calendar></label>
+            </span>
 
-          <span style="flex: 1;">
-            <label for="checkOut">Check out<p-calendar [(ngModel)]="checkOut"></p-calendar></label>
-          </span>
+            <span style="flex: 1;">
+              <label for="checkOut">Check out<p-calendar [(ngModel)]="checkOut" [required]="true" formControlName="checkOut"></p-calendar></label>
+            </span>
+          </div>
+        </form>
 
-        </div>
 
-        <div *ngIf="checkIn === null || checkOut === null">
-          check in & check out are required
-        </div>
 
-        <span style="flex: 1; color: red;" *ngIf="isCheckoutValid">
-          <p>Check out date must be after the check in</p>
+        <span style="flex: 1; color: red;" *ngIf="calenderForm.get('checkIn')?.value === 0 || calenderForm.get('checkOut')?.value === 0">
+          <p>Check in & check out date are required</p>
+        </span>
+
+        <span style="flex: 1; color: red;" *ngIf="calenderForm.get('checkIn')?.value > calenderForm.get('checkOut')?.value">
+          <p>Check in date must not be greater than check out date</p>
         </span>
 
         <ng-template pTemplate="footer">
             <p-toast></p-toast>
-            <p-button label="Reserve" [loading]="isReservationValid"  icon="pi pi-check" (click)="reserve()"></p-button>
+            <p-button label="Reserve" [loading]="isReservationValid"  icon="pi pi-check" (click)="reserve()"
+            [disabled]="(calenderForm.get('checkIn')?.value === 0 || calenderForm.get('checkOut')?.value === 0) || (calenderForm.get('checkIn')?.value > calenderForm.get('checkOut')?.value)"></p-button>
             <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{ 'margin-left': '.5em' }" (click)="cancel()"></p-button>
         </ng-template>
     </p-card>

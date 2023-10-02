@@ -1,3 +1,7 @@
+@import "https://fonts.googleapis.com";
+@import "https://fonts.gstatic.com";
+@import "https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Gluten:wght@600&display=swap";
+
 #appLogo {
     width: 100px;
     height: 100px;
@@ -8,8 +12,6 @@
     width: 100%;
     display: flex;
 }
-
-
 
 #logInContainer {
     height: 100%;
@@ -22,8 +24,16 @@ nav {width: 100%;
 
 .navButton {
     float: left;
+    padding: 20px;
 }
 
 .navUser {
     float: right;
+    padding: 20px;
+}
+
+.title-header {
+  font-family: 'Dancing Script';
+  font-size: 50px;
+  padding: 30px;
 }

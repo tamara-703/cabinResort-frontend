@@ -47,38 +47,6 @@ export class CabinsComponent implements OnInit{
 
   }
 
-  // getByStateId()
-  // {
-
-  //   if(this.selectedState != null)
-  //   {
-  //     this.service.getCabinByStateId(this.selectedState.code).subscribe(response => {
-
-  //       this.cabinData = response;
-
-  //       console.log(this.cabinData);
-
-  //       for(let i = 0; i < this.cabinData.length; i++)
-  //       {
-  //         this.images = this.cabinData[i].image_id.url;
-  //         this.imgsArray.push(...this.images.split(","));
-  //       }
-
-  //       console.log(this.imgsArray)
-
-  //       for(let i = 0; i < this.cabinData.length; i+5)
-  //       {
-  //         this.firstImages.push(this.imgsArray[i])
-  //       }
-
-  //       console.log(typeof this.firstImages)
-
-
-  //       this.visibleData = true;
-  //     })
-  //   }
-  // }
-
   getByStateId() {
 
     if (this.selectedState != null) {

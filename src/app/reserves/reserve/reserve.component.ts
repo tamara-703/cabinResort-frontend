@@ -31,6 +31,9 @@ export class ReserveComponent implements OnInit {
   checkOut: number = 0;
   isCheckoutValid: boolean = false;
   isReservationValid: boolean = false;
+  date: Date = new Date();
+  today: number = Number(this.date.getTime());
+  calenderForm: FormGroup;
   value: number = Math.floor((Math.random() * 5 - 1 + 1) + 1);
 
   reservation: Reservations = {
@@ -84,6 +87,13 @@ export class ReserveComponent implements OnInit {
               private messageService: MessageService,
               private formBuilder: FormBuilder) {
 
+    this.calenderForm = this.formBuilder.group(
+      {
+        'checkIn': [0,Validators.required],
+        'checkOut': [0,Validators.required]
+
+      })
+
     //getting param id (cabin id)
     this.route.params.subscribe(params => {
       this.idParam = params['id'];
@@ -127,17 +137,14 @@ export class ReserveComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
-
-
-  }
+  ngOnInit(): void {}
 
   reserve()
   {
-    if(this.checkOut < this.checkIn)
-    {
-      this.isCheckoutValid = true;
-    }
+    // if(this.calenderForm.get('checkIn').value === null || this.calenderForm.get('checkOut').value === null)
+    // {
+    //   this.isCheckoutValid = true;
+    // }
 
     console.log("In reserve")
     console.log("check in: ", this.checkIn, " check out: ", this.checkOut)

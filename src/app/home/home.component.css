@@ -13,7 +13,7 @@
 }
 
 
-  
+
 
 .container1 #logoL {
   width: 460px; /* Adjust width as needed */
@@ -23,7 +23,7 @@
 
 
 .homeTitle {
-    
+
       color: #3c3c3c;
       font-family: Times New Roman;
       font-size: 40px;
@@ -34,7 +34,7 @@
       margin: 0 0 29px;
       padding: 0;
       text-align: center;
-  
+
 
 }
 .homedesc {
@@ -84,30 +84,30 @@
   width: 320px;
 }
 .container3 .cabindescimg{
-  
+
       display: inline-block;
       vertical-align: top;
-      
+
           position: relative;
           overflow: hidden;
-          
+
               -o-object-fit: cover;
               object-fit: cover;
               width: 100%;
-          
+
 }
 .container3 .cabindesctext{
-  
+
       align-items: flex-start;
       display: flex;
       flex: 1 1;
       flex-direction: column;
       justify-content: flex-start;
       padding: 24px;
-  
+
 }
 .container3 .cabindesctextTitle{
-  
+
       font-size: 20px;
       font-size: 24px;
       font-weight: 700;
@@ -116,13 +116,13 @@
       line-height: 24px;
       margin: 0;
       padding: 0;
-  
+
 }
 .container3 .cabindesctextDesc{
 
- 
+
       margin: 8px 0 0;
-  
+
 }
 .footer{
   display: flex;
