@@ -12,9 +12,7 @@ import { Environment } from 'src/app/environment';
 })
 export class LogInService {
 
-
-
-  private userUrl = Environment.EnvironmentURL; //Gets URL based on environment
+  private userUrl = Environment.EnvironmentURL;
 
 
 /*
@@ -35,7 +33,9 @@ constructor(
 
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json',
-                                  'Authorization': 'Basic ' + btoa(`${username}:${password}`)
+                                  'Authorization': 'Basic ' + btoa(`${username}:${password}`),
+                                  'Access-Control-Allow-Origin': '*',
+                                  'Access-Control-Allow-Methods': 'POST,GET,PUT,DELETE,PATCH,OPTIONS'
                                   })
     };
 
@@ -51,7 +51,9 @@ constructor(
   {
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json',
-      'Authorization': 'Basic ' + btoa(`${sessionStorage.getItem('username')}:${sessionStorage.getItem('unencrypted pass')}`)})
+      'Authorization': 'Basic ' + btoa(`${sessionStorage.getItem('username')}:${sessionStorage.getItem('unencrypted pass')}`),
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST,GET,PUT,DELETE,PATCH,OPTIONS'})
     }
         return this.http.get<GuestId>(`${this.userUrl}/user/profile/${userId}`, httpOptions)
   }
