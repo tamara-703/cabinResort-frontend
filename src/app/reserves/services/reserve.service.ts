@@ -18,9 +18,7 @@ export class ReserveService {
   {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json',
-                                  'Authorization': 'Basic ' + btoa(`${reservation.guest_id.username}:${sessionStorage.getItem('unencrypted pass')}`),
-                                  'Access-Control-Allow-Origin': '*',
-                                  'Access-Control-Allow-Methods': 'POST,GET,PUT,DELETE,PATCH,OPTIONS'
+                                  'Authorization': 'Basic ' + btoa(`${reservation.guest_id.username}:${sessionStorage.getItem('unencrypted pass')}`)
                                   })
     };
 
