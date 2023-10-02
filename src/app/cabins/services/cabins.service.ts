@@ -33,7 +33,7 @@ export class CabinsService {
   }
 
   //get cabin by id
-  getCabinById(cabinId: number) : Observable<Cabin>
+  getCabinById(cabinId: string) : Observable<Cabin>
   {
     return this.http.get<Cabin>(`${this.base_url}/homepage/reserve/${cabinId}`);
   }

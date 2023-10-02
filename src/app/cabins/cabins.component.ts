@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AppComponent } from '../app.component';
 import { MessageService } from 'primeng/api';
 import { Cabin, CabinReserve } from '../dataFormat';
+import { LogInService } from '../log-in/services/log-in.service';
 
 
 @Component({
@@ -32,7 +33,7 @@ export class CabinsComponent implements OnInit{
   isLogout: boolean = false;
 
 
-  constructor(private service: CabinsService, private router: Router, private appComponent: AppComponent, private messageService: MessageService) {}
+  constructor(private service: CabinsService, private router: Router, private logInService: LogInService, private messageService: MessageService) {}
 
 
   ngOnInit(): void {
@@ -111,7 +112,7 @@ export class CabinsComponent implements OnInit{
   {
     if(sessionStorage.getItem("username") === null)
     {
-      this.appComponent.visible = true;
+      this.logInService.visible = true;
     } else
     {
       this.router.navigate([`reserve/${id}`]);

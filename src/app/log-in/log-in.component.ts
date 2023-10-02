@@ -37,7 +37,6 @@ export class LogInComponent implements OnDestroy {
 
   constructor(
     private service: LogInService,
-    private appComponent: AppComponent,
     private router: Router,
     private messageService: MessageService
   ) { }
@@ -54,7 +53,7 @@ export class LogInComponent implements OnDestroy {
         console.log("After fetching", this.logIn);
 
         if (this.logIn.id != 0) {
-          this.appComponent.visible = false;
+          this.service.visible = false;
           sessionStorage.setItem('username', this.logIn.username);
           sessionStorage.setItem('password', this.logIn.password);
           sessionStorage.setItem('userId', String(this.logIn.id))
@@ -78,7 +77,7 @@ export class LogInComponent implements OnDestroy {
 
 
   createUser() {
-    this.appComponent.visible = false;
+    this.service.visible = false;
     this.logIn.username = "";
     this.logIn.password = ""
     this.router.navigate(["/newUser"]);

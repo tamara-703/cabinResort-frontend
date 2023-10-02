@@ -13,6 +13,7 @@ import { Environment } from 'src/app/environment';
 export class LogInService {
 
   private userUrl = Environment.EnvironmentURL;
+  public visible: boolean = false;
 
 
 /*

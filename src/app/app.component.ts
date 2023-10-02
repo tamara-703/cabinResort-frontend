@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { LogInService } from './log-in/services/log-in.service';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  visible: boolean = false;
 
-  constructor(private router: Router){
+  //inject the login service
+  constructor(private router: Router, private logInService: LogInService){
 
   }
 
@@ -18,7 +19,7 @@ export class AppComponent {
       this.router.navigate(["/users"]);
     }
     else {
-      this.visible = true;
+      this.logInService.visible = true;
     }
   }
 

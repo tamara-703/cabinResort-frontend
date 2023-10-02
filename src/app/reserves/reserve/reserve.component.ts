@@ -14,7 +14,7 @@ import { MessageService } from 'primeng/api';
 })
 export class ReserveComponent implements OnInit {
 
-  idParam: number = 0;
+  idParam: string = "";
   userId: number = Number(sessionStorage.getItem('userId'));
   username: any = sessionStorage.getItem('username');
   password: any = sessionStorage.getItem('password');
@@ -96,12 +96,14 @@ export class ReserveComponent implements OnInit {
       })
 
     //getting param id (cabin id)
-    this.route.params.subscribe(params => {
-      this.idParam = params['id'];
+    // this.route.params.subscribe(params => {
+    //   this.idParam = params['id'];
 
-      console.log("incoming param " , this.idParam);
-    })
+    //   console.log("incoming param " , this.idParam);
+    // })
 
+    this.idParam = this.route.snapshot.paramMap.get('id') ?? "";
+    console.log("incoming param " , this.idParam);
 
 
     this.cabinService.getCabinById(this.idParam).subscribe(response => {
@@ -142,7 +144,6 @@ export class ReserveComponent implements OnInit {
 
   reserve()
   {
-    console.log("guests: ",this.guests)
 
     console.log("In reserve")
     console.log("check in: ", this.checkIn, " check out: ", this.checkOut)
@@ -214,6 +215,5 @@ export class ReserveComponent implements OnInit {
   {
     this.router.navigate(['home']);
   }
-
 
 }
