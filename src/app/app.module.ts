@@ -24,6 +24,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { ToastModule } from 'primeng/toast';
 import { InputTextModule } from 'primeng/inputtext';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 
 const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
@@ -41,6 +42,7 @@ const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
     LogInComponent,
     ReserveComponent,
     CreateUserComponent,
+    EditUserComponent
 
   ],
   imports: [

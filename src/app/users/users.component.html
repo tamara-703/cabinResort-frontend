@@ -1,13 +1,5 @@
 <div>
-  <h2> Welcome {{userData.first_name}}</h2>
-  <p-button
-      label="Log Out"
-      styleClass="p-button"
-      (click)="logout()"
-    ></p-button>
-    <p-button
-    label="Edit Account"
-    styleClass="p-button-secondary"
-    
-  ></p-button>
+  <h2> Welcome {{userData.first_name}}!</h2>
+  <p-button label="Log Out" styleClass="p-button" (click)="logout()"></p-button>
+  <p-button label="Edit Account" styleClass="p-button-secondary" (click)="editUser()"></p-button>
 </div>

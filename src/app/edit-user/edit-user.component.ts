@@ -1,35 +1,55 @@
 import { Component } from '@angular/core';
-import { GuestId, State, newUser } from '../dataFormat';
-import { Password } from 'primeng/password';
+import { GuestId, newUser } from '../dataFormat';
+import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api'
 import { UsersService } from '../users/services/users.service';
 import { LogInService } from '../log-in/services/log-in.service';
-import { Router } from '@angular/router';
-import { MessageService } from 'primeng/api';
 
 interface StateLang {
   title: string;
   value: string;
 }
 
-
 @Component({
-  selector: 'app-create-user',
-  templateUrl: './create-user.component.html',
-  styleUrls: ['./create-user.component.css']
+  selector: 'app-edit-user',
+  templateUrl: './edit-user.component.html',
+  styleUrls: ['./edit-user.component.css']
 })
-export class CreateUserComponent {
-  constructor(
-    private userService: UsersService,
-    private logInService: LogInService,
-    private router: Router,
-    private messageService: MessageService) {
-  }
+export class EditUserComponent {
 
   states: StateLang[] | any;
   selectedState: StateLang | any;
   languages: StateLang[] | any;
   selectedLanguage: StateLang | any;
   usernameTaken: Boolean = false;
+  newUser: GuestId = {
+    id: 0,
+    username: "",
+    password: "",
+    email: "",
+    phone: "",
+    address: "",
+    language: "",
+    role: "",
+    enabled: false,
+    last_name: "",
+    first_name: "",
+    authorities: [{ authority: "string" }],
+    accountNonExpired: false,
+    accountNonLocked: false,
+    credentialsNonExpired: false,
+  };
+
+  constructor(
+    private userService: UsersService,
+    private router: Router,
+    private messageService: MessageService,
+    private logInService: LogInService
+  ) {
+  }
+
+  confirmPassword!: string;
+
 
   ngOnInit() {
     this.languages = [
@@ -88,27 +108,23 @@ export class CreateUserComponent {
       { title: "Wisconsin", value: "WI" },
       { title: "Wyoming", value: "WY" }
     ];
+
+
+    if (sessionStorage.getItem("userId") != null) {
+      let userId = sessionStorage.getItem("userId");
+      this.logInService.getUserById(userId).subscribe(response => {
+        console.log(response)
+        this.newUser = response
+        this.newUser.password = sessionStorage.getItem("unencryptedPass") || "";
+        this.confirmPassword = this.newUser.password;
+
+      });
+    }
+
   }
 
 
-  confirmPassword!: string;
-  newUser: newUser = {
-    username: "",
-    password: "",
-    email: "",
-    phone: "",
-    address: "",
-    language: "ENG",
-    role: "",
-    last_name: "",
-    first_name: ""
-  }
-
-
-
-
-
-  createUserValidate() {
+  updateUserValidate() {
     let create: Boolean = true;
     this.usernameTaken = false;
     let loggedInUser: GuestId;
@@ -150,7 +166,7 @@ export class CreateUserComponent {
 
 
       if (create) {
-        this.createUser();
+       console.log("TODO actually update user");
       }
 
     }
@@ -158,34 +174,5 @@ export class CreateUserComponent {
 
   }
 
-
-  createUser() {
-
-    this.userService.addUser(this.newUser).subscribe(respnse => {
-      console.log(this.newUser.password);
-      console.log(this.newUser.username);
-      this.newUser.language = this.selectedLanguage?.value;
-      //this.newUser.state=this.selectedState?.value;
-      sessionStorage.setItem('unencrypted pass', this.newUser.password)
-      this.logInService.getUserInfo(this.newUser.username, this.newUser.password).subscribe(response => {
-        let logIn: GuestId = response;
-
-        console.log("After fetching", logIn);
-
-        if (response != null) {
-          this.messageService.add({ severity: 'success', summary: 'Account Created', detail: 'Your Account Was Sucessfuly Created' });
-          sessionStorage.setItem('username', logIn.username)
-          sessionStorage.setItem('password', logIn.password)
-          sessionStorage.setItem('userId', String(logIn.id))
-        }
-      })
-
-      setTimeout(() => {
-
-        this.router.navigate(['users'])
-
-      }, 2000);
-    });
-  }
 
 }

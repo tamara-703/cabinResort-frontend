@@ -47,11 +47,11 @@ constructor(
       );
   }
 
-  getUserById(userId: number) : Observable<GuestId>
+  getUserById(userId: any) : Observable<GuestId>
   {
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json',
-      'Authorization': 'Basic ' + btoa(`${sessionStorage.getItem('username')}:${sessionStorage.getItem('unencrypted pass')}`)})
+      'Authorization': 'Basic ' + btoa(`${sessionStorage.getItem('username')}:${sessionStorage.getItem('unencryptedPass')}`)})
     }
         return this.http.get<GuestId>(`${this.userUrl}/user/profile/${userId}`, httpOptions)
   }
