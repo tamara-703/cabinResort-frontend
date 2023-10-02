@@ -5,7 +5,8 @@
     class="navButton"><mat-icon>home</mat-icon></p-button>
   <p-button pRipple label="Reserve A Cabin" styleClass="p-button-raised p-button-secondary" class="navButton"
     routerLink="/cabins"><mat-icon>cabin</mat-icon></p-button>
-  <p-button pRipple label="Cabin Area Map" styleClass="p-button-raised p-button-secondary" class="navButton"><a target="_blank"><mat-icon>map</mat-icon></a></p-button>
+  <p-button pRipple label="Cabin Area Map" styleClass="p-button-raised p-button-secondary" class="navButton" (click)="goToMap()">
+    <mat-icon>map</mat-icon></p-button>
   <p-button class="navUser" icon="pi pi-user" styleClass="p-button-rounded p-button-info p-button-outlined"
     (click)="showDialog()"></p-button>
 </nav>

@@ -25,7 +25,8 @@ import { CreateUserComponent } from './create-user/create-user.component';
 import { ToastModule } from 'primeng/toast';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputNumberModule } from 'primeng/inputnumber';
-import { MatIconModule } from '@angular/material/icon'
+import { MatIconModule } from '@angular/material/icon';
+import { ExternalRedirectComponent } from './external-redirect/external-redirect.component'
 
 
 const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
@@ -43,6 +44,7 @@ const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
     LogInComponent,
     ReserveComponent,
     CreateUserComponent,
+    ExternalRedirectComponent,
 
   ],
   imports: [

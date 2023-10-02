@@ -20,7 +20,15 @@ export class AppComponent {
     else {
       this.visible = true;
     }
+  }
 
+  goToMap()
+  {
+    const mapUrl = "https://docs.google.com/document/d/1CAQQKi9EDjrKf02PvAolcRQahTlcXtlJij0wii06XyY/edit?usp=sharing";
 
+    this.router.navigate(['/external-redirect'], {
+      queryParams: {mapUrl},
+      skipLocationChange: true
+    })
   }
 }
