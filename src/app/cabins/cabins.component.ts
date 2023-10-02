@@ -23,7 +23,11 @@ export class CabinsComponent implements OnInit{
 
   cabinOptions: Cabinlocation[] = [];
   states: any | undefined;
-  selectedState: string = "";
+  selectedState: State = {
+    name: "",
+    code: "",
+    flag: ""
+  };
   visibleData: boolean = false;
   isLogout: boolean = false;
 
@@ -79,7 +83,9 @@ export class CabinsComponent implements OnInit{
 
     if (this.selectedState != null) {
 
-      this.service.getCabinByStateId(this.states.code).subscribe(response => {
+      console.log(this.selectedState)
+
+      this.service.getCabinByStateId(this.selectedState.code).subscribe(response => {
 
         this.cabinData = response;
 
