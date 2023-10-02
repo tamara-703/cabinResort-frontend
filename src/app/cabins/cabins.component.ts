@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CabinsService } from './services/cabins.service';
-import { Cabinlocation, State } from '../users';
+import { Cabinlocation, State } from '../dataFormat';
 import { Router } from '@angular/router';
 import { AppComponent } from '../app.component';
 import { MessageService } from 'primeng/api';
-import { Cabin, CabinReserve } from '../users';
+import { Cabin, CabinReserve } from '../dataFormat';
 
 
 @Component({
@@ -27,7 +27,7 @@ export class CabinsComponent implements OnInit{
     name: "",
     code: "",
     flag: ""
-  }
+  };
   visibleData: boolean = false;
   isLogout: boolean = false;
 
@@ -47,43 +47,11 @@ export class CabinsComponent implements OnInit{
 
   }
 
-  // getByStateId()
-  // {
-
-  //   if(this.selectedState != null)
-  //   {
-  //     this.service.getCabinByStateId(this.selectedState.code).subscribe(response => {
-
-  //       this.cabinData = response;
-
-  //       console.log(this.cabinData);
-
-  //       for(let i = 0; i < this.cabinData.length; i++)
-  //       {
-  //         this.images = this.cabinData[i].image_id.url;
-  //         this.imgsArray.push(...this.images.split(","));
-  //       }
-
-  //       console.log(this.imgsArray)
-
-  //       for(let i = 0; i < this.cabinData.length; i+5)
-  //       {
-  //         this.firstImages.push(this.imgsArray[i])
-  //       }
-
-  //       console.log(typeof this.firstImages)
-
-
-  //       this.visibleData = true;
-  //     })
-  //   }
-  // }
-
   getByStateId() {
 
-
-
     if (this.selectedState != null) {
+
+      console.log(this.selectedState)
 
       this.service.getCabinByStateId(this.selectedState.code).subscribe(response => {
 

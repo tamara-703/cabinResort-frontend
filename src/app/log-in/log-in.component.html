@@ -4,12 +4,7 @@
 
     <div class="logInContainer">
       <span class="p-float-label logInSpan">
-        <input
-          class="logInInput"
-          pInputText
-          name="username"
-          [(ngModel)]="logIn.username"
-        />
+        <input class="logInInput" pInputText name="username" [(ngModel)]="logIn.username"/>
 
         <label htmlFor="username">Username</label>
       </span>
@@ -19,32 +14,19 @@
 
     <div class="logInContainer">
       <span class="p-float-label logInSpan">
-        <p-password
-          class="logInInput"
-          name="password"
-          [(ngModel)]="logIn.password"
-          [toggleMask]="true"
-          [feedback]="false"
-        ></p-password>
+        <p-password class="logInInput" name="password" [(ngModel)]="logIn.password" [toggleMask]="true"
+          [feedback]="false"></p-password>
 
         <label htmlFor="password">Password</label>
       </span>
     </div>
 
-    <p-button
-      id="logInSubmit"
-      type="submit"
-      label="Log In"
-      styleClass="p-button-raised p-button-primary"
-      (click)="logInUser()"
-    ></p-button>
+    <p-button id="logInSubmit" type="submit" label="Log In" styleClass="p-button-raised p-button-primary"
+      (click)="logInUser()"></p-button>
 
-    <h4>Create an Account if you do not have one!</h4>
-
-    <p-button
-      label="Create Account"
-      styleClass="p-button-secondary"
-      (click)="createUser()"
-    ></p-button>
+    <div>
+      <h4 class="createHeader">No Account?<br>Then create one!<br></h4>
+    </div>
+    <p-button label="Create Account" styleClass="p-button-secondary" (click)="createUser()"></p-button>
   </div>
 </div>

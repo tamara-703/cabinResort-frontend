@@ -1,53 +1,69 @@
 <h1>Create Account</h1>
+<div class="form">
+    <div class="innerForm">
+        <div class="inputBox">
+            <label class="title" htmlFor="username">Username</label>
+            <input class="input" pInputText id="username" aria-describedby="username-help"
+                [(ngModel)]="newUser.username" required/>
+        </div>
 
-<div class="flex flex-column gap-2">
-    <label htmlFor="username">User Name</label>
-    <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="password" />
+
+        <div class="inputBox">
+            <label class="title" htmlFor="username">Password</label>
+            <p-password class="input" [(ngModel)]="newUser.password" [toggleMask]="true" required></p-password>
+        </div>
+
+
+        <div class="inputBox">
+            <label class="title" htmlFor="confirmPassword">Confirm Password</label>
+            <p-password class="input" [(ngModel)]="confirmPassword" [toggleMask]="true" [feedback]="false" required required></p-password>
+        </div>
+
+        <div class="inputBox">
+            <label class="title" htmlFor="first_name">First Name</label>
+            <input class="input" pInputText id="first_name" aria-describedby="first_name-help"
+                [(ngModel)]="newUser.first_name"  required/>
+        </div>
+
+        <div class="inputBox">
+            <label class="title" htmlFor="last_name">Last Name</label>
+            <input class="input" pInputText id="last_name" aria-describedby="last_name-help"
+                [(ngModel)]="newUser.last_name"  required/>
+        </div>
+
+        <div class="inputBox">
+            <label class="title" htmlFor="Email">Email</label>
+            <input class="input" pInputText id="Email" aria-describedby="Email-help" [(ngModel)]="newUser.email"  required/>
+        </div>
+
+        <div class="inputBox">
+            <label class="title" htmlFor="Phone">Phone</label>
+            <input class="input" pInputText id="Phone" aria-describedby="Phone-Help" [(ngModel)]="newUser.phone"  required/>
+        </div>
+
+        <div class="inputBox">
+            <label class="title" htmlFor="Address">Address</label>
+            <input class="input" pInputText id="Address" aria-describedby="Address-help"
+                [(ngModel)]="newUser.address"  required/>
+        </div>
+
+        <p-dropdown class="createDrop" [style]="{'width':'100%'}" [options]="states" [(ngModel)]="selectedState" optionLabel="title" [filter]="true" filterBy="title" [showClear]="true" placeholder="Select a State">
+            <ng-template pTemplate="selectedItem">
+                <div class="flex align-items-center gap-2" *ngIf="selectedState">
+                    <div>{{ selectedState.title }}</div>
+                </div>
+            </ng-template>
+            <ng-template let-state pTemplate="item">
+                <div class="flex align-items-center gap-2">
+                    <div>{{ state.title }}</div>
+                </div>
+            </ng-template>
+        </p-dropdown>
+
+
+         <p-dropdown class="createDrop" [options]="languages" optionLabel="title" [style]="{'width':'100%'}" [(ngModel)]="selectedLanguage"></p-dropdown>
+
+
+        <p-button label="Create Account" styleClass="p-button" (click)="createUserValidate()"></p-button>
+    </div>
 </div>
-
-
-<div class="card flex justify-content-center">
-    <label htmlFor="username">Password</label>
-    <p-password [(ngModel)]="password" [toggleMask]="true"></p-password>
-</div>
-
-
-<div class="card flex justify-content-center">
-    <label htmlFor="username">Confirm Password</label>
-    <p-password [(ngModel)]="password" [toggleMask]="true" [feedback]="false"></p-password>
-</div>
-
-<div class="flex flex-column gap-2">
-    <label htmlFor="username">First Name</label>
-    <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="password" />
-</div>
-
-<div class="flex flex-column gap-2">
-    <label htmlFor="username">Last Name</label>
-    <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="password" />
-</div>
-
-<div class="flex flex-column gap-2">
-    <label htmlFor="username">Email</label>
-    <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="password" />
-</div>
-
-<div class="flex flex-column gap-2">
-    <label htmlFor="username">Phone</label>
-    <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="password" />
-</div>
-
-<div class="flex flex-column gap-2">
-    <label htmlFor="username">Address</label>
-    <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="password" />
-</div>
-
-<div class="flex flex-column gap-2">
-    <label htmlFor="username">Zip Code</label>
-    <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="password" />
-</div>
-
-<p-button label="Create Account" styleClass="p-button-secondary"></p-button>
-
-
-

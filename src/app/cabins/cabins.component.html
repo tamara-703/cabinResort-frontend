@@ -1,9 +1,11 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 <div>
   <div class="card flex justify-content-center">
     <p-dropdown [options]="states" [(ngModel)]="selectedState" optionLabel="name" [filter]="true" filterBy="name" [showClear]="true" placeholder="Select a State" (click)="getByStateId()">
       <ng-template pTemplate="selectedItem">
         <div class="flex align-items-center gap-2" *ngIf="selectedState">
-            <img src={{selectedState.flag}} style="width: 18px" [class]="'flag flag-' + selectedState.code.toLowerCase()"/>
+            <img src={{selectedState.flag}} style="width: 18px" [class]="'flag flag-' + selectedState.code.toLowerCase()" style="width: 18px"/>
           <div>{{selectedState.name}}</div>
         </div>
       </ng-template>
@@ -11,36 +13,38 @@
   </div>
 </div>
 
-
   <div *ngIf="visibleData" class="cabins-container" style="display: flex;">
 
     <div>
       <ul *ngFor="let item of reserveCabins" style="list-style-type: none;">
-        <li><img src={{item.image}} alt="cabinImg" width="300px" style="padding: 10px;"></li>
+        <li><img src={{item.image}} alt="cabinImg" width="300px" style="padding: 10px; margin-top: 150px; border-radius: 20px;"></li>
       </ul>
     </div>
 
     <div>
-      <ul *ngFor="let item of reserveCabins" style="list-style-type: none;">
+      <ul *ngFor="let item of reserveCabins" style="list-style-type: none; margin-top: 100px;">
 
         <li><h1>{{item.cabin_name}}</h1></li>
 
         <li><p>sleeps - {{item.sleeps}} . capacity - {{item.capacity}}</p></li>
 
-        <li><p>{{item.description}}</p></li>
-
         <li>
           <div style="display: flex; justify-content: space-between;">
             <div>
-              some features
+              <p *ngIf="item.amenities_id.fireplace"><mat-icon>fireplace</mat-icon>  Fireplace</p>
+              <p *ngIf="item.amenities_id.jacuzzi"><mat-icon>hot_tub</mat-icon>  Jacuzzi</p>
+              <p *ngIf="item.amenities_id.kitchen"><mat-icon>countertops</mat-icon>  Kitchen</p>
+              <p *ngIf="item.amenities_id.outdoor_furniture"><mat-icon>chair_alt</mat-icon>  Outdoor Furniture</p>
             </div>
             <div>
-              other features
+              <p *ngIf="item.amenities_id.outdoor_shower"><mat-icon>shower</mat-icon>  Outdoor Shower</p>
+              <p *ngIf="item.amenities_id.patio"><mat-icon>deck</mat-icon>  Patio</p>
+              <p *ngIf="item.amenities_id.pet_friendly"><mat-icon>pets</mat-icon>  Pet Friendly</p>
             </div>
           </div>
         </li>
 
-        <li>{{item.price}}</li>
+        <li style="margin-bottom: 10px;"><b><i>${{item.price}}</i></b></li>
 
         <p-button label="reserve" styleClass="p-button-raised p-button-secondary" class="navButton" (click)="navigateToReservePage(item.id)"></p-button>
 

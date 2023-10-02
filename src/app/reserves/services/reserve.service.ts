@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
-import { Reservations } from 'src/app/users';
+import { Reservations } from 'src/app/dataFormat';
 import { Environment } from 'src/app/environment';
 
 @Injectable({
@@ -21,6 +21,9 @@ export class ReserveService {
                                   'Authorization': 'Basic ' + btoa(`${reservation.guest_id.username}:${sessionStorage.getItem('unencrypted pass')}`)
                                   })
     };
+
+    reservation.check_in = reservation.check_in.substring(0,15)
+    reservation.check_out = reservation.check_out.substring(0,15);
 
     return this.http.post<Reservations>(`${this.base_url}/user/reservations`,reservation, httpOptions);
 

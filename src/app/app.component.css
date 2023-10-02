@@ -1,15 +1,39 @@
-#appLogo{
-    width: 60px; 
-    height: 60px;
+@import "https://fonts.googleapis.com";
+@import "https://fonts.gstatic.com";
+@import "https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Gluten:wght@600&display=swap";
+
+#appLogo {
+    width: 100px;
+    height: 100px;
     margin-right: 30px;
 }
 
-#appTitle{
+#appTitle {
+    width: 100%;
     display: flex;
-    align-items: center;
 }
 
-#logInContainer{
+#logInContainer {
     height: 100%;
     width: 100%
+}
+
+nav {width: 100%;
+    float: left;
+}
+
+.navButton {
+    float: left;
+    padding: 20px;
+}
+
+.navUser {
+    float: right;
+    padding: 20px;
+}
+
+.title-header {
+  font-family: 'Dancing Script';
+  font-size: 50px;
+  padding: 30px;
 }
