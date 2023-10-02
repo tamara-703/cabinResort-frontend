@@ -49,9 +49,7 @@ constructor(
   {
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json',
-      'Authorization': 'Basic ' + btoa(`${sessionStorage.getItem('username')}:${sessionStorage.getItem('unencrypted pass')}`),
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'POST,GET,PUT,DELETE,PATCH,OPTIONS'})
+      'Authorization': 'Basic ' + btoa(`${sessionStorage.getItem('username')}:${sessionStorage.getItem('unencrypted pass')}`)})
     }
         return this.http.get<GuestId>(`${this.userUrl}/user/profile/${userId}`, httpOptions)
   }

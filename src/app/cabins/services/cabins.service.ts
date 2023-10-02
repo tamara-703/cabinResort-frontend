@@ -24,13 +24,11 @@ export class CabinsService {
   {
     //'Authorization': 'Basic ' + btoa(`${sessionStorage.getItem('username')}:${sessionStorage.getItem('unencrypted pass')}`),
     const httpOptions = {
-      headers: new HttpHeaders({'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'POST,GET,PUT,DELETE,PATCH,OPTIONS'})
+      headers: new HttpHeaders({'Content-Type': 'application/json'})
     }
 
       console.log("incoming state " , stateId);
-      return this.http.get<Cabin[]>(`${this.base_url}/homepage/${stateId}`,httpOptions);
+      return this.http.get<Cabin[]>(`${this.base_url}/homepage/${stateId}`);
 
   }
 
