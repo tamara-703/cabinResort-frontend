@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CabinsService } from 'src/app/cabins/services/cabins.service';
 import { ReserveService } from '../services/reserve.service';
@@ -34,6 +34,7 @@ export class ReserveComponent implements OnInit {
   date: Date = new Date();
   today: number = Number(this.date.getTime());
   calenderForm: FormGroup;
+  guests: number = 0;
   value: number = Math.floor((Math.random() * 5 - 1 + 1) + 1);
 
   reservation: Reservations = {
@@ -89,7 +90,7 @@ export class ReserveComponent implements OnInit {
 
     this.calenderForm = this.formBuilder.group(
       {
-        'checkIn': [0,Validators.required],
+        'checkIn': new FormControl(0,Validators.required),
         'checkOut': [0,Validators.required]
 
       })
@@ -141,10 +142,7 @@ export class ReserveComponent implements OnInit {
 
   reserve()
   {
-    // if(this.calenderForm.get('checkIn').value === null || this.calenderForm.get('checkOut').value === null)
-    // {
-    //   this.isCheckoutValid = true;
-    // }
+    console.log("guests: ",this.guests)
 
     console.log("In reserve")
     console.log("check in: ", this.checkIn, " check out: ", this.checkOut)

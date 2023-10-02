@@ -24,6 +24,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { ToastModule } from 'primeng/toast';
 import { InputTextModule } from 'primeng/inputtext';
+import { InputNumberModule } from 'primeng/inputnumber';
 import { MatIconModule } from '@angular/material/icon'
 
 
@@ -63,7 +64,8 @@ const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
     ToastModule,
     InputTextModule,
     NoopAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    InputNumberModule
   ],
   providers: [{
     provide: {
