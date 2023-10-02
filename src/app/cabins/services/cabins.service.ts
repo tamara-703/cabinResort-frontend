@@ -30,7 +30,7 @@ export class CabinsService {
     }
 
       console.log("incoming state " , stateId);
-      return this.http.get<Cabin[]>(`${this.base_url}/homepage/${stateId}`,httpOptions);
+      return this.http.get<Cabin[]>(`${this.base_url}/homepage/${stateId}`);
 
   }
 
