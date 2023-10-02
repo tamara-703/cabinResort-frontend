@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LogInService } from './log-in/services/log-in.service';
 
@@ -7,11 +7,16 @@ import { LogInService } from './log-in/services/log-in.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+  visible: boolean = false;
 
   //inject the login service
-  constructor(private router: Router, private logInService: LogInService){
+  constructor(private router: Router, public logInService: LogInService){
+  }
 
+  ngOnInit(): void {
+    this.visible = this.logInService.visible;
   }
 
   showDialog() {
