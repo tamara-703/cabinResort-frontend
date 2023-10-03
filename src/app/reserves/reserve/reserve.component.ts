@@ -140,7 +140,11 @@ export class ReserveComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (sessionStorage.getItem('username') == null) {
+      this.router.navigate(['home']);
+    }
+  }
 
   reserve()
   {

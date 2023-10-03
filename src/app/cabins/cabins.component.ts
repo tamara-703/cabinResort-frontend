@@ -38,6 +38,13 @@ export class CabinsComponent implements OnInit{
 
   ngOnInit(): void {
 
+    if(sessionStorage.getItem("username")){
+        //selected state = user state
+    }else{
+        //selected state = PA
+    }
+
+
     this.states = [
       {name: "Texas", code: "TX", flag: "https://cdn.britannica.com/51/4651-004-B1024BD2/flags-Texas-independence-motif-flag-Mexico-star-1845.jpg"},
       {name: "Pennsylvania", code: "PA", flag: "https://higherusa.com/pub/media/catalog/product//p/e/pennsylvania-flag.jpg"},

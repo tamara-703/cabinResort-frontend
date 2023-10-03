@@ -42,7 +42,6 @@ export class UsersComponent {
     {
       this.logInService.getUserById(this.userId).subscribe(response => {
         this.userData = response;
-        console.log("user data in user component ", this.userData);
       })
     }else{
       this.router.navigate(['home']);

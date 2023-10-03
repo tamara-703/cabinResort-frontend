@@ -66,11 +66,15 @@ export class UsersService {
   }
 
   /** PUT: update the user on the server */
-  updateUser(user: GuestId, id:number): Observable<any> {
-    const url = `${this.userUrl}/${id}`;
-    return this.http.put(url, user, this.httpOptions).pipe(
-      tap(_ => this.log(`updated user id=${user.id}`)),
-      catchError(this.handleError<any>('updateUser'))
+  updateUser(user: GuestId, id:number): Observable<GuestId> {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json',
+      'Authorization': 'Basic ' + btoa(`${sessionStorage.getItem('username')}:${sessionStorage.getItem('unencryptedPass')}`)})
+    }
+    const url = `${this.userUrl}/user/profile/${id}`;
+    return this.http.put<GuestId>(url, user,httpOptions).pipe(
+      tap(_ => this.log(`updated user id=${id}`)),
+      catchError(this.handleError<GuestId>('updateUser'))
     );
   }
 

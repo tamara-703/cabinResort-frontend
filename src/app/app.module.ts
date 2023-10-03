@@ -25,9 +25,9 @@ import { CreateUserComponent } from './create-user/create-user.component';
 import { ToastModule } from 'primeng/toast';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputNumberModule } from 'primeng/inputnumber';
-import { MatIconModule } from '@angular/material/icon';
-import { ExternalRedirectComponent } from './external-redirect/external-redirect.component'
+import { ExternalRedirectComponent } from './external-redirect/external-redirect.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { MatIconModule } from '@angular/material/icon';
 import { ViewReservationsComponent } from './view-reservations/view-reservations.component';
 
 
@@ -70,8 +70,8 @@ const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
     ToastModule,
     InputTextModule,
     NoopAnimationsModule,
-    MatIconModule,
-    InputNumberModule
+    InputNumberModule,
+    MatIconModule
   ],
   providers: [{
     provide: {

@@ -22,7 +22,7 @@ export class EditUserComponent {
   languages: StateLang[] | any;
   selectedLanguage: StateLang | any;
   usernameTaken: Boolean = false;
-  newUser: GuestId = {
+  updateUser: GuestId = {
     id: 0,
     username: "",
     password: "",
@@ -52,6 +52,13 @@ export class EditUserComponent {
 
 
   ngOnInit() {
+
+
+    //get user data by
+    if (sessionStorage.getItem('username') == null) {
+      this.router.navigate(['home']);
+    }
+
     this.languages = [
       { title: 'English', value: 'ENG' },
       { title: 'Spanish', value: 'SPA' }
@@ -113,11 +120,9 @@ export class EditUserComponent {
     if (sessionStorage.getItem("userId") != null) {
       let userId = sessionStorage.getItem("userId");
       this.logInService.getUserById(userId).subscribe(response => {
-        console.log(response)
-        this.newUser = response
-        this.newUser.password = sessionStorage.getItem("unencryptedPass") || "";
-        this.confirmPassword = this.newUser.password;
-
+        this.updateUser = response
+        this.updateUser.password = sessionStorage.getItem("unencryptedPass") || "";
+        this.confirmPassword = this.updateUser.password;
       });
     }
 
@@ -125,52 +130,47 @@ export class EditUserComponent {
 
 
   updateUserValidate() {
-    let create: Boolean = true;
-    this.usernameTaken = false;
-    let loggedInUser: GuestId;
-    console.log(this.newUser.username);
-    this.userService.getUsername(this.newUser.username).subscribe(response => {
-      loggedInUser = response
-      if (loggedInUser != null) {
-          this.messageService.add({ severity: 'error', summary: 'Username Taken', detail: 'This Username Is Taken' });
-          create = false;
-      }
-
-      if (!(this.newUser.password == this.confirmPassword)) {
-        this.messageService.add({ severity: 'error', summary: 'Invalid Password', detail: 'Passwords Must Match' });
-        create = false;
-
-      }
-
-      this.newUser.email.toLowerCase();
-      if (!(this.newUser.email.includes("@") &&
-        (this.newUser.email.includes(".com") || this.newUser.email.includes(".net") || this.newUser.email.includes(".edu")))) {
-        this.messageService.add({ severity: 'error', summary: 'Invalid Email', detail: 'Provided Email Is Invalid' });
-        create = false;
-      }
-
-
-
-
-      if (this.newUser.username === "" ||
-        this.newUser.password === "" ||
-        this.newUser.first_name === "" ||
-        this.newUser.last_name === "" ||
-        this.newUser.email === "" ||
-        this.newUser.phone === "" ||
-        this.newUser.address === ""
-        || this.selectedState == null) {
-        create = false;
-        this.messageService.add({ severity: 'error', summary: 'Blank Field', detail: 'No Fields May Remain Blank' });
-      }
-
-
-      if (create) {
-       console.log("TODO actually update user");
-      }
+    let update: Boolean = true;
+    if (!(this.updateUser.password == this.confirmPassword)) {
+      this.messageService.add({ severity: 'error', summary: 'Invalid Password', detail: 'Passwords Must Match' });
+      update = false;
 
     }
-    );
+
+    this.updateUser.email.toLowerCase();
+    if (!(this.updateUser.email.includes("@") &&
+      (this.updateUser.email.includes(".com") || this.updateUser.email.includes(".net") || this.updateUser.email.includes(".edu")))) {
+      this.messageService.add({ severity: 'error', summary: 'Invalid Email', detail: 'Provided Email Is Invalid' });
+      update = false;
+    }
+
+
+
+
+    if (
+      this.updateUser.password === "" ||
+      this.updateUser.first_name === "" ||
+      this.updateUser.last_name === "" ||
+      this.updateUser.email === "" ||
+      this.updateUser.phone === "" ||
+      this.updateUser.address === ""
+      || this.selectedState == null) {
+      update = false;
+      this.messageService.add({ severity: 'error', summary: 'Blank Field', detail: 'No Fields May Remain Blank' });
+    }
+
+
+    if (update) {
+      console.log("updating");
+      this.userService.updateUser(this.updateUser, this.updateUser.id).subscribe(response => {
+        sessionStorage.setItem("password", response.password),
+        sessionStorage.setItem("unencryptedPass", this.updateUser.password),
+        this.messageService.add({ severity: 'success', summary: 'Account Updated', detail: 'Account Has Been Updated' });
+        this.router.navigate(["/users"]);
+      }
+        
+        );
+    }
 
   }
 
