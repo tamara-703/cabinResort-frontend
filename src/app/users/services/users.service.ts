@@ -67,8 +67,6 @@ export class UsersService {
 
   /** PUT: update the user on the server */
   updateUser(user: GuestId, id:number): Observable<GuestId> {
-    console.log("in update");
-    console.log(user);
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json',
       'Authorization': 'Basic ' + btoa(`${sessionStorage.getItem('username')}:${sessionStorage.getItem('unencryptedPass')}`)})

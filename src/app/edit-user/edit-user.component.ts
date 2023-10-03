@@ -123,7 +123,6 @@ export class EditUserComponent {
         this.updateUser = response
         this.updateUser.password = sessionStorage.getItem("unencryptedPass") || "";
         this.confirmPassword = this.updateUser.password;
-        console.log(this.updateUser)
       });
     }
 
@@ -163,7 +162,14 @@ export class EditUserComponent {
 
     if (update) {
       console.log("updating");
-      this.userService.updateUser(this.updateUser, this.updateUser.id).subscribe(response => console.log(response));
+      this.userService.updateUser(this.updateUser, this.updateUser.id).subscribe(response => {
+        sessionStorage.setItem("password", response.password),
+        sessionStorage.setItem("unencryptedPass", this.updateUser.password),
+        this.messageService.add({ severity: 'success', summary: 'Account Updated', detail: 'Account Has Been Updated' });
+        this.router.navigate(["/users"]);
+      }
+        
+        );
     }
 
   }
