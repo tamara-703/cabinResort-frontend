@@ -2,15 +2,17 @@
 
 
 .user-table {
-  margin: 180px 600px;
+  margin: 150px 400px;
   padding: 20px;
   font-family: cursive;
   font-size: 20px;
 }
 
 .user-table table{
-  border: solid black 1px;
   border-spacing: 50px;
+  border-color:deeppink;
+  border-radius: 3px;
+  border-style: dotted;
 }
 
 .user-table td {

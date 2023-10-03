@@ -7,6 +7,7 @@ import { ReserveComponent } from './reserves/reserve/reserve.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { ExternalRedirectComponent } from './external-redirect/external-redirect.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { ViewReservationsComponent } from './view-reservations/view-reservations.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'reserve/:id', component: ReserveComponent},
   { path: 'newUser', component: CreateUserComponent},
   { path: 'external-redirect', component: ExternalRedirectComponent},
-  { path: 'editAccount', component: EditUserComponent}
+  { path: 'editAccount', component: EditUserComponent},
+  { path: 'reservations', component: ViewReservationsComponent}
 
 ];
 

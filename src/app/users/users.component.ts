@@ -69,4 +69,9 @@ export class UsersComponent {
   editUser(){
     this.router.navigate(['editAccount']);
   }
+
+  navigateToReservations()
+  {
+    this.router.navigate(['/reservations']);
+  }
 }

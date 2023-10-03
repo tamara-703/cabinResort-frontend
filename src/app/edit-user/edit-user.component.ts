@@ -174,5 +174,10 @@ export class EditUserComponent {
 
   }
 
+  navigateToProfile()
+  {
+    this.router.navigate(['/users']);
+  }
+
 
 }
