@@ -6,14 +6,14 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 import { GuestId, newUser } from 'src/app/dataFormat';
 import { MessageService } from 'src/app/message.service';
-import { Environment } from 'src/app/environment';
+import { Environment } from 'src/environments/environment.production';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
 
-  private userUrl = Environment.EnvironmentURL; //Gets URL based on environment 
+  private userUrl = Environment.EnvironmentURL; //Gets URL based on environment
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json', 'allow': 'PUT' })
@@ -34,18 +34,12 @@ export class UsersService {
   }
 
     /** GET User by id. Will 404 if id not found */
-    getUsername(username: String): Boolean {
+    getUsername(username: string): Observable<GuestId> {
       const url = `${this.userUrl}/homepage/newuser/${username}`;
-      let user = this.http.get<String>(url).pipe(
-        tap(_ => this.log(`fetched User id=${username}`)));
-      console.log(user);
-      if(username){
-        console.log("true");
-          return true;
-      }
-      console.log("false");
-      return false;
-
+      return this.http.get<GuestId>(url).pipe(
+        tap(_ => this.log(`fetched User username=${username}`)),
+        catchError(this.handleError<GuestId>(`getuser username=${username}`))
+      );
     }
 
 
@@ -62,7 +56,7 @@ export class UsersService {
   }
 
   /** DELETE: delete the User from the server */
-  deleteUser(id: number): Observable<GuestId> {
+  deleteUser(id: string): Observable<GuestId> {
     const url = `${this.userUrl}/${id}`;
 
     return this.http.delete<GuestId>(url, this.httpOptions).pipe(
@@ -72,11 +66,16 @@ export class UsersService {
   }
 
   /** PUT: update the user on the server */
-  updateUser(user: GuestId, id:number): Observable<any> {
-    const url = `${this.userUrl}/${id}`;
-    return this.http.put(url, user, this.httpOptions).pipe(
-      tap(_ => this.log(`updated user id=${user.id}`)),
-      catchError(this.handleError<any>('updateUser'))
+  updateUser(user: GuestId, id:number): Observable<GuestId> {
+    console.log("user in update ", user)
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json',
+      'Authorization': 'Basic ' + btoa(`${sessionStorage.getItem('username')}:${sessionStorage.getItem('unencryptedPass')}`)})
+    }
+    const url = `${this.userUrl}/user/profile/${id}`;
+    return this.http.put<GuestId>(url, user,httpOptions).pipe(
+      tap(_ => this.log(`updated user id=${id}`)),
+      catchError(this.handleError<GuestId>('updateUser'))
     );
   }
 
@@ -106,4 +105,3 @@ export class UsersService {
     this.messageService.add(`UserService: ${message}`);
   }
 }
-

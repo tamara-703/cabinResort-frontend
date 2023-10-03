@@ -5,6 +5,8 @@ import { CabinsComponent } from './cabins/cabins.component';
 import { UsersComponent } from './users/users.component';
 import { ReserveComponent } from './reserves/reserve/reserve.component';
 import { CreateUserComponent } from './create-user/create-user.component';
+import { ViewReservationsComponent } from './view-reservations/view-reservations.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 import { ExternalRedirectComponent } from './external-redirect/external-redirect.component';
 
 const routes: Routes = [
@@ -14,6 +16,10 @@ const routes: Routes = [
   { path: 'users', component: UsersComponent },
   { path: 'reserve/:id', component: ReserveComponent},
   { path: 'newUser', component: CreateUserComponent},
+  { path: 'external-redirect', component: ExternalRedirectComponent},
+  { path: 'editAccount', component: EditUserComponent},
+  { path: 'reservations', component: ViewReservationsComponent},
+  { path: 'editAccount', component: EditUserComponent},
   { path: 'external-redirect', component: ExternalRedirectComponent}
 
 ];

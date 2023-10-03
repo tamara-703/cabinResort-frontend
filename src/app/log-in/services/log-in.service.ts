@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { GuestId } from 'src/app/dataFormat';
 import { MessageService } from 'src/app/message.service';
-import { Environment } from 'src/app/environment';
+import { Environment } from 'src/environments/environment.production';
 
 
 @Injectable({
@@ -46,11 +46,11 @@ constructor(
       );
   }
 
-  getUserById(userId: number) : Observable<GuestId>
+  getUserById(userId: any) : Observable<GuestId>
   {
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json',
-      'Authorization': 'Basic ' + btoa(`${sessionStorage.getItem('username')}:${sessionStorage.getItem('unencrypted pass')}`)})
+      'Authorization': 'Basic ' + btoa(`${sessionStorage.getItem('username')}:${sessionStorage.getItem('unencryptedPass')}`)})
     }
         return this.http.get<GuestId>(`${this.userUrl}/user/profile/${userId}`, httpOptions)
   }

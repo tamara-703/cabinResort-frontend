@@ -12,7 +12,7 @@ import { MessageService } from 'primeng/api';
   templateUrl: './log-in.component.html',
   styleUrls: ['./log-in.component.css']
 })
-export class LogInComponent implements OnDestroy {
+export class LogInComponent {
   logIn: GuestId = {
     id: 0,
     username: "",
@@ -45,12 +45,12 @@ export class LogInComponent implements OnDestroy {
 
   logInUser() {
     if (this.logIn.username && this.logIn.password) {
-      console.log("username ", this.logIn.username, " password ", this.logIn.password)
-      sessionStorage.setItem('unencrypted pass', this.logIn.password)
+      sessionStorage.setItem('unencryptedPass', this.logIn.password)
       this.service.getUserInfo(this.logIn.username, this.logIn.password).subscribe(response => {
-        this.logIn = response;
 
-        console.log("After fetching", this.logIn);
+        if (response != null) {
+          this.logIn = response;
+        }
 
         if (this.logIn.id != 0) {
           this.service.visible = false;
@@ -59,6 +59,7 @@ export class LogInComponent implements OnDestroy {
           sessionStorage.setItem('userId', String(this.logIn.id))
           //this.router.navigate(['users'])
           this.messageService.add({ severity: 'success', summary: 'Log-In Successful', detail: 'You Sucessfully logged in!' });
+          this.clearUser();
         }
         else {
           this.messageService.add({ severity: 'error', summary: 'Invalid Credentials', detail: 'Check To See If Username and Password Are Correct' });
@@ -71,8 +72,24 @@ export class LogInComponent implements OnDestroy {
     }
   }
 
-  ngOnDestroy(): void {
-
+  clearUser() {
+    this.logIn = {
+      id: 0,
+      username: "",
+      password: "",
+      email: "",
+      phone: "",
+      address: "",
+      language: "",
+      role: "",
+      enabled: false,
+      last_name: "",
+      first_name: "",
+      authorities: [{ authority: "string" }],
+      accountNonExpired: false,
+      accountNonLocked: false,
+      credentialsNonExpired: false,
+    };
   }
 
 
