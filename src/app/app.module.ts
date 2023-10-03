@@ -27,6 +27,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { MatIconModule } from '@angular/material/icon';
 import { ExternalRedirectComponent } from './external-redirect/external-redirect.component'
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 
 const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
@@ -45,6 +46,7 @@ const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
     ReserveComponent,
     CreateUserComponent,
     ExternalRedirectComponent,
+    EditUserComponent
 
   ],
   imports: [

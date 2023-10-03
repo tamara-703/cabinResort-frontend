@@ -34,18 +34,12 @@ export class UsersService {
   }
 
     /** GET User by id. Will 404 if id not found */
-    getUsername(username: String): Boolean {
+    getUsername(username: string): Observable<GuestId> {
       const url = `${this.userUrl}/homepage/newuser/${username}`;
-      let user = this.http.get<String>(url).pipe(
-        tap(_ => this.log(`fetched User id=${username}`)));
-      console.log(user);
-      if(username){
-        console.log("true");
-          return true;
-      }
-      console.log("false");
-      return false;
-
+      return this.http.get<GuestId>(url).pipe(
+        tap(_ => this.log(`fetched User username=${username}`)),
+        catchError(this.handleError<GuestId>(`getuser username=${username}`))
+      );
     }
 
 
@@ -62,7 +56,7 @@ export class UsersService {
   }
 
   /** DELETE: delete the User from the server */
-  deleteUser(id: number): Observable<GuestId> {
+  deleteUser(id: string): Observable<GuestId> {
     const url = `${this.userUrl}/${id}`;
 
     return this.http.delete<GuestId>(url, this.httpOptions).pipe(

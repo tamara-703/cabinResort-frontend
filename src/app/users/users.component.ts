@@ -44,6 +44,8 @@ export class UsersComponent {
         this.userData = response;
         console.log("user data in user component ", this.userData);
       })
+    }else{
+      this.router.navigate(['home']);
     }
   }
 
@@ -61,5 +63,10 @@ export class UsersComponent {
 
       }, 1000);
     }
+  }
+
+
+  editUser(){
+    this.router.navigate(['editAccount']);
   }
 }

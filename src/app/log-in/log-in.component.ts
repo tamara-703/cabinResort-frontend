@@ -46,7 +46,7 @@ export class LogInComponent implements OnDestroy {
   logInUser() {
     if (this.logIn.username && this.logIn.password) {
       console.log("username ", this.logIn.username, " password ", this.logIn.password)
-      sessionStorage.setItem('unencrypted pass', this.logIn.password)
+      sessionStorage.setItem('unencryptedPass', this.logIn.password)
       this.service.getUserInfo(this.logIn.username, this.logIn.password).subscribe(response => {
         this.logIn = response;
 
