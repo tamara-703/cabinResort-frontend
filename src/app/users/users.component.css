@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Gluten:wght@600&family=Roboto&display=swap');
+
+
+.user-table {
+  margin: 180px 600px;
+  padding: 20px;
+  font-family: cursive;
+  font-size: 20px;
+}
+
+.user-table table{
+  border: solid black 1px;
+  border-spacing: 50px;
+}
+
+.user-table td {
+  padding: 20px;
+  border-spacing: 50px;
+  border: solid black 1px;
+}

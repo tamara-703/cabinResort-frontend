@@ -1,13 +1,46 @@
 <div>
-  <h2> Welcome {{userData.first_name}}</h2>
-  <p-button
+  <h2><mat-icon>person</mat-icon> Welcome {{userData.first_name}}!</h2>
+  <div style="padding: 10px;display: flex;justify-content: space-evenly;">
+    <p-button
       label="Log Out"
       styleClass="p-button"
       (click)="logout()"
-    ></p-button>
+    ><mat-icon>logout</mat-icon></p-button>
     <p-button
     label="Edit Account"
     styleClass="p-button-secondary"
-    
-  ></p-button>
+
+  ><mat-icon>edit</mat-icon></p-button>
+  <p-button
+    label="View Reservations"
+    styleClass="p-button-help"
+
+  ><mat-icon>event_upcoming</mat-icon></p-button>
+  </div>
+</div>
+
+<div class="user-table">
+  <table>
+    <tr>
+      <td>username</td><td> {{userData.username}}</td>
+    </tr>
+    <tr>
+      <td>first name</td><td> {{userData.first_name}}</td>
+    </tr>
+    <tr>
+      <td>last name</td><td> {{userData.last_name}}</td>
+    </tr>
+    <tr>
+      <td>email</td><td> {{userData.email}}</td>
+    </tr>
+    <tr>
+      <td>address</td><td> {{userData.address}}</td>
+    </tr>
+    <tr>
+      <td>phone</td><td> {{userData.phone}}</td>
+    </tr>
+    <tr>
+      <td>language</td><td> {{userData.language}}</td>
+    </tr>
+  </table>
 </div>
