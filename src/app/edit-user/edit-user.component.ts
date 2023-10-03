@@ -163,12 +163,13 @@ export class EditUserComponent {
     if (update) {
       console.log("updating");
       this.userService.updateUser(this.updateUser, this.updateUser.id).subscribe(response => {
+        console.log("update successful ", response);
         sessionStorage.setItem("password", response.password),
         sessionStorage.setItem("unencryptedPass", this.updateUser.password),
         this.messageService.add({ severity: 'success', summary: 'Account Updated', detail: 'Account Has Been Updated' });
         this.router.navigate(["/users"]);
       }
-        
+
         );
     }
 

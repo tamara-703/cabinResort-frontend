@@ -13,7 +13,7 @@ import { Environment } from 'src/app/environment';
 })
 export class UsersService {
 
-  private userUrl = Environment.EnvironmentURL; //Gets URL based on environment 
+  private userUrl = Environment.EnvironmentURL; //Gets URL based on environment
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json', 'allow': 'PUT' })
@@ -67,6 +67,7 @@ export class UsersService {
 
   /** PUT: update the user on the server */
   updateUser(user: GuestId, id:number): Observable<GuestId> {
+    console.log("user in update ", user)
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json',
       'Authorization': 'Basic ' + btoa(`${sessionStorage.getItem('username')}:${sessionStorage.getItem('unencryptedPass')}`)})
@@ -104,4 +105,3 @@ export class UsersService {
     this.messageService.add(`UserService: ${message}`);
   }
 }
-
