@@ -4,7 +4,7 @@
 
     <div class="logInContainer">
       <span class="p-float-label logInSpan">
-        <input class="logInInput" pInputText name="username" [(ngModel)]="logIn.username"/>
+        <input class="logInInput" pInputText name="username" [(ngModel)]="logIn.username" />
 
         <label htmlFor="username">Username</label>
       </span>
@@ -22,11 +22,15 @@
     </div>
 
     <p-button id="logInSubmit" type="submit" label="Log In" styleClass="p-button-raised p-button-primary"
-      (click)="logInUser()"></p-button>
+      (click)="logInUser()">
+      <mat-icon>login</mat-icon>
+    </p-button>
 
     <div>
       <h4 class="createHeader">No Account?<br>Then create one!<br></h4>
     </div>
-    <p-button label="Create Account" styleClass="p-button-secondary" (click)="createUser()"></p-button>
+    <p-button label="Create Account" styleClass="p-button-secondary" (click)="createUser()">
+      <mat-icon>account_circle</mat-icon>
+    </p-button>
   </div>
 </div>

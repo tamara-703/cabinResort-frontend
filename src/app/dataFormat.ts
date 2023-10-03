@@ -14,6 +14,7 @@ export interface GuestId {
   accountNonExpired: boolean
   accountNonLocked: boolean
   credentialsNonExpired: boolean
+  //add state field
 }
 
 export interface Authority {
@@ -108,4 +109,19 @@ export interface newUser {
   role: string
   last_name: string
   first_name: string
+  //add state field
+}
+
+export interface CabinReserve {
+  id : number,
+      sleeps : number,
+      price : number,
+      description : string,
+      capacity : number,
+      cabinlocation : Cabinlocation,
+      cabin_name : string,
+      image : string,
+      amenities_id : AmenitiesId,
+      no_rooms : number,
+      no_bathrooms : number
 }

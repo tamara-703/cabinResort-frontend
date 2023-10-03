@@ -64,6 +64,8 @@
          <p-dropdown class="createDrop" [options]="languages" optionLabel="title" [style]="{'width':'100%'}" [(ngModel)]="selectedLanguage"></p-dropdown>
 
 
-        <p-button label="Create Account" styleClass="p-button" (click)="createUserValidate()"></p-button>
+        <p-button label="Create Account" styleClass="p-button" (click)="createUserValidate()">
+            <mat-icon>save_as</mat-icon>
+        </p-button>
     </div>
 </div>

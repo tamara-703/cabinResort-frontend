@@ -1,5 +1,5 @@
 <div class="heading">
-  <h1>{{cabinData.cabin_name}}</h1>
+  <h1 style="font-size: 60px; margin-top: 20px;padding: 20px;">{{cabinData.cabin_name}}</h1>
 </div>
 
 <!--rating template-->
@@ -36,41 +36,83 @@
 </div>
 </div>
 
-<div class="reserve-container" [formGroup]="reserveForm">
+<div class="reserve-container" style="display: flex;">
 
-  <div>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni quasi unde nihil consequatur vitae voluptate neque assumenda ullam
-    perspiciatis eum deserunt culpa tenetur optio alias debitis, atque, ipsam nesciunt molestiae!
+  <div style="padding: 50px; margin: 50px 100px;">
+    <h1 style="border-bottom: 1px solid black;">About this place</h1>
+    <p>{{cabinData.description}}</p>
+    <p style="padding: 5px; border-bottom: 1px solid black;"> {{cabinData.cabinloc.address}} |  {{cabinData.cabinloc.city}} | {{cabinData.cabinloc.stateId}}</p>
+
+    <br />
+
+
+      <div>
+        <p style="font-size: 20px;"><mat-icon>bed</mat-icon> {{cabinData.no_rooms}} beds</p>
+        <p style="font-size: 20px;"><mat-icon>bathroom</mat-icon> {{cabinData.no_bathrooms}} bathrooms</p>
+      </div>
+
+
+    <h1 style="border-top: 1px solid black; padding: 10px;">Features</h1>
+    <ul>
+      <li *ngIf="cabinData.amenities_id.fireplace"><h4><mat-icon>fireplace</mat-icon> Fireplace</h4><p>-- A fireplace serves a purpose, but if there’s one thing that can make a room with it’s
+                                                      presence and the ambience given off when lit….it’s definitely a fireplace</p></li>
+      <li *ngIf="cabinData.amenities_id.jacuzzi"><h4><mat-icon>hot_tub</mat-icon>  Jacuzzi </h4><p>-- hot tubs bring together friends and family. They provide a space to unwind, relax, and
+                                                      create memories. Whether you’re hosting an intimate meeting with your closest friends or catching up with your family, a hot tub offers the ideal gathering place</p></li>
+      <li *ngIf="cabinData.amenities_id.kitchen"><h4><mat-icon>countertops</mat-icon>  Kitchen</h4><p>-- Today kitchens are so much more than spaces for preparing food, they are social spaces at the
+                                                      heart of family life where meals are shared, homework is completed and creative ideas are hatched, so it's important they are comfortable, cozy spaces people enjoy being in</p></li>
+      <li *ngIf="cabinData.amenities_id.outdoor_furniture"><h4><mat-icon>chair_alt</mat-icon>  Outdoor Furniture </h4><p> -- 'The wonder of warmth. That sense of togetherness, safety,
+                                                      and feeling of home. But how can you bring such a sensation to your patio this autumn?' A firepit</p></li>
+      <li *ngIf="cabinData.amenities_id.outdoor_shower"><h4><mat-icon>shower</mat-icon>  Outdoor Shower</h4><p>-- An outdoor shower is a luxury that allows you to rinse off after a long hike or a muddy walk on the mountain trail</p></li>
+      <li *ngIf="cabinData.amenities_id.patio"><h4><mat-icon>deck</mat-icon>  Patio</h4><p>-- There is something magical about autumn nights. Relaxing and spending time outside with friends and family are moments to treasure</p></li>
+      <li *ngIf="cabinData.amenities_id.pet_friendly"><h4><mat-icon>pets</mat-icon>  Pet Friendly</h4><p> -- With the reciprocated familial love shared between pets and owners coming close to between family members themselves,
+                                                      it’s no wonder our pets feel like part of our families. Your furry friends deserve a vacation. So bring themn along!</p></li>
+    </ul>
   </div>
 
-  <div class="card flex justify-content-center" style="margin: 100px 980px;">
+  <div class="card flex justify-content-center" style="margin: 100px 280px;">
     <p-card header="${{cabinData.price}} night" subheader="sleeps: {{cabinData.sleeps}}" [style]="{ width: '360px'}">
         <ng-template pTemplate="header">
             <img src="../../../assets/logo.png" alt="logo" style="width: 200px;">
         </ng-template>
 
-        <div style="display: flex;">
-          <span style="flex: 1;">
-            <label for="checkIn">Check In<p-calendar [(ngModel)]="checkIn"></p-calendar></label>
-          </span>
+        <form [formGroup]="calenderForm">
+          <div style="display: flex;">
+            <span style="flex: 1;">
+              <label for="checkIn">Check In<p-calendar [(ngModel)]="checkIn" [required]="true" formControlName="checkIn"></p-calendar></label>
+            </span>
 
-          <span style="flex: 1;">
-            <label for="checkOut">Check out<p-calendar [(ngModel)]="checkOut"></p-calendar></label>
-          </span>
+            <span style="flex: 1;">
+              <label for="checkOut">Check out<p-calendar [(ngModel)]="checkOut" [required]="true" formControlName="checkOut"></p-calendar></label>
+            </span>
+          </div>
+        </form>
 
+        <div style="padding: 20px;">
+          <label for="numOfGuests" >Guests</label>
+          <p-inputNumber [(ngModel)]="guests" inputId="minmax" mode="decimal" [min]="1" [max]="cabinData.sleeps" [required]="true"></p-inputNumber>
         </div>
 
-        <div *ngIf="checkIn === null || checkOut === null">
-          check in & check out are required
-        </div>
 
-        <span style="flex: 1; color: red;" *ngIf="isCheckoutValid">
-          <p>Check out date must be after the check in</p>
+        <span style="flex: 1; color: red;padding: 5px;" *ngIf="calenderForm.get('checkIn')?.value === 0 || calenderForm.get('checkOut')?.value === 0">
+          <p>Check in & check out dates are required</p>
+        </span>
+
+        <span style="flex: 1; color: red;padding: 5px;" *ngIf="calenderForm.get('checkIn')?.value > calenderForm.get('checkOut')?.value">
+          <p>Check in date must not be greater than check out date</p>
+        </span>
+
+        <span style="flex: 1; color: red;padding: 5px;" *ngIf="guests > cabinData.sleeps">
+          <p>Guests must not exceed limit specified</p>
+        </span>
+
+        <span style="flex: 1; color: red;padding: 5px;" *ngIf="guests === 0 || guests === null">
+          <p>Guest field is required</p>
         </span>
 
         <ng-template pTemplate="footer">
             <p-toast></p-toast>
-            <p-button label="Reserve" [loading]="isReservationValid"  icon="pi pi-check" (click)="reserve()"></p-button>
+            <p-button label="Reserve" [loading]="isReservationValid"  icon="pi pi-check" (click)="reserve()"
+            [disabled]="(calenderForm.get('checkIn')?.value === 0 || calenderForm.get('checkOut')?.value === 0) || (calenderForm.get('checkIn')?.value > calenderForm.get('checkOut')?.value) || (guests === 0 || guests > cabinData.sleeps || guests === null)"></p-button>
             <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{ 'margin-left': '.5em' }" (click)="cancel()"></p-button>
         </ng-template>
     </p-card>

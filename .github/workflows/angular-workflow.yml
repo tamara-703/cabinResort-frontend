@@ -1,0 +1,64 @@
+# This is a basic workflow to help you get started with Actions
+name: Angular Build Pipeline
+run-name: Angular Build Pipeline
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: main
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build: #VM
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: AWS login
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+           # AWS Access Key ID. Provide this key if you want to assume a role using access keys rather than a web identity token.
+          aws-access-key-id: ${{ secrets.PROJECT2_ACCESS_KEY }}
+          # AWS Secret Access Key. Required if aws-access-key-id is provided.
+          aws-secret-access-key: ${{ secrets.PROJECT2_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+          
+      - name: Install Node.js
+        uses: actions/setup-node@v3.8.1
+        with:
+          node-version: 16
+
+      - name: Install dependencies
+        # working-directory: cabinResort-frontend/
+        run: npm install --build-from-resource
+
+      - name: Build
+        # working-directory: dist/cabin-resort
+        run: npm run build --prod
+
+      - name: deploy
+        run: aws s3 sync dist/cabin-resort s3://project2-cabin-fever/
+
+
+
+
+        
+  post-build:
+    runs-on: ubuntu-latest
+    
+    steps:
+
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: ls
+        run: ls

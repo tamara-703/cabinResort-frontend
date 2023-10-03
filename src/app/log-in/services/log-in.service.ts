@@ -12,9 +12,8 @@ import { Environment } from 'src/app/environment';
 })
 export class LogInService {
 
-
-
-  private userUrl = Environment.EnvironmentURL; //Gets URL based on environment
+  private userUrl = Environment.EnvironmentURL;
+  public visible: boolean = false;
 
 
 /*
