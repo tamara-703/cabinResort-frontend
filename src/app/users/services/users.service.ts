@@ -6,7 +6,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 import { GuestId, newUser } from 'src/app/dataFormat';
 import { MessageService } from 'src/app/message.service';
-import { Environment } from 'src/app/environment';
+import { Environment } from 'src/environments/environment.production';
 
 @Injectable({
   providedIn: 'root'
