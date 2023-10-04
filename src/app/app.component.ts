@@ -50,6 +50,7 @@ export class AppComponent implements OnInit {
   selectLang(event: Event)
   {
     const lang = (event.target as HTMLSelectElement).value;
+    sessionStorage.setItem('lang',lang);
     this.translateService.use(lang);
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewResevationsService } from './services/view-resevations.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-reservations',
@@ -8,10 +9,10 @@ import { ViewResevationsService } from './services/view-resevations.service';
 })
 export class ViewReservationsComponent implements OnInit {
 
-  userReservations: any;
+  userReservations: any[] = [];
   cabinData: any;
 
-  constructor(private reservationsService: ViewResevationsService) { }
+  constructor(private reservationsService: ViewResevationsService, private router: Router) { }
 
 
   ngOnInit(): void {
@@ -23,11 +24,18 @@ export class ViewReservationsComponent implements OnInit {
 
         console.log("RSVP data " , this.userReservations)
 
-        this.reservationsService.getCabinById(this.userReservations.id).subscribe(resp => {
-          console.log("Cabin data " , resp);
-        })
       })
     }
+  }
+
+  editRsvp(rsvpId: number)
+  {
+    this.router.navigate([`editreserve/${rsvpId}`]);
+  }
+
+  deleteRsvp()
+  {
+    console.log("deleting")
   }
 
 }

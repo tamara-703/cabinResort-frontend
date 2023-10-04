@@ -22,5 +22,15 @@
       "h6":"Outside Your Door",
       "h6Content1": "All of our cabins are fit for campfire cooking with a fire pit, grill grate, picnic table and chairs, plus firewood or charcoal and a firestarter for purchase.",
       "footer": "Website footer content goes here."
+    },
+    "cabins" : {
+      "name": [
+        "Texas",
+        "Pennsylvania",
+        "Ohio",
+        "Georgia",
+        "Washington"
+      ],
+      "reserve": "reserve"
     }
   }

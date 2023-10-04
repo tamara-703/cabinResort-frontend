@@ -6,6 +6,7 @@ import { AppComponent } from '../app.component';
 import { MessageService } from 'primeng/api';
 import { Cabin, CabinReserve } from '../dataFormat';
 import { LogInService } from '../log-in/services/log-in.service';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -33,16 +34,10 @@ export class CabinsComponent implements OnInit{
   isLogout: boolean = false;
 
 
-  constructor(private service: CabinsService, private router: Router, private logInService: LogInService, private messageService: MessageService) {}
+  constructor(private service: CabinsService, private router: Router, private logInService: LogInService, private messageService: MessageService, private translateService: TranslateService) {}
 
 
   ngOnInit(): void {
-
-    if(sessionStorage.getItem("username")){
-        //selected state = user state
-    }else{
-        //selected state = PA
-    }
 
 
     this.states = [
@@ -59,13 +54,15 @@ export class CabinsComponent implements OnInit{
 
     if (this.selectedState != null) {
 
-      console.log(this.selectedState)
-
       this.service.getCabinByStateId(this.selectedState.code).subscribe(response => {
 
         this.cabinData = response;
 
-        console.log("cabin data\n" , this.cabinData)
+        const lang = sessionStorage.getItem('lang') || 'en';
+
+        this.translateService.use(lang);
+
+        this.translateService.instant(this.selectedState.name);
 
         this.reserveCabins = this.getCabinForReserve(this.cabinData);
 

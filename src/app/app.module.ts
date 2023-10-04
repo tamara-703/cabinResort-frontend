@@ -32,6 +32,8 @@ import { ViewReservationsComponent } from './view-reservations/view-reservations
 import { NavComponent } from './nav/nav.component';
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TableModule } from 'primeng/table';
+import { EditReservationComponent } from './edit-reservation/edit-reservation.component';
 
 
 const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
@@ -52,7 +54,8 @@ const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
     ExternalRedirectComponent,
     EditUserComponent,
     ViewReservationsComponent,
-    NavComponent
+    NavComponent,
+    EditReservationComponent
 
   ],
   imports: [
@@ -66,6 +69,7 @@ const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
     HttpClientModule,
     DropdownModule,
     PasswordModule,
+    TableModule,
     RatingModule,
     CardModule,
     CalendarModule,
