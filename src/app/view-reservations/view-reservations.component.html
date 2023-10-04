@@ -15,7 +15,7 @@
               <td>{{ reservation.guest_id.first_name }} {{ reservation.guest_id.last_name }}</td>
               <td>{{ reservation.check_in }}</td>
               <td>{{ reservation.check_out }}</td>
-              <td><p><mat-icon (click)="editRsvp(reservation.id)">edit</mat-icon>  <mat-icon (click)="deleteRsvp()">delete</mat-icon></p></td>
+              <td><p><mat-icon (click)="editRsvp(reservation.id)">edit</mat-icon>  <mat-icon (click)="deleteRsvp(reservation.id)">delete</mat-icon></p></td>
 
           </tr>
       </ng-template>

@@ -14,19 +14,26 @@ export class ReserveService {
   constructor(private http: HttpClient) { }
 
 
-  createReservation(reservation: Reservations) : Observable<Reservations>
+  createReservation(reservation: Reservations) : boolean
   {
+    console.log("reservation " , reservation)
+    let result = false;
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json',
-                                  'Authorization': 'Basic ' + btoa(`${reservation.guest_id.username}:${sessionStorage.getItem('unencrypted pass')}`)
+                                  'Authorization': 'Basic ' + btoa(`${reservation.guest_id.username}:${sessionStorage.getItem('unencryptedPass')}`)
                                   })
     };
 
     reservation.check_in = reservation.check_in.substring(0,15)
     reservation.check_out = reservation.check_out.substring(0,15);
 
-    return this.http.post<Reservations>(`${this.base_url}/user/reservations`,reservation, httpOptions);
+    this.http.post<Reservations>(`${this.base_url}/user/reservations`,reservation, httpOptions).subscribe(response => {
+      console.log("reserve created");
+      result = true;
+      console.log("result " , result)
+    })
 
+    return result;
 
   }
 }

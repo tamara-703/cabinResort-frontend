@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ViewResevationsService } from '../view-reservations/services/view-resevations.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
+import { Reservations } from '../dataFormat';
 
 @Component({
   selector: 'app-edit-reservation',
@@ -12,7 +13,48 @@ import { MessageService } from 'primeng/api';
 export class EditReservationComponent implements OnInit {
 
   paramId: any;
-  reservationData: any;
+  reservationData: Reservations = {
+    id: 0,
+    reserved_cabin_id: {
+      id: 0,
+  sleeps: 0,
+  price: 0,
+  description: "",
+  capacity: 0,
+  cabin_name: "",
+  no_rooms: 0,
+  no_bathrooms: 0,
+  amenities_id: {
+    id: 0,
+  patio: false,
+  fireplace: false,
+  kitchen: false,
+  jacuzzi: false,
+  outdoor_hot_shower: false,
+  outdoor_furniture: false,
+  pet_friendly: false
+  },
+  image_id: {
+    id: 0,
+  url: "",
+  }
+    },
+  check_out: "",
+  check_in: "",
+  guest_id: {
+    id: 0,
+    username: "",
+    password: "",
+    email: "",
+    phone: "",
+    address: "",
+    language: "",
+    role: "",
+    last_name: "",
+    first_name: ""
+  }
+
+  };
   imgArray: string[] = [];
   firstImg: string ="";
   displayedPhoto: string = "";
@@ -54,6 +96,13 @@ export class EditReservationComponent implements OnInit {
 
   updateReserve()
   {
+
+    console.log("before sending " , this.reservationData)
+    console.log("before sending ", this.paramId)
+    console.log("check in ", this.checkIn, " check out ", this.checkOut)
+
+    this.reservationData.check_in = String(this.checkIn);
+    this.reservationData.check_out = String(this.checkOut)
 
     this.reservationService.updateRsvp(this.paramId,this.reservationData).subscribe(response => {
 

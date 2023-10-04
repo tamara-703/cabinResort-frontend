@@ -45,7 +45,9 @@ export class ViewResevationsService {
   {
     console.log("rsvp id ", rsvpId)
     console.log("\nreservation data ", rsvpBody)
-    let result = false;
+
+    rsvpBody.check_in = rsvpBody.check_in.substring(0,15)
+    rsvpBody.check_out = rsvpBody.check_out.substring(0,15);
 
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json',
@@ -54,6 +56,21 @@ export class ViewResevationsService {
     };
 
     return this.http.put<Reservations>(`${this.base_url}/user/reservations/${rsvpId}`, rsvpBody, httpOptions)
+  }
+
+  deleteRsvp(rsvpId: number)
+  {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json',
+                                  'Authorization': 'Basic ' + btoa(`${sessionStorage.getItem('username')}:${sessionStorage.getItem('unencryptedPass')}`)
+                                  })
+    };
+
+    let result = false;
+
+    this.http.delete(`${this.base_url}/user/reservations/${rsvpId}`,httpOptions).subscribe(response => {
+      console.log("deleted successfully");
+    })
   }
 
 
