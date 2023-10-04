@@ -14,7 +14,7 @@ import { LogInComponent } from './log-in/log-in.component';
 import { DialogModule } from 'primeng/dialog';
 import { LogInService } from './log-in/services/log-in.service';
 import { UsersService } from './users/services/users.service';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { DropdownModule } from 'primeng/dropdown';
 import { ReserveComponent } from './reserves/reserve/reserve.component';
 import { PasswordModule } from 'primeng/password';
@@ -29,6 +29,9 @@ import { ExternalRedirectComponent } from './external-redirect/external-redirect
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { MatIconModule } from '@angular/material/icon';
 import { ViewReservationsComponent } from './view-reservations/view-reservations.component';
+import { NavComponent } from './nav/nav.component';
+import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 
 const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
@@ -48,7 +51,8 @@ const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
     CreateUserComponent,
     ExternalRedirectComponent,
     EditUserComponent,
-    ViewReservationsComponent
+    ViewReservationsComponent,
+    NavComponent
 
   ],
   imports: [
@@ -71,7 +75,16 @@ const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
     InputTextModule,
     NoopAnimationsModule,
     InputNumberModule,
-    MatIconModule
+    MatIconModule,
+    TranslateModule.forRoot(
+      {
+        loader: {
+          provide: TranslateLoader,
+          useFactory: (http:HttpClient) => {return new TranslateHttpLoader(http,'./assets/i18n/','.json')},
+          deps: [HttpClient]
+        }
+      }
+    )
   ],
   providers: [{
     provide: {

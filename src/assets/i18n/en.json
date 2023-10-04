@@ -1,0 +1,26 @@
+
+  {
+    "home" : {
+      "homeLabel": "Home",
+      "reserveACabin": "Reserve A Cabin",
+      "cabinAreaMap": "Cabin Area Map",
+      "title": "Cabin Fever Resorts"
+    },
+    "main": {
+      "h1": "Your Vacation Getaway Is Waiting",
+      "h1Content1" : "We believe in making space for more free time.",
+      "h1Content2" : "Easy drive from the city, our cabins are your window into nature—giving you the wide-open space you need to rest and rediscover the best part of you.",
+      "h2" : "What's in Your Cabin",
+      "h2Content1" : "Our cabins have everything you need and nothing you don’t.",
+      "h3": "Sleep Soundly",
+      "h3Content1": "Rest easy on a queen bed or queen bunks with fresh linens and comfy pillows.",
+      "h3Content2": " You’ll have AC/heat, a landline by your bedside, and a large window, so nature is in view.",
+      "h4": "A Kitchen to Cook In",
+      "h4Content1": "Make your favorite meals in our cabin kitchenettes equipped with a two-burner stove, fridge, dishware, cookware, and coffee and tea (Not availible in all cabins).",
+      "h5": "When Nature Calls",
+      "h5Content1": "Enjoy a hot shower in your private bathroom. Bath towels, as well as biodegradable soap, shampoo and conditioner are provided.",
+      "h6":"Outside Your Door",
+      "h6Content1": "All of our cabins are fit for campfire cooking with a fire pit, grill grate, picnic table and chairs, plus firewood or charcoal and a firestarter for purchase.",
+      "footer": "Website footer content goes here."
+    }
+  }

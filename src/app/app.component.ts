@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LogInService } from './log-in/services/log-in.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +11,17 @@ import { LogInService } from './log-in/services/log-in.service';
 export class AppComponent implements OnInit {
 
   visible: boolean = false;
+  supportedLanguages = ['en','ar'];
+  lang: string = 'en';
+
 
   //inject the login service
-  constructor(private router: Router, public logInService: LogInService){
+  constructor(private router: Router, public logInService: LogInService, private translateService: TranslateService){
+    this.translateService.addLangs(this.supportedLanguages);
+    this.translateService.setDefaultLang('en');
+
+    const browserLang = this.translateService.getBrowserLang() || 'en';
+    this.translateService.use(browserLang);
   }
 
   ngOnInit(): void {
@@ -36,5 +45,11 @@ export class AppComponent implements OnInit {
       queryParams: {mapUrl},
       skipLocationChange: true
     })
+  }
+
+  selectLang(event: Event)
+  {
+    const lang = (event.target as HTMLSelectElement).value;
+    this.translateService.use(lang);
   }
 }
