@@ -110,6 +110,18 @@ export class ReserveComponent implements OnInit {
     this.cabinService.getCabinById(this.idParam).subscribe((response) => {
       this.cabinData = response;
 
+      let selectedLang = sessionStorage.getItem('lang');
+
+      if(selectedLang === 'ar')
+      {
+        this.cabinData.cabin_name = this.cabinData.cabinNameAr;
+        this.cabinData.description = this.cabinData.descAr;
+
+        console.log("cabin name now " , this.cabinData.cabin_name)
+        console.log("cabin desc now ", this.cabinData.descAr)
+
+      }
+
       console.log('cabin data in reserve component ', this.cabinData);
 
       this.img = this.cabinData.image_id.url;

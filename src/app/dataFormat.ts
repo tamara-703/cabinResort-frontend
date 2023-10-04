@@ -76,9 +76,11 @@ export interface Cabin {
   sleeps: number
   price: number
   description: string
+  descAr: string
   capacity: number
   cabinlocation: Cabinlocation
   cabin_name: string
+  cabinNameAr: string
   image_id: ImageId
   amenities_id: AmenitiesId
   no_rooms: number
