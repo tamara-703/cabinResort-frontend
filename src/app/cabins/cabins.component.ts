@@ -74,7 +74,7 @@ export class CabinsComponent implements OnInit {
         .subscribe((response) => {
           this.cabinData = response;
 
-          console.log(this.cabinData);
+          console.log("cabin data " , this.cabinData);
 
           this.reserveCabins = this.getCabinForReserve(this.cabinData);
 
@@ -89,17 +89,17 @@ export class CabinsComponent implements OnInit {
     let tempCabins: CabinReserve[] = [];
 
     for (let cabin of cabins) {
-      //check session store and create two variables that would hold the desc and the name
 
       if (sessionStorage.getItem('lang') === 'ar') {
         let desc: string = '';
         let name: string = '';
+        let city: string = '';
 
         name = cabin.cabinNameAr;
         desc = cabin.descAr;
+        city = cabin.cabinloc.cityAr;
 
-        console.log(name);
-        console.log(desc);
+        cabin.cabinloc.city = city;
 
         this.imgsArray = cabin.image_id.url.split(',');
 
@@ -109,7 +109,7 @@ export class CabinsComponent implements OnInit {
           price: cabin.price,
           description: desc,
           capacity: cabin.capacity,
-          cabinlocation: cabin.cabinlocation,
+          cabinloc: cabin.cabinloc,
           cabin_name: name,
           image: this.imgsArray[0],
           amenities_id: cabin.amenities_id,
@@ -127,7 +127,7 @@ export class CabinsComponent implements OnInit {
           price: cabin.price,
           description: cabin.description,
           capacity: cabin.capacity,
-          cabinlocation: cabin.cabinlocation,
+          cabinloc: cabin.cabinloc,
           cabin_name: cabin.cabin_name,
           image: this.imgsArray[0],
           amenities_id: cabin.amenities_id,

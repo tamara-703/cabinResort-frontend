@@ -116,9 +116,11 @@ export class ReserveComponent implements OnInit {
       {
         this.cabinData.cabin_name = this.cabinData.cabinNameAr;
         this.cabinData.description = this.cabinData.descAr;
+        this.cabinData.cabinloc.city = this.cabinData.cabinloc.cityAr;
 
         console.log("cabin name now " , this.cabinData.cabin_name)
         console.log("cabin desc now ", this.cabinData.descAr)
+        console.log("cabin city now ", this.cabinData.descAr)
 
       }
 
