@@ -130,6 +130,7 @@ export class EditUserComponent {
 
 
   updateUserValidate() {
+
     let update: Boolean = true;
     if (!(this.updateUser.password == this.confirmPassword)) {
       this.messageService.add({ severity: 'error', summary: 'Invalid Password', detail: 'Passwords Must Match' });
@@ -162,15 +163,20 @@ export class EditUserComponent {
 
     if (update) {
       console.log("updating");
+      this.updateUser.language = this.selectedLanguage.value;
+      console.log(this.updateUser)
       this.userService.updateUser(this.updateUser, this.updateUser.id).subscribe(response => {
         console.log("update successful ", response);
         sessionStorage.setItem("password", response.password),
+        sessionStorage.setItem('lang',response.language)
         sessionStorage.setItem("unencryptedPass", this.updateUser.password),
         this.messageService.add({ severity: 'success', summary: 'Account Updated', detail: 'Account Has Been Updated' });
         this.router.navigate(["/users"]);
       }
 
         );
+
+
     }
 
   }

@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { GuestId } from 'src/app/dataFormat';
 import { MessageService } from 'src/app/message.service';
-import { Environment } from 'src/environments/environment.production';
+import { Environment } from 'src/environments/environment';
 
 
 @Injectable({

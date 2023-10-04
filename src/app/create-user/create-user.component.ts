@@ -161,12 +161,14 @@ export class CreateUserComponent {
 
   createUser() {
 
+    this.newUser.language = this.selectedLanguage.value;
+
     this.userService.addUser(this.newUser).subscribe(respnse => {
-      console.log(this.newUser.password);
-      console.log(this.newUser.username);
-      this.newUser.language = this.selectedLanguage?.value;
-      //this.newUser.state=this.selectedState?.value;
-      sessionStorage.setItem('unencrypted pass', this.newUser.password)
+      console.log("After creating user\n")
+      console.log(respnse)
+      
+      sessionStorage.setItem('unencryptedPass', this.newUser.password)
+      sessionStorage.setItem('lang',this.selectedLanguage.value);
       this.logInService.getUserInfo(this.newUser.username, this.newUser.password).subscribe(response => {
         let logIn: GuestId = response;
 
