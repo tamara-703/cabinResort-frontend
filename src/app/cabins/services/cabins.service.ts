@@ -16,6 +16,7 @@ export class CabinsService {
   //get all cabins
   getAllCabins() : Observable<Cabin[]>
   {
+
     return this.http.get<Cabin[]>(`${this.base_url}/homepage`);
   }
 
@@ -29,6 +30,7 @@ export class CabinsService {
     }
 
       console.log("incoming state " , stateId);
+      console.log(this.base_url);
       return this.http.get<Cabin[]>(`${this.base_url}/homepage/${stateId}`);
 
   }
