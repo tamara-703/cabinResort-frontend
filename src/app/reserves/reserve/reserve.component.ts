@@ -18,13 +18,10 @@ import { MessageService } from 'primeng/api';
   styleUrls: ['./reserve.component.css'],
 })
 export class ReserveComponent implements OnInit {
-<<<<<<< HEAD
-  //variables for reserving a cabin
-=======
   errorMessage(errorMessage: any) {
     throw new Error('Method not implemented.');
   }
->>>>>>> 1dc3ba00ad817f4e3599e0f329695af9d87ac2e3
+  //variables for reserving a cabin
   idParam: string = '';
   userId: number = Number(sessionStorage.getItem('userId'));
   username: any = sessionStorage.getItem('username');
@@ -157,12 +154,6 @@ export class ReserveComponent implements OnInit {
         this.cabinData.description = this.cabinData.descAr;
         this.cabinData.cabinloc.city = this.cabinData.cabinloc.cityAr;
 
-<<<<<<< HEAD
-=======
-        console.log('cabin name now ', this.cabinData.cabin_name);
-        console.log('cabin desc now ', this.cabinData.descAr);
-        console.log('cabin city now ', this.cabinData.descAr);
->>>>>>> 1dc3ba00ad817f4e3599e0f329695af9d87ac2e3
       }
 
       this.img = this.cabinData.image_id.url;
