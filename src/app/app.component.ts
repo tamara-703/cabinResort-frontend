@@ -14,8 +14,6 @@ export class AppComponent implements OnInit {
   supportedLanguages = ['en','ar'];
   lang: string = 'en';
 
-
-  //inject the login service
   constructor(private router: Router, public logInService: LogInService, private translateService: TranslateService){
     this.translateService.addLangs(this.supportedLanguages);
     this.translateService.setDefaultLang('en');

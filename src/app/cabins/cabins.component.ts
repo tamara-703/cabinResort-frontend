@@ -38,9 +38,11 @@ export class CabinsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-
+    let lang = sessionStorage.getItem('lang') || 'en';
+    this.translateService.use(lang);
     if(sessionStorage.getItem('lang') == 'ar')
     {
+
       this.states = [
         {
           name: 'تكساس',

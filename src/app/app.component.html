@@ -10,8 +10,8 @@
   <p-button class="navUser" icon="pi pi-user" styleClass="p-button-rounded p-button-info p-button-outlined"
     (click)="showDialog()"></p-button>
     <div>
-      <p>Select a language</p>
-      <select (change)="selectLang($event)">
+      <h4>{{ 'home.languageOption' | translate }}</h4>
+      <select (change)="selectLang($event)" style="width: 300px; padding: 10px;">
         <option value="en" [selected]="lang=='en'">English</option>
         <option value="ar" [selected]="lang=='ar'">عربي</option>
       </select>

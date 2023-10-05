@@ -1,6 +1,7 @@
 
   {
     "home" : {
+      "languageOption" : "Select a language",
       "homeLabel": "Home",
       "reserveACabin": "Reserve A Cabin",
       "cabinAreaMap": "Cabin Area Map",
@@ -20,8 +21,7 @@
       "h5": "When Nature Calls",
       "h5Content1": "Enjoy a hot shower in your private bathroom. Bath towels, as well as biodegradable soap, shampoo and conditioner are provided.",
       "h6":"Outside Your Door",
-      "h6Content1": "All of our cabins are fit for campfire cooking with a fire pit, grill grate, picnic table and chairs, plus firewood or charcoal and a firestarter for purchase.",
-      "footer": "Website footer content goes here."
+      "h6Content1": "All of our cabins are fit for campfire cooking with a fire pit, grill grate, picnic table and chairs, plus firewood or charcoal and a firestarter for purchase."
     },
     "cabins" : {
       "stateOptions" : "Select a State",

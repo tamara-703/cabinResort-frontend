@@ -3,6 +3,7 @@ import { LogInService } from '../log-in/services/log-in.service';
 import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
 import { GuestId } from '../dataFormat';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-users',
@@ -31,13 +32,18 @@ export class UsersComponent {
   };
 
 
-  constructor(private logInService: LogInService, private messageService: MessageService, private router: Router) {
+  constructor(private logInService: LogInService, private messageService: MessageService, private router: Router, private translateService: TranslateService) {
 
   }
 
 
   ngOnInit(): void {
-    //get user data by
+
+    let lang = sessionStorage.getItem('lang') || 'en';
+
+    this.translateService.use(lang);
+
+
     if(sessionStorage.getItem('username') != null)
     {
       this.logInService.getUserById(this.userId).subscribe(response => {
