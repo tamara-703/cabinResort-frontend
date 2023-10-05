@@ -32,10 +32,19 @@ export class CreateUserComponent {
   usernameTaken: Boolean = false;
 
   ngOnInit() {
-    this.languages = [
-      { title: 'English', value: 'ENG' },
-      { title: 'Spanish', value: 'SPA' }
-    ];
+    if(sessionStorage.getItem('lang') === 'ar')
+    {
+      this.languages = [
+        { title: 'انجليزي', value: 'ENG' },
+        { title: 'اسباني', value: 'SPA' }
+      ];
+    } else
+    {
+      this.languages = [
+        { title: 'English', value: 'ENG' },
+        { title: 'Spanish', value: 'SPA' }
+      ];
+    }
     this.states = [
       { title: "Alabama", value: "AL" },
       { title: "Alaska", value: "AK" },
@@ -166,7 +175,7 @@ export class CreateUserComponent {
     this.userService.addUser(this.newUser).subscribe(respnse => {
       console.log("After creating user\n")
       console.log(respnse)
-      
+
       sessionStorage.setItem('unencryptedPass', this.newUser.password)
       sessionStorage.setItem('lang',this.selectedLanguage.value);
       this.logInService.getUserInfo(this.newUser.username, this.newUser.password).subscribe(response => {

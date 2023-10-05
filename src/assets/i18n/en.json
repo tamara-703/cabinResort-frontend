@@ -24,13 +24,85 @@
       "footer": "Website footer content goes here."
     },
     "cabins" : {
-      "name": [
-        "Texas",
-        "Pennsylvania",
-        "Ohio",
-        "Georgia",
-        "Washington"
-      ],
+      "stateOptions" : "Select a State",
+      "sleeps" : "sleeps",
+      "capacity" : "capacity",
+      "fireplace" : "Fireplace",
+      "jacuzzi" : "Jacuzzi",
+      "kitchen" : "Kitchen",
+      "outdoorFurniture" : "Outdoor Furniture",
+      "outdoorShower" : "Outdoor shower",
+      "patio" : "Patio",
+      "petFriendly" : "Pet Friendly",
       "reserve": "reserve"
+    },
+    "createUser" : {
+      "h1" : "Create Account",
+      "stateOptions" : "Select a State",
+      "username" : "username",
+      "password" : "password",
+      "confirmPassword" : "Confirm Password",
+      "firstName" : "First Name",
+      "lastName" : "Last Name",
+      "email" : "Email",
+      "phone" : "Phone",
+      "address" : "Address",
+      "title" : "title",
+      "createAccount" : "Create Account"
+    },
+    "editRsvp" : {
+      "h1" : "You have reserved",
+      "checkIn" : "check In",
+      "checkOut" : "check Out",
+      "guests" : "Guests",
+      "chVali1" : "Check in & check out dates are required",
+      "chVali2" : "Check in date must not be greater than check out date",
+      "chVali3" : "Guests must not exceed limit specified",
+      "chVali4" : "Guest field is required",
+      "update" : "Update Reservation",
+      "cancel" : "Cancel"
+    },
+    "editUser" : {
+      "h1" : "Edit Account",
+      "back" : "Back",
+      "password" : "Password",
+      "confirmPassword" : "Confirm Password",
+      "firstName" : "First Name",
+      "lastName" : "Last Name",
+      "email" : "Email",
+      "phone" : "Phone",
+      "address" : "Address",
+      "title" : "title",
+      "update" : "Update Account"
+    },
+    "login" : {
+      "h1" : "Log In",
+      "username" : "Username",
+      "password" : "Password",
+      "login" : "Log In",
+      "h41" : "No Account?",
+      "h42" : "Then create one!",
+      "createAccount" : "Create Account"
+    },
+    "reserve" : {
+      "h1" : "About this place",
+      "save" : "Save",
+      "features" : "Features",
+      "beds" : "beds",
+      "bathrooms" : "bathrooms",
+      "fireplace" : "Fireplace",
+      "jacuzzi" : "Jacuzzi",
+      "kitchen" : "Kitchen",
+      "outdoorFurniture" : "Outdoor Furniture",
+      "outdoorShower" : "Outdoor shower",
+      "patio" : "Patio",
+      "petFriendly" : "Pet Friendly",
+      "fdesc" : "A fireplace serves a purpose, but if there’s one thing that can make a room with it’s presence and the ambience given off when lit….it’s definitely a fireplace",
+      "jdesc" : "hot tubs bring together friends and family. They provide a space to unwind, relax, and create memories. Whether you’re hosting an intimate meeting with your closest friends or catching up with your family, a hot tub offers the ideal gathering place",
+      "kdesc" : "Today, kitchens are so much more than spaces for preparing food, they are social spaces at the heart of family life where meals are shared, homework is completed and creative ideas are hatched, so it's important they are comfortable, cozy spaces people enjoy being in",
+      "ofdesc" : "'The wonder of warmth. That sense of togetherness, safety, and feeling of home. But how can you bring such a sensation to your patio this autumn?' A firepit!",
+      "sdesc" : "An outdoor shower is a luxury that allows you to rinse off after a long hike or a muddy walk on the mountain trail",
+      "pdesc" : "There is something magical about autumn nights. Relaxing and spending time outside with friends and family are moments to treasure",
+      "pfdesc" : "With the reciprocated familial love shared between pets and owners coming close to between family members themselves, it’s no wonder our pets feel like part of our families. Your furry friends deserve a vacation. So bring themn along!"
     }
   }

@@ -38,33 +38,66 @@ export class CabinsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.states = [
-      {
-        name: 'Texas',
-        code: 'TX',
-        flag: 'https://cdn.britannica.com/51/4651-004-B1024BD2/flags-Texas-independence-motif-flag-Mexico-star-1845.jpg',
-      },
-      {
-        name: 'Pennsylvania',
-        code: 'PA',
-        flag: 'https://higherusa.com/pub/media/catalog/product//p/e/pennsylvania-flag.jpg',
-      },
-      {
-        name: 'Ohio',
-        code: 'OH',
-        flag: 'https://static.vecteezy.com/system/resources/previews/002/492/652/original/ohio-officially-flag-free-vector.jpg',
-      },
-      {
-        name: 'Georgia',
-        code: 'GA',
-        flag: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Flag_of_Georgia_%28U.S._state%29.svg/1200px-Flag_of_Georgia_%28U.S._state%29.svg.png',
-      },
-      {
-        name: 'Washington',
-        code: 'WA',
-        flag: 'https://visionwear.com/wp-content/uploads/2011/09/9673_1_3_2.gif',
-      },
-    ];
+
+    if(sessionStorage.getItem('lang') == 'ar')
+    {
+      this.states = [
+        {
+          name: 'تكساس',
+          code: 'TX',
+          flag: 'https://cdn.britannica.com/51/4651-004-B1024BD2/flags-Texas-independence-motif-flag-Mexico-star-1845.jpg',
+        },
+        {
+          name: 'بنسلفانيا',
+          code: 'PA',
+          flag: 'https://higherusa.com/pub/media/catalog/product//p/e/pennsylvania-flag.jpg',
+        },
+        {
+          name: 'أوهايو',
+          code: 'OH',
+          flag: 'https://static.vecteezy.com/system/resources/previews/002/492/652/original/ohio-officially-flag-free-vector.jpg',
+        },
+        {
+          name: 'جورجيا',
+          code: 'GA',
+          flag: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Flag_of_Georgia_%28U.S._state%29.svg/1200px-Flag_of_Georgia_%28U.S._state%29.svg.png',
+        },
+        {
+          name: 'واشنطن',
+          code: 'WA',
+          flag: 'https://visionwear.com/wp-content/uploads/2011/09/9673_1_3_2.gif',
+        },
+      ];
+    } else {
+      this.states = [
+        {
+          name: 'Texas',
+          code: 'TX',
+          flag: 'https://cdn.britannica.com/51/4651-004-B1024BD2/flags-Texas-independence-motif-flag-Mexico-star-1845.jpg',
+        },
+        {
+          name: 'Pennsylvania',
+          code: 'PA',
+          flag: 'https://higherusa.com/pub/media/catalog/product//p/e/pennsylvania-flag.jpg',
+        },
+        {
+          name: 'Ohio',
+          code: 'OH',
+          flag: 'https://static.vecteezy.com/system/resources/previews/002/492/652/original/ohio-officially-flag-free-vector.jpg',
+        },
+        {
+          name: 'Georgia',
+          code: 'GA',
+          flag: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Flag_of_Georgia_%28U.S._state%29.svg/1200px-Flag_of_Georgia_%28U.S._state%29.svg.png',
+        },
+        {
+          name: 'Washington',
+          code: 'WA',
+          flag: 'https://visionwear.com/wp-content/uploads/2011/09/9673_1_3_2.gif',
+        },
+      ];
+    }
+
   }
 
   getByStateId() {

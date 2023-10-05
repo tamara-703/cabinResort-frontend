@@ -1,42 +1,42 @@
-<h1>Edit Account</h1>
-<p-button label="Back" styleClass="p-button" (onClick)="navigateToProfile()"></p-button>
+<h1>{{ 'editUser.h1' | translate }}</h1>
+<p-button label="{{ 'editUser.back' | translate }}" styleClass="p-button" (onClick)="navigateToProfile()"></p-button>
 <div class="form">
     <div class="innerForm">
         <div class="inputBox">
-            <label class="title" htmlFor="username">Password</label>
+            <label class="title" htmlFor="username">{{ 'editUser.password' | translate }}</label>
             <p-password class="input" [(ngModel)]="updateUser.password" [toggleMask]="true" required></p-password>
         </div>
 
 
         <div class="inputBox">
-            <label class="title" htmlFor="confirmPassword">Confirm Password</label>
+            <label class="title" htmlFor="confirmPassword">{{ 'editUser.confirmPassword' | translate }}</label>
             <p-password class="input" [(ngModel)]="confirmPassword" [toggleMask]="true" [feedback]="false" required required></p-password>
         </div>
 
         <div class="inputBox">
-            <label class="title" htmlFor="first_name">First Name</label>
+            <label class="title" htmlFor="first_name">{{ 'editUser.firstName' | translate }}</label>
             <input class="input" pInputText id="first_name" aria-describedby="first_name-help"
                 [(ngModel)]="updateUser.first_name"  required/>
         </div>
 
         <div class="inputBox">
-            <label class="title" htmlFor="last_name">Last Name</label>
+            <label class="title" htmlFor="last_name">{{ 'editUser.lastName' | translate }}</label>
             <input class="input" pInputText id="last_name" aria-describedby="last_name-help"
                 [(ngModel)]="updateUser.last_name"  required/>
         </div>
 
         <div class="inputBox">
-            <label class="title" htmlFor="Email">Email</label>
+            <label class="title" htmlFor="Email">{{ 'editUser.email' | translate }}</label>
             <input class="input" pInputText id="Email" aria-describedby="Email-help" [(ngModel)]="updateUser.email"  required/>
         </div>
 
         <div class="inputBox">
-            <label class="title" htmlFor="Phone">Phone</label>
+            <label class="title" htmlFor="Phone">{{ 'editUser.phone' | translate }}</label>
             <input class="input" pInputText id="Phone" aria-describedby="Phone-Help" [(ngModel)]="updateUser.phone"  required/>
         </div>
 
         <div class="inputBox">
-            <label class="title" htmlFor="Address">Address</label>
+            <label class="title" htmlFor="Address">{{ 'editUser.address' | translate }}</label>
             <input class="input" pInputText id="Address" aria-describedby="Address-help"
                 [(ngModel)]="updateUser.address"  required/>
         </div>
@@ -58,7 +58,7 @@
          <p-dropdown class="createDrop" [options]="languages" optionLabel="title" [style]="{'width':'100%'}" [(ngModel)]="selectedLanguage"></p-dropdown>
 
 
-        <p-button label="Update Account" styleClass="p-button" (onClick)="updateUserValidate()">
+        <p-button label="{{ 'editUser.update' | translate }}" styleClass="p-button" (onClick)="updateUserValidate()">
             <mat-icon>save</mat-icon>
         </p-button>
     </div>

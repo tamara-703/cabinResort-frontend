@@ -21,7 +21,7 @@
 </div>
 
 <div>
-  <p-button label="Save" styleClass="p-button-raised p-button-rounded p-button-text p-button-danger p-button-help" icon="pi pi-heart"></p-button>
+  <p-button label="{{ 'reserve.save' | translate }}" styleClass="p-button-raised p-button-rounded p-button-text p-button-danger p-button-help" icon="pi pi-heart"></p-button>
 </div>
 
 <div class="main-container">
@@ -39,7 +39,7 @@
 <div class="reserve-container" style="display: flex;">
 
   <div style="padding: 50px; margin: 50px 100px;">
-    <h1 style="border-bottom: 1px solid black;">About this place</h1>
+    <h1 style="border-bottom: 1px solid black;">{{ 'reserve.h1' | translate }}</h1>
     <p>{{cabinData.description}}</p>
     <p style="padding: 5px; border-bottom: 1px solid black;"> {{cabinData.cabinloc.address}} |  {{cabinData.cabinloc.city}} | {{cabinData.cabinloc.stateId}}</p>
 
@@ -47,25 +47,20 @@
 
 
       <div>
-        <p style="font-size: 20px;"><mat-icon>bed</mat-icon> {{cabinData.no_rooms}} beds</p>
-        <p style="font-size: 20px;"><mat-icon>bathroom</mat-icon> {{cabinData.no_bathrooms}} bathrooms</p>
+        <p style="font-size: 20px;"><mat-icon>bed</mat-icon> {{cabinData.no_rooms}} {{ 'reserve.beds' | translate }}</p>
+        <p style="font-size: 20px;"><mat-icon>bathroom</mat-icon> {{cabinData.no_bathrooms}} {{ 'reserve.bathrooms' | translate }}</p>
       </div>
 
 
-    <h1 style="border-top: 1px solid black; padding: 10px;">Features</h1>
+    <h1 style="border-top: 1px solid black; padding: 10px;">{{ 'reserve.features' | translate }}</h1>
     <ul>
-      <li *ngIf="cabinData.amenities_id.fireplace"><h4><mat-icon>fireplace</mat-icon> Fireplace</h4><p>-- A fireplace serves a purpose, but if there’s one thing that can make a room with it’s
-                                                      presence and the ambience given off when lit….it’s definitely a fireplace</p></li>
-      <li *ngIf="cabinData.amenities_id.jacuzzi"><h4><mat-icon>hot_tub</mat-icon>  Jacuzzi </h4><p>-- hot tubs bring together friends and family. They provide a space to unwind, relax, and
-                                                      create memories. Whether you’re hosting an intimate meeting with your closest friends or catching up with your family, a hot tub offers the ideal gathering place</p></li>
-      <li *ngIf="cabinData.amenities_id.kitchen"><h4><mat-icon>countertops</mat-icon>  Kitchen</h4><p>-- Today kitchens are so much more than spaces for preparing food, they are social spaces at the
-                                                      heart of family life where meals are shared, homework is completed and creative ideas are hatched, so it's important they are comfortable, cozy spaces people enjoy being in</p></li>
-      <li *ngIf="cabinData.amenities_id.outdoor_furniture"><h4><mat-icon>chair_alt</mat-icon>  Outdoor Furniture </h4><p> -- 'The wonder of warmth. That sense of togetherness, safety,
-                                                      and feeling of home. But how can you bring such a sensation to your patio this autumn?' A firepit</p></li>
-      <li *ngIf="cabinData.amenities_id.outdoor_shower"><h4><mat-icon>shower</mat-icon>  Outdoor Shower</h4><p>-- An outdoor shower is a luxury that allows you to rinse off after a long hike or a muddy walk on the mountain trail</p></li>
-      <li *ngIf="cabinData.amenities_id.patio"><h4><mat-icon>deck</mat-icon>  Patio</h4><p>-- There is something magical about autumn nights. Relaxing and spending time outside with friends and family are moments to treasure</p></li>
-      <li *ngIf="cabinData.amenities_id.pet_friendly"><h4><mat-icon>pets</mat-icon>  Pet Friendly</h4><p> -- With the reciprocated familial love shared between pets and owners coming close to between family members themselves,
-                                                      it’s no wonder our pets feel like part of our families. Your furry friends deserve a vacation. So bring themn along!</p></li>
+      <li *ngIf="cabinData.amenities_id.fireplace"><h4><mat-icon>fireplace</mat-icon> {{ 'reserve.fireplace' | translate }}</h4><p>-- {{ 'reserve.fdesc' | translate }}</p></li>
+      <li *ngIf="cabinData.amenities_id.jacuzzi"><h4><mat-icon>hot_tub</mat-icon>  {{ 'reserve.jacuzzi' | translate }} </h4><p>-- {{ 'reserve.jdesc' | translate }}</p></li>
+      <li *ngIf="cabinData.amenities_id.kitchen"><h4><mat-icon>countertops</mat-icon>  {{ 'reserve.kitchen' | translate }}</h4><p>-- {{ 'reserve.kdesc' | translate }}</p></li>
+      <li *ngIf="cabinData.amenities_id.outdoor_furniture"><h4><mat-icon>chair_alt</mat-icon>  {{ 'reserve.outdoorFurniture' | translate }} </h4><p> -- {{ 'reserve.ofdesc' | translate }}</p></li>
+      <li *ngIf="cabinData.amenities_id.outdoor_shower"><h4><mat-icon>shower</mat-icon>  {{ 'reserve.outdoorShower' | translate }}</h4><p>-- {{ 'reserve.osdesc' | translate }}</p></li>
+      <li *ngIf="cabinData.amenities_id.patio"><h4><mat-icon>deck</mat-icon>  {{ 'reserve.patio' | translate }}</h4><p>-- {{ 'reserve.pdesc' | translate }}</p></li>
+      <li *ngIf="cabinData.amenities_id.pet_friendly"><h4><mat-icon>pets</mat-icon>  {{ 'reserve.petFriendly' | translate }}</h4><p> -- {{ 'reserve.pfdesc' | translate }}</p></li>
     </ul>
   </div>
 

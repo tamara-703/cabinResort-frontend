@@ -59,10 +59,18 @@ export class EditUserComponent {
       this.router.navigate(['home']);
     }
 
-    this.languages = [
-      { title: 'English', value: 'ENG' },
-      { title: 'Spanish', value: 'SPA' }
-    ];
+    if(sessionStorage.getItem('lang') === 'ar')
+    {
+      this.languages = [
+        { title: 'انجليزي', value: 'ENG' },
+        { title: 'اسباني', value: 'SPA' }
+      ];
+    } else {
+      this.languages = [
+        { title: 'English', value: 'ENG' },
+        { title: 'Spanish', value: 'SPA' }
+      ];
+    }
     this.states = [
       { title: "Alabama", value: "AL" },
       { title: "Alaska", value: "AK" },

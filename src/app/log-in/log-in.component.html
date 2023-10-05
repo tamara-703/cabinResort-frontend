@@ -1,12 +1,12 @@
 <div id="logIn">
   <div id="logInForm">
-    <h1>Log In</h1>
+    <h1>{{ 'login.h1' | translate }}</h1>
 
     <div class="logInContainer">
       <span class="p-float-label logInSpan">
         <input class="logInInput" pInputText name="username" [(ngModel)]="logIn.username" />
 
-        <label htmlFor="username">Username</label>
+        <label htmlFor="username">{{ 'login.username' | translate }}</label>
       </span>
     </div>
 
@@ -17,19 +17,19 @@
         <p-password class="logInInput" name="password" [(ngModel)]="logIn.password" [toggleMask]="true"
           [feedback]="false"></p-password>
 
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password">{{ 'login.password' | translate }}</label>
       </span>
     </div>
 
-    <p-button id="logInSubmit" type="submit" label="Log In" styleClass="p-button-raised p-button-primary"
+    <p-button id="logInSubmit" type="submit" label="{{ 'login.login' | translate }}" styleClass="p-button-raised p-button-primary"
       (click)="logInUser()">
       <mat-icon>login</mat-icon>
     </p-button>
 
     <div>
-      <h4 class="createHeader">No Account?<br>Then create one!<br></h4>
+      <h4 class="createHeader">{{ 'login.h41' | translate }}<br>{{ 'login.h42' | translate }}<br></h4>
     </div>
-    <p-button label="Create Account" styleClass="p-button-secondary" (click)="createUser()">
+    <p-button label="{{ 'login.createAccount' | translate }}" styleClass="p-button-secondary" (click)="createUser()">
       <mat-icon>account_circle</mat-icon>
     </p-button>
   </div>

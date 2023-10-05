@@ -47,6 +47,8 @@ export interface ReservedCabinId {
   description: string
   capacity: number
   cabin_name: string
+  cabinNameAr: string
+  cabinloc: Cabinlocation
   no_rooms: number
   no_bathrooms: number
   amenities_id: AmenitiesId

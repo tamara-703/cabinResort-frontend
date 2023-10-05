@@ -50,8 +50,16 @@ export class ReserveComponent implements OnInit {
       description: '',
       capacity: 0,
       cabin_name: '',
+      cabinNameAr: '',
       no_rooms: 0,
       no_bathrooms: 0,
+      cabinloc: {
+        stateId: '',
+        address: '',
+        city: '',
+        cityAr: '',
+        zip: ''
+      },
       amenities_id: {
         id: 0,
         patio: false,
@@ -172,8 +180,16 @@ export class ReserveComponent implements OnInit {
         description: this.cabinData.description,
         capacity: this.cabinData.capacity,
         cabin_name: this.cabinData.cabin_name,
+        cabinNameAr: this.cabinData.cabinNameAr,
         no_rooms: this.cabinData.no_rooms,
         no_bathrooms: this.cabinData.no_bathrooms,
+        cabinloc : {
+          stateId: this.cabinData.stateId,
+          address: this.cabinData.address,
+          city: this.cabinData.city,
+          cityAr: this.cabinData.cityAr,
+          zip: this.cabinData.zip
+        },
         amenities_id: {
           id: this.cabinData.amenities_id.id,
           patio: this.cabinData.amenities_id.patio,
