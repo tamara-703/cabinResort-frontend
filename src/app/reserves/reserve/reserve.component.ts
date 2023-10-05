@@ -8,7 +8,7 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { CabinsService } from 'src/app/cabins/services/cabins.service';
 import { ReserveService } from '../services/reserve.service';
-import { Reservations } from 'src/app/dataFormat';
+import { Cabin, Reservations } from 'src/app/dataFormat';
 import { LogInService } from 'src/app/log-in/services/log-in.service';
 import { MessageService } from 'primeng/api';
 
@@ -18,12 +18,50 @@ import { MessageService } from 'primeng/api';
   styleUrls: ['./reserve.component.css'],
 })
 export class ReserveComponent implements OnInit {
+<<<<<<< HEAD
   //variables for reserving a cabin
+=======
+  errorMessage(errorMessage: any) {
+    throw new Error('Method not implemented.');
+  }
+>>>>>>> 1dc3ba00ad817f4e3599e0f329695af9d87ac2e3
   idParam: string = '';
   userId: number = Number(sessionStorage.getItem('userId'));
   username: any = sessionStorage.getItem('username');
   password: any = sessionStorage.getItem('password');
-  cabinData: any;
+  cabinData: Cabin = {
+    id: 0,
+    sleeps: 0,
+    price: 0,
+    description: '',
+    descAr: '',
+    capacity: 0,
+    cabinloc: {
+      stateId: '',
+      address: '',
+      city: '',
+      cityAr: '',
+      zip: '',
+    },
+    cabin_name: '',
+    cabinNameAr: '',
+    image_id: {
+      id: 0,
+      url: '',
+    },
+    amenities_id: {
+      id: 0,
+      patio: false,
+      fireplace: false,
+      kitchen: false,
+      jacuzzi: false,
+      outdoor_hot_shower: false,
+      outdoor_furniture: false,
+      pet_friendly: false,
+    },
+    no_rooms: 0,
+    no_bathrooms: 0,
+  };
   userData: any;
   imgArray_1: string[] = [];
   img: string = '';
@@ -59,7 +97,7 @@ export class ReserveComponent implements OnInit {
         address: '',
         city: '',
         cityAr: '',
-        zip: ''
+        zip: '',
       },
       amenities_id: {
         id: 0,
@@ -91,6 +129,7 @@ export class ReserveComponent implements OnInit {
       first_name: '',
     },
   };
+  cabin_name: undefined;
 
   constructor(
     private route: ActivatedRoute,
@@ -113,12 +152,17 @@ export class ReserveComponent implements OnInit {
 
       let selectedLang = sessionStorage.getItem('lang');
 
-      if(selectedLang === 'ar')
-      {
+      if (selectedLang === 'ar') {
         this.cabinData.cabin_name = this.cabinData.cabinNameAr;
         this.cabinData.description = this.cabinData.descAr;
         this.cabinData.cabinloc.city = this.cabinData.cabinloc.cityAr;
 
+<<<<<<< HEAD
+=======
+        console.log('cabin name now ', this.cabinData.cabin_name);
+        console.log('cabin desc now ', this.cabinData.descAr);
+        console.log('cabin city now ', this.cabinData.descAr);
+>>>>>>> 1dc3ba00ad817f4e3599e0f329695af9d87ac2e3
       }
 
       this.img = this.cabinData.image_id.url;
@@ -168,12 +212,12 @@ export class ReserveComponent implements OnInit {
         cabinNameAr: this.cabinData.cabinNameAr,
         no_rooms: this.cabinData.no_rooms,
         no_bathrooms: this.cabinData.no_bathrooms,
-        cabinloc : {
-          stateId: this.cabinData.stateId,
-          address: this.cabinData.address,
-          city: this.cabinData.city,
-          cityAr: this.cabinData.cityAr,
-          zip: this.cabinData.zip
+        cabinloc: {
+          stateId: this.cabinData.cabinloc.stateId,
+          address: this.cabinData.cabinloc.address,
+          city: this.cabinData.cabinloc.city,
+          cityAr: this.cabinData.cabinloc.cityAr,
+          zip: this.cabinData.cabinloc.zip,
         },
         amenities_id: {
           id: this.cabinData.amenities_id.id,
@@ -187,7 +231,7 @@ export class ReserveComponent implements OnInit {
         },
         image_id: {
           id: this.cabinData.image_id.id,
-          url: this.cabinData.image_id.image_urls,
+          url: this.cabinData.image_id.url,
         },
       },
       check_out: String(this.checkOut),
@@ -206,23 +250,25 @@ export class ReserveComponent implements OnInit {
       },
     };
 
-    this.isCheckoutValid = this.reserveService.createReservation(this.reservation);
+    this.isCheckoutValid = this.reserveService.createReservation(
+      this.reservation
+    );
     this.isReservationValid = true;
 
-      const severity = 'success';
+    const severity = 'success';
 
-      setTimeout(() => {
-        this.isReservationValid = false;
-        this.messageService.add({
-          severity: severity,
-          summary: 'Success',
-          detail: 'Reservation was a success',
-        });
-      }, 2000);
+    setTimeout(() => {
+      this.isReservationValid = false;
+      this.messageService.add({
+        severity: severity,
+        summary: 'Success',
+        detail: 'Reservation was a success',
+      });
+    }, 2000);
 
-      setTimeout(() => {
-        this.router.navigate(['users']);
-      }, 5000);
+    setTimeout(() => {
+      this.router.navigate(['users']);
+    }, 5000);
   }
 
   //returns to home

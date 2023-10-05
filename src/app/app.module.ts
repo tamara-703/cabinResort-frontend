@@ -25,7 +25,6 @@ import { CreateUserComponent } from './create-user/create-user.component';
 import { ToastModule } from 'primeng/toast';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputNumberModule } from 'primeng/inputnumber';
-import { ExternalRedirectComponent } from './external-redirect/external-redirect.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { MatIconModule } from '@angular/material/icon';
 import { ViewReservationsComponent } from './view-reservations/view-reservations.component';
@@ -33,6 +32,7 @@ import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TableModule } from 'primeng/table';
 import { EditReservationComponent } from './edit-reservation/edit-reservation.component';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
 
 
 const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
@@ -50,7 +50,6 @@ const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
     LogInComponent,
     ReserveComponent,
     CreateUserComponent,
-    ExternalRedirectComponent,
     EditUserComponent,
     ViewReservationsComponent,
     EditReservationComponent
@@ -78,6 +77,7 @@ const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
     NoopAnimationsModule,
     InputNumberModule,
     MatIconModule,
+    OverlayPanelModule,
     TranslateModule.forRoot(
       {
         loader: {

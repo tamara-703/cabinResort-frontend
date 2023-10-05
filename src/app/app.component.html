@@ -6,13 +6,17 @@
     class="navButton"><mat-icon>home</mat-icon></p-button>
   <p-button pRipple label="{{'home.reserveACabin' | translate}}" styleClass="p-button-raised p-button-secondary" class="navButton"
     routerLink="/cabins"><mat-icon>cabin</mat-icon></p-button>
-  <p-button pRipple label="{{'home.cabinAreaMap' | translate}}" styleClass="p-button-raised p-button-secondary" class="navButton" (click)="goToMap()">
-    <mat-icon>map</mat-icon></p-button>
+    <div class="card flex justify-content-center">
+    <p-overlayPanel #op>
+      <img src="../assets/cabinAreaMap.png" alt="area-map" />
+    </p-overlayPanel>
+  <p-button (click)="op.toggle($event)" label="Show Area Map" styleClass="p-button-raised p-button-secondary" class="navButton"><mat-icon>map</mat-icon></p-button>
+  </div>
   <p-button class="navUser" icon="pi pi-user" styleClass="p-button-rounded p-button-info p-button-outlined"
     (click)="showDialog()"></p-button>
-    <div>
-      <h4>{{ 'home.languageOption' | translate }}</h4>
-      <select (change)="selectLang($event)" style="width: 300px; padding: 10px;">
+    <div style="margin-left: 300px;">
+      <h4 style="margin-left: 300px;">{{ 'home.languageOption' | translate }}</h4>
+      <select id="lang-options" (change)="selectLang($event)" [(ngModel)]="selectedLang" style="width: 300px; padding: 10px;">
         <option value="en" [selected]="lang=='en'">English</option>
         <option value="ar" [selected]="lang=='ar'">عربي</option>
       </select>
@@ -33,3 +37,7 @@
   <app-log-in></app-log-in>
 
 </p-dialog>
+
+
+<!-- <p-button pRipple label="{{'home.cabinAreaMap' | translate}}" styleClass="p-button-raised p-button-secondary" class="navButton" (click)="goToMap()">
+  <mat-icon>map</mat-icon></p-button> -->
