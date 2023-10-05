@@ -8,6 +8,7 @@ import { CreateUserComponent } from './create-user/create-user.component';
 import { ViewReservationsComponent } from './view-reservations/view-reservations.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { ExternalRedirectComponent } from './external-redirect/external-redirect.component';
+import { EditReservationComponent } from './edit-reservation/edit-reservation.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'editAccount', component: EditUserComponent},
   { path: 'reservations', component: ViewReservationsComponent},
   { path: 'editAccount', component: EditUserComponent},
-  { path: 'external-redirect', component: ExternalRedirectComponent}
+  { path: 'external-redirect', component: ExternalRedirectComponent},
+  { path: 'editreserve/:id' , component: EditReservationComponent}
 
 ];
 

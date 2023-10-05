@@ -14,7 +14,6 @@ export interface GuestId {
   accountNonExpired: boolean
   accountNonLocked: boolean
   credentialsNonExpired: boolean
-  //add state field
 }
 
 export interface Authority {
@@ -48,6 +47,8 @@ export interface ReservedCabinId {
   description: string
   capacity: number
   cabin_name: string
+  cabinNameAr: string
+  cabinloc: Cabinlocation
   no_rooms: number
   no_bathrooms: number
   amenities_id: AmenitiesId
@@ -76,9 +77,11 @@ export interface Cabin {
   sleeps: number
   price: number
   description: string
+  descAr: string
   capacity: number
-  cabinlocation: Cabinlocation
+  cabinloc: Cabinlocation
   cabin_name: string
+  cabinNameAr: string
   image_id: ImageId
   amenities_id: AmenitiesId
   no_rooms: number
@@ -89,6 +92,7 @@ export interface Cabinlocation {
   stateId: string
   address: string
   city: string
+  cityAr: string
   zip: string
 }
 
@@ -109,7 +113,6 @@ export interface newUser {
   role: string
   last_name: string
   first_name: string
-  //add state field
 }
 
 export interface CabinReserve {
@@ -118,7 +121,7 @@ export interface CabinReserve {
       price : number,
       description : string,
       capacity : number,
-      cabinlocation : Cabinlocation,
+      cabinloc : Cabinlocation,
       cabin_name : string,
       image : string,
       amenities_id : AmenitiesId,

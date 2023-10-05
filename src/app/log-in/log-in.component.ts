@@ -2,8 +2,6 @@ import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/cor
 import { FormControl, FormGroup } from '@angular/forms'; //form validation
 import { LogInService } from './services/log-in.service';
 import { GuestId, Authority } from '../dataFormat';
-import { NgModule } from '@angular/core';
-import { AppComponent } from '../app.component';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 

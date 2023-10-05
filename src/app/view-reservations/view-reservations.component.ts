@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewResevationsService } from './services/view-resevations.service';
+import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-view-reservations',
@@ -8,10 +10,10 @@ import { ViewResevationsService } from './services/view-resevations.service';
 })
 export class ViewReservationsComponent implements OnInit {
 
-  userReservations: any;
+  userReservations: any[] = [];
   cabinData: any;
 
-  constructor(private reservationsService: ViewResevationsService) { }
+  constructor(private reservationsService: ViewResevationsService, private router: Router, private messageService: MessageService) { }
 
 
   ngOnInit(): void {
@@ -23,11 +25,33 @@ export class ViewReservationsComponent implements OnInit {
 
         console.log("RSVP data " , this.userReservations)
 
-        this.reservationsService.getCabinById(this.userReservations.id).subscribe(resp => {
-          console.log("Cabin data " , resp);
-        })
       })
     }
+  }
+
+  editRsvp(rsvpId: number)
+  {
+    this.router.navigate([`editreserve/${rsvpId}`]);
+  }
+
+  deleteRsvp(rsvpId: number)
+  {
+
+    this.reservationsService.deleteRsvp(rsvpId);
+
+    setTimeout(() => {
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Success',
+        detail: 'Reservation was deleted',
+      });
+    }, 2000);
+
+    setTimeout(() => {
+      this.router.navigate(['users']);
+    }, 5000);
+
+
   }
 
 }

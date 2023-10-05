@@ -1,1 +1,23 @@
-<p>view-reservations works!</p>
+<div class="card">
+  <p-table [value]="userReservations" [tableStyle]="{ 'min-width': '50rem' }">
+      <ng-template pTemplate="header">
+          <tr>
+              <th>{{ 'view.rsvpId' | translate }}</th>
+              <th>{{ 'view.guestName' | translate }}</th>
+              <th>{{ 'view.checkIn' | translate }}</th>
+              <th>{{ 'view.checkOut' | translate }}</th>
+              <th>{{ 'view.actions' | translate }}</th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-product>
+          <tr *ngFor="let reservation of userReservations">
+              <td>{{ reservation.id }}</td>
+              <td>{{ reservation.guest_id.first_name }} {{ reservation.guest_id.last_name }}</td>
+              <td>{{ reservation.check_in }}</td>
+              <td>{{ reservation.check_out }}</td>
+              <td><p><mat-icon (click)="editRsvp(reservation.id)">edit</mat-icon>  <mat-icon (click)="deleteRsvp(reservation.id)">delete</mat-icon></p></td>
+
+          </tr>
+      </ng-template>
+  </p-table>
+</div>

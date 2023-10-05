@@ -1,0 +1,52 @@
+<h1>{{ 'editRsvp.h1' | translate }} {{reservationData.reserved_cabin_id.cabin_name}}</h1>
+
+<img src="{{displayedPhoto}}" width="300px">
+
+<div class="card flex justify-content-center" style="margin: 100px 280px;">
+  <p-card header="${{reservationData.reserved_cabin_id.price}} night" subheader="sleeps: {{reservationData.reserved_cabin_id.sleeps}}" [style]="{ width: '360px'}">
+      <ng-template pTemplate="header">
+          <img src="../../../assets/logo.png" alt="logo" style="width: 200px;">
+      </ng-template>
+
+      <form [formGroup]="calenderForm">
+        <div style="display: flex;">
+          <span style="flex: 1;">
+            <label for="checkIn">{{ 'editRsvp.checkIn' | translate }}<p-calendar [(ngModel)]="checkIn" [required]="true" formControlName="checkIn"></p-calendar></label>
+          </span>
+
+          <span style="flex: 1;">
+            <label for="checkOut">{{ 'editRsvp.checkOut' | translate }}<p-calendar [(ngModel)]="checkOut" [required]="true" formControlName="checkOut"></p-calendar></label>
+          </span>
+        </div>
+      </form>
+
+      <div style="padding: 20px;">
+        <label for="numOfGuests" >{{ 'editRsvp.guests' | translate }}</label>
+        <p-inputNumber [(ngModel)]="guests" inputId="minmax" mode="decimal" [min]="1" [max]="reservationData.reserved_cabin_id.sleeps" [required]="true"></p-inputNumber>
+      </div>
+
+
+      <span style="flex: 1; color: red;padding: 5px;" *ngIf="calenderForm.get('checkIn')?.value === 0 || calenderForm.get('checkOut')?.value === 0">
+        <p>{{ 'editRsvp.chVali1' | translate }}</p>
+      </span>
+
+      <span style="flex: 1; color: red;padding: 5px;" *ngIf="calenderForm.get('checkIn')?.value > calenderForm.get('checkOut')?.value">
+        <p>{{ 'editRsvp.chVali2' | translate }}</p>
+      </span>
+
+      <span style="flex: 1; color: red;padding: 5px;" *ngIf="guests > reservationData.reserved_cabin_id.sleeps">
+        <p>{{ 'editRsvp.chVali3' | translate }}</p>
+      </span>
+
+      <span style="flex: 1; color: red;padding: 5px;" *ngIf="guests === 0 || guests === null">
+        <p>{{ 'editRsvp.chVali4' | translate }}</p>
+      </span>
+
+      <ng-template pTemplate="footer">
+          <p-toast></p-toast>
+          <p-button label="{{ 'editRsvp.update' | translate }}" [loading]="isReservationValid"  icon="pi pi-check" (click)="updateReserve()"
+          [disabled]="(calenderForm.get('checkIn')?.value === 0 || calenderForm.get('checkOut')?.value === 0) || (calenderForm.get('checkIn')?.value > calenderForm.get('checkOut')?.value) || (guests === 0 || guests > reservationData.reserved_cabin_id.sleeps || guests === null)"></p-button>
+          <p-button label="{{ 'editRsvp.cancel' | translate }}" icon="pi pi-times" styleClass="p-button-secondary" [style]="{ 'margin-left': '.5em' }" (click)="cancel()"></p-button>
+      </ng-template>
+  </p-card>
+</div>
