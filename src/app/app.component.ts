@@ -26,6 +26,7 @@ export class AppComponent implements OnInit {
     this.visible = this.logInService.visible;
   }
 
+  //log in dialog visability
   showDialog() {
     if (sessionStorage.getItem("username")) {
       this.router.navigate(["/users"]);
@@ -35,6 +36,7 @@ export class AppComponent implements OnInit {
     }
   }
 
+  //map page navigation
   goToMap()
   {
     const mapUrl = "https://docs.google.com/document/d/1CAQQKi9EDjrKf02PvAolcRQahTlcXtlJij0wii06XyY/edit?usp=sharing";
@@ -45,6 +47,7 @@ export class AppComponent implements OnInit {
     })
   }
 
+  //language selections
   selectLang(event: Event)
   {
     const lang = (event.target as HTMLSelectElement).value;

@@ -11,25 +11,17 @@ import { Environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class LogInService {
-
+//variables for login
   private userUrl = Environment.EnvironmentURL;
   public visible: boolean = false;
 
-
-/*
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'POST,GET,PUT,DELETE',
-  'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization',
-  'Authorization': 'Basic ' + btoa('username:password'),
-  'allow': 'PUT',
-                              'withCredentials': 'true',
-*/
 
 constructor(
   private http: HttpClient,
   private messageService: MessageService) {}
 
-
+  /*returns: Observable any but is a GuestId  (user)
+   purpose: this function logs in user and returns their info  */
   getUserInfo(username:string, password:string): Observable<any> {
 
     const httpOptions = {
@@ -46,7 +38,9 @@ constructor(
       );
   }
 
-  getUserById(userId: any) : Observable<GuestId>
+   /*returns: Observable any but is a GuestId  (user)
+   purpose: this function gets user by id and returns their info  */
+   getUserById(userId: any) : Observable<GuestId>
   {
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json',

@@ -1,4 +1,5 @@
 <h1>{{ 'editUser.h1' | translate }}</h1>
+<!--Form to edit user-->
 <p-button label="{{ 'editUser.back' | translate }}" styleClass="p-button" (onClick)="navigateToProfile()"></p-button>
 <div class="form">
     <div class="innerForm">
@@ -45,6 +46,7 @@
          <p-dropdown class="createDrop" [options]="languages" optionLabel="title" [style]="{'width':'100%'}" [(ngModel)]="selectedLanguage"></p-dropdown>
 
 
+         <!--Submit/validate changes and trtanslates-->
         <p-button label="{{ 'editUser.update' | translate }}" styleClass="p-button" (onClick)="updateUserValidate()">
             <mat-icon>save</mat-icon>
         </p-button>

@@ -12,7 +12,7 @@ export class ExternalRedirectComponent implements OnInit {
 
     this.redirect();
   }
-
+  /*rpurpose: redirect logic for map  */
   redirect() {
     this.route.queryParams.subscribe((params) => {
       const mapUrl = params['mapUrl'];

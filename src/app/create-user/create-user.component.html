@@ -1,4 +1,6 @@
 <h1>{{ 'createUser.h1' | translate }}</h1>
+
+<!--Input form for creating a user-->
 <div class="form">
     <div class="innerForm">
         <div class="inputBox">
@@ -51,6 +53,7 @@
          <p-dropdown class="createDrop" [options]="languages" optionLabel="title" [style]="{'width':'100%'}" [(ngModel)]="selectedLanguage"></p-dropdown>
 
 
+         <!--Submit/Validate for new user and update language-->
         <p-button label="{{ 'createUser.createAccount' | translate }}" styleClass="p-button" (click)="createUserValidate()">
             <mat-icon>save_as</mat-icon>
         </p-button>

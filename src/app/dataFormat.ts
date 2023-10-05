@@ -1,3 +1,5 @@
+
+//models for user
 export interface GuestId {
   id: number
   username: string
@@ -21,6 +23,7 @@ export interface Authority {
 }
 
 
+//model for rsvp
 export interface Reservations {
   id: number
   reserved_cabin_id: ReservedCabinId
@@ -40,6 +43,8 @@ export interface Reservations {
   }
 }
 
+
+//model for cabins
 export interface ReservedCabinId {
   id: number
   sleeps: number
@@ -103,6 +108,8 @@ export interface State {
 }
 
 
+
+//model for making a new user
 export interface newUser {
   username: string
   password: string
@@ -115,6 +122,8 @@ export interface newUser {
   first_name: string
 }
 
+
+//model for cabin rsvp
 export interface CabinReserve {
   id : number,
       sleeps : number,

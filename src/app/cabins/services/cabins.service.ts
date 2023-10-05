@@ -13,29 +13,23 @@ export class CabinsService {
 
   constructor(private http: HttpClient) { }
 
-  //get all cabins
+  /*returns: Observable of Cabin Array
+   purpose: this function returns the Observable object of a an array of type Cabin    */
   getAllCabins() : Observable<Cabin[]>
   {
-
     return this.http.get<Cabin[]>(`${this.base_url}/homepage`);
   }
 
-  //get cabin by its state id
+    /*returns: Observable of Cabin Array
+   purpose: this function returns the Observable object of a an array of type Cabin by state id  */
   getCabinByStateId(stateId: string) : Observable<Cabin[]>
   {
-    const lang = sessionStorage.getItem('lang') || 'ar'
-    //'Authorization': 'Basic ' + btoa(`${sessionStorage.getItem('username')}:${sessionStorage.getItem('unencrypted pass')}`),
-    const httpOptions = {
-      headers: new HttpHeaders({'Content-Type': 'application/json', 'Accept-Language': lang})
-    }
-
-      console.log("incoming state " , stateId);
-      console.log(this.base_url);
       return this.http.get<Cabin[]>(`${this.base_url}/homepage/${stateId}`);
 
   }
 
-  //get cabin by id
+  /*returns: Observable of Cabin
+   purpose: this function returns the Observable object of type Cabin by id  */
   getCabinById(cabinId: string) : Observable<Cabin>
   {
     return this.http.get<Cabin>(`${this.base_url}/homepage/reserve/${cabinId}`);

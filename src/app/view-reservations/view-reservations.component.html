@@ -1,4 +1,5 @@
 <div class="card">
+    <!-- List of users reservations -->
   <p-table [value]="userReservations" [tableStyle]="{ 'min-width': '50rem' }">
       <ng-template pTemplate="header">
           <tr>
@@ -15,6 +16,7 @@
               <td>{{ reservation.guest_id.first_name }} {{ reservation.guest_id.last_name }}</td>
               <td>{{ reservation.check_in }}</td>
               <td>{{ reservation.check_out }}</td>
+              <!--Delete and edit rsvp-->
               <td><p><mat-icon (click)="editRsvp(reservation.id)">edit</mat-icon>  <mat-icon (click)="deleteRsvp(reservation.id)">delete</mat-icon></p></td>
 
           </tr>

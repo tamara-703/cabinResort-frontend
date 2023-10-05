@@ -5,7 +5,7 @@ import { MessageService } from 'primeng/api'
 import { UsersService } from '../users/services/users.service';
 import { LogInService } from '../log-in/services/log-in.service';
 import { TranslateService } from '@ngx-translate/core';
-
+//State lang for language and state. State is to be implemented later
 interface StateLang {
   title: string;
   value: string;
@@ -17,7 +17,7 @@ interface StateLang {
   styleUrls: ['./edit-user.component.css']
 })
 export class EditUserComponent {
-
+  //variables for update user
   languages: StateLang[] | any;
   selectedLanguage: StateLang | any;
   usernameTaken: Boolean = false;
@@ -57,11 +57,10 @@ export class EditUserComponent {
 
     this.translateService.use(lang);
 
-    //get user data by
+    //get user data by id to edit
     if (sessionStorage.getItem('username') == null) {
       this.router.navigate(['home']);
     }
-
     if(sessionStorage.getItem('lang') === 'ar')
     {
       this.languages = [
@@ -86,26 +85,24 @@ export class EditUserComponent {
 
   }
 
-
+  /*purpose: this function has the form validation to edit a user  */
   updateUserValidate() {
 
     let update: Boolean = true;
+    //checks if passwords match
     if (!(this.updateUser.password == this.confirmPassword)) {
       this.messageService.add({ severity: 'error', summary: 'Invalid Password', detail: 'Passwords Must Match' });
       update = false;
 
     }
-
+    //checks if email is valid
     this.updateUser.email.toLowerCase();
     if (!(this.updateUser.email.includes("@") &&
       (this.updateUser.email.includes(".com") || this.updateUser.email.includes(".net") || this.updateUser.email.includes(".edu")))) {
       this.messageService.add({ severity: 'error', summary: 'Invalid Email', detail: 'Provided Email Is Invalid' });
       update = false;
     }
-
-
-
-
+    //makes sure no blanks in form
     if (
       this.updateUser.password === "" ||
       this.updateUser.first_name === "" ||
@@ -117,13 +114,11 @@ export class EditUserComponent {
       this.messageService.add({ severity: 'error', summary: 'Blank Field', detail: 'No Fields May Remain Blank' });
     }
 
-
+    //Updates the user by id
     if (update) {
       console.log("updating");
       this.updateUser.language = this.selectedLanguage.value;
-      console.log(this.updateUser)
       this.userService.updateUser(this.updateUser, this.updateUser.id).subscribe(response => {
-        console.log("update successful ", response);
         sessionStorage.setItem("password", response.password),
         sessionStorage.setItem('lang',response.language)
         sessionStorage.setItem("unencryptedPass", this.updateUser.password),
@@ -137,7 +132,7 @@ export class EditUserComponent {
     }
 
   }
-
+  //navigate back to user when updated
   navigateToProfile()
   {
     this.router.navigate(['/users']);

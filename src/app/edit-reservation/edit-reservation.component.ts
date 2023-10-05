@@ -16,6 +16,7 @@ import { Reservations } from '../dataFormat';
   styleUrls: ['./edit-reservation.component.css'],
 })
 export class EditReservationComponent implements OnInit {
+  //variables for reserved component
   paramId: any;
   reservationData: Reservations = {
     id: 0,
@@ -92,6 +93,7 @@ export class EditReservationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+      /*purpose: this function gets reservation by rsvp id to editd  */
     this.rsvpService.getRsvpById(this.paramId).subscribe((response) => {
       this.reservationData = response;
 
@@ -101,22 +103,17 @@ export class EditReservationComponent implements OnInit {
 
       }
 
-      console.log(this.reservationData);
-
       this.firstImg = this.reservationData.reserved_cabin_id.image_id.url;
 
       this.imgArray = this.firstImg.split(',');
 
-      console.log(this.imgArray);
 
       this.displayedPhoto = this.imgArray[0];
     });
   }
 
+    /*purpose: thjis function does the actual update for the reservation  */
   updateReserve() {
-    console.log('before sending ', this.reservationData);
-    console.log('before sending ', this.paramId);
-    console.log('check in ', this.checkIn, ' check out ', this.checkOut);
 
     this.reservationData.check_in = String(this.checkIn);
     this.reservationData.check_out = String(this.checkOut);
@@ -125,8 +122,6 @@ export class EditReservationComponent implements OnInit {
       .updateRsvp(this.paramId, this.reservationData)
       .subscribe((response) => {
         this.reservationData = response;
-
-        console.log('updated ', this.reservationData);
         this.isReservationValid = true;
       });
 
