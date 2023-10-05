@@ -4,7 +4,6 @@ import { CabinsComponent } from './cabins.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MessageService } from 'primeng/api';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { TranslateModule } from '@ngx-translate/core';
 
 describe('CabinsComponent', () => {
   let component: CabinsComponent;
@@ -13,7 +12,7 @@ describe('CabinsComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [CabinsComponent],
-      imports: [HttpClientTestingModule,TranslateModule.forRoot()],
+      imports: [HttpClientTestingModule],
       providers: [MessageService],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     });

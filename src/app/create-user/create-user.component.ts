@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { GuestId, State, newUser } from '../dataFormat';
+import { Password } from 'primeng/password';
 import { UsersService } from '../users/services/users.service';
 import { LogInService } from '../log-in/services/log-in.service';
 import { Router } from '@angular/router';
@@ -135,7 +136,7 @@ export class CreateUserComponent {
       })
 
       setTimeout(() => {
-
+        
 
         this.router.navigate(['users'])
 
