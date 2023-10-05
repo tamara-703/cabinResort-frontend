@@ -1,18 +1,18 @@
 <div>
-  <h2><mat-icon>person</mat-icon> Welcome {{userData.first_name}}!</h2>
+  <h2><mat-icon>person</mat-icon> {{ 'user.h1' | translate }} {{userData.first_name}}!</h2>
   <div style="padding: 10px;display: flex;justify-content: space-evenly;">
     <p-button
-      label="Log Out"
+      label="{{ 'user.logout' | translate }}"
       styleClass="p-button"
       (click)="logout()"
     ><mat-icon>logout</mat-icon></p-button>
     <p-button
-    label="Edit Account"
+    label="{{ 'user.edit' | translate }}"
     styleClass="p-button-secondary"
     (click)="editUser()"
   ><mat-icon>edit</mat-icon></p-button>
   <p-button
-    label="View Reservations"
+    label="{{ 'user.view' | translate }}"
     styleClass="p-button-help"
     (click)="navigateToReservations()"
   ><mat-icon>event_upcoming</mat-icon></p-button>
@@ -22,25 +22,25 @@
 <div class="user-table">
   <table>
     <tr>
-      <td>username</td><td> {{userData.username}}</td>
+      <td>{{ 'user.username' | translate }}</td><td> {{userData.username}}</td>
     </tr>
     <tr>
-      <td>first name</td><td> {{userData.first_name}}</td>
+      <td>{{ 'user.firstName' | translate }}</td><td> {{userData.first_name}}</td>
     </tr>
     <tr>
-      <td>last name</td><td> {{userData.last_name}}</td>
+      <td>{{ 'user.lastName' | translate }}</td><td> {{userData.last_name}}</td>
     </tr>
     <tr>
-      <td>email</td><td> {{userData.email}}</td>
+      <td>{{ 'user.email' | translate }}</td><td> {{userData.email}}</td>
     </tr>
     <tr>
-      <td>address</td><td> {{userData.address}}</td>
+      <td>{{ 'user.address' | translate }}</td><td> {{userData.address}}</td>
     </tr>
     <tr>
-      <td>phone</td><td> {{userData.phone}}</td>
+      <td>{{ 'user.phone' | translate }}</td><td> {{userData.phone}}</td>
     </tr>
     <tr>
-      <td>language</td><td> {{userData.language}}</td>
+      <td>{{ 'user.language' | translate }}</td><td> {{userData.language}}</td>
     </tr>
   </table>
 </div>

@@ -2,11 +2,11 @@
   <p-table [value]="userReservations" [tableStyle]="{ 'min-width': '50rem' }">
       <ng-template pTemplate="header">
           <tr>
-              <th>Reservation ID</th>
-              <th>Guest name</th>
-              <th>Check In</th>
-              <th>Check Out</th>
-              <th>Actions</th>
+              <th>{{ 'view.rsvpId' | translate }}</th>
+              <th>{{ 'view.guestName' | translate }}</th>
+              <th>{{ 'view.checkIn' | translate }}</th>
+              <th>{{ 'view.checkOut' | translate }}</th>
+              <th>{{ 'view.actions' | translate }}</th>
           </tr>
       </ng-template>
       <ng-template pTemplate="body" let-product>

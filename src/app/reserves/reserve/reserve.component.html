@@ -65,7 +65,7 @@
   </div>
 
   <div class="card flex justify-content-center" style="margin: 100px 280px;">
-    <p-card header="${{cabinData.price}} night" subheader="sleeps: {{cabinData.sleeps}}" [style]="{ width: '360px'}">
+    <p-card header="${{cabinData.price}} {{ 'reserve.night' | translate }}" subheader="{{ 'reserve.sleeps' | translate }}: {{cabinData.sleeps}}" [style]="{ width: '360px'}">
         <ng-template pTemplate="header">
             <img src="../../../assets/logo.png" alt="logo" style="width: 200px;">
         </ng-template>
@@ -73,42 +73,42 @@
         <form [formGroup]="calenderForm">
           <div style="display: flex;">
             <span style="flex: 1;">
-              <label for="checkIn">Check In<p-calendar [(ngModel)]="checkIn" [required]="true" formControlName="checkIn"></p-calendar></label>
+              <label for="checkIn">{{ 'reserve.checkIn' | translate }}<p-calendar [(ngModel)]="checkIn" [required]="true" formControlName="checkIn"></p-calendar></label>
             </span>
 
             <span style="flex: 1;">
-              <label for="checkOut">Check out<p-calendar [(ngModel)]="checkOut" [required]="true" formControlName="checkOut"></p-calendar></label>
+              <label for="checkOut">{{ 'reserve.checkOut' | translate }}<p-calendar [(ngModel)]="checkOut" [required]="true" formControlName="checkOut"></p-calendar></label>
             </span>
           </div>
         </form>
 
         <div style="padding: 20px;">
-          <label for="numOfGuests" >Guests</label>
+          <label for="numOfGuests" >{{ 'reserve.guests' | translate }}</label>
           <p-inputNumber [(ngModel)]="guests" inputId="minmax" mode="decimal" [min]="1" [max]="cabinData.sleeps" [required]="true"></p-inputNumber>
         </div>
 
 
         <span style="flex: 1; color: red;padding: 5px;" *ngIf="calenderForm.get('checkIn')?.value === 0 || calenderForm.get('checkOut')?.value === 0">
-          <p>Check in & check out dates are required</p>
+          <p>{{ 'reserve.chVali1' | translate }}</p>
         </span>
 
         <span style="flex: 1; color: red;padding: 5px;" *ngIf="calenderForm.get('checkIn')?.value > calenderForm.get('checkOut')?.value">
-          <p>Check in date must not be greater than check out date</p>
+          <p>{{ 'reserve.chVali2' | translate }}</p>
         </span>
 
         <span style="flex: 1; color: red;padding: 5px;" *ngIf="guests > cabinData.sleeps">
-          <p>Guests must not exceed limit specified</p>
+          <p>{{ 'reserve.chVali3' | translate }}</p>
         </span>
 
         <span style="flex: 1; color: red;padding: 5px;" *ngIf="guests === 0 || guests === null">
-          <p>Guest field is required</p>
+          <p>{{ 'reserve.chVali4' | translate }}</p>
         </span>
 
         <ng-template pTemplate="footer">
             <p-toast></p-toast>
-            <p-button label="Reserve" [loading]="isReservationValid"  icon="pi pi-check" (click)="reserve()"
+            <p-button label="{{ 'reserve.reserve' | translate }}" [loading]="isReservationValid"  icon="pi pi-check" (click)="reserve()"
             [disabled]="(calenderForm.get('checkIn')?.value === 0 || calenderForm.get('checkOut')?.value === 0) || (calenderForm.get('checkIn')?.value > calenderForm.get('checkOut')?.value) || (guests === 0 || guests > cabinData.sleeps || guests === null)"></p-button>
-            <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{ 'margin-left': '.5em' }" (click)="cancel()"></p-button>
+            <p-button label="{{ 'reserve.cancel' | translate }}" icon="pi pi-times" styleClass="p-button-secondary" [style]="{ 'margin-left': '.5em' }" (click)="cancel()"></p-button>
         </ng-template>
     </p-card>
   </div>

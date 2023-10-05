@@ -103,6 +103,37 @@
       "ofdesc" : "'The wonder of warmth. That sense of togetherness, safety, and feeling of home. But how can you bring such a sensation to your patio this autumn?' A firepit!",
       "sdesc" : "An outdoor shower is a luxury that allows you to rinse off after a long hike or a muddy walk on the mountain trail",
       "pdesc" : "There is something magical about autumn nights. Relaxing and spending time outside with friends and family are moments to treasure",
-      "pfdesc" : "With the reciprocated familial love shared between pets and owners coming close to between family members themselves, it’s no wonder our pets feel like part of our families. Your furry friends deserve a vacation. So bring themn along!"
+      "pfdesc" : "With the reciprocated familial love shared between pets and owners coming close to between family members themselves, it’s no wonder our pets feel like part of our families. Your furry friends deserve a vacation. So bring themn along!",
+      "sleeps" : "sleeps",
+      "night" : "night",
+      "checkIn" : "check In",
+      "checkOut" : "check Out",
+      "guests" : "Guests",
+      "chVali1" : "Check in & check out dates are required",
+      "chVali2" : "Check in date must not be greater than check out date",
+      "chVali3" : "Guests must not exceed limit specified",
+      "chVali4" : "Guest field is required",
+      "reserve" : "Reserve",
+      "cancel" : "Cancel"
+    },
+    "user" : {
+      "h1" : "Welcome",
+      "logout" : "Log Out",
+      "edit" : "Edit Account",
+      "view" : "View Reservations",
+      "username" : "username",
+      "firstName" : "First Name",
+      "lastName" : "Last Name",
+      "email" : "Email",
+      "address" : "Address",
+      "phone" : "Phone",
+      "language" : "language"
+    },
+    "view" : {
+      "rsvpId" : "Reservation ID",
+      "guestName" : "Guest name",
+      "checkIn" :"check In",
+      "checkOut" : "check Out",
+      "actions" : "Actions"
     }
   }
