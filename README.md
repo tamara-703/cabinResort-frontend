@@ -1,27 +1,48 @@
 # CabinResort
+![cabin-logo](./src/assets/logo.png)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
+### This project emulates a reservation website for allowing users to reserve a cabin in 5 states in the United States. The user can create an account or login to an existing one, view and edit their profile as well as edit/delete created reservations
+## To view the backend github for this project, [click here](https://github.com/tamara-703/cabinResort-backend)
 
-## Development server
+## You can check out the website [here](http://project2-cabin-fever.s3-website-us-east-1.amazonaws.com/)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Technologies used
 
-## Code scaffolding
+```
+Angular
+Typescript
+Ng Prime
+Swagger API
+Java
+Java Docs
+JUnit
+Karma
+Jasmine
+Spring boot
+MySQL
+Amazon Web Services
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
+## Local installation
+### Front end
+1. Clone the repo to your local computer
+2. Run npm install to download all necessary packages
+3. Run ng serve to start the application on your local host!
 
-## Build
+### Back end
+1. Clone the repo to your local computer
+2. Run the application on your springtool IDE
+3. Start the application
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Run swagger
+You can view all web endpoints
+1. Clone the backend repo to your local computer
+2. Run the application on your springtool IDE
+3. Start the application
+4. To view all endpoint, run this [link](http://localhost:8080/swagger-ui/index.html#/)
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Future contributions
+1. Enhance user interaction by allowing them to select a country instead of state
+2. Upgrade user UI
+3. Modify translation feature
+4. localize build
