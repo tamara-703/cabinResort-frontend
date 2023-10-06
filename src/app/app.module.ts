@@ -28,7 +28,6 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { MatIconModule } from '@angular/material/icon';
 import { ViewReservationsComponent } from './view-reservations/view-reservations.component';
-import { NavComponent } from './nav/nav.component';
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TableModule } from 'primeng/table';
@@ -53,7 +52,6 @@ const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
     CreateUserComponent,
     EditUserComponent,
     ViewReservationsComponent,
-    NavComponent,
     EditReservationComponent
 
   ],

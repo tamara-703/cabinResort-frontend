@@ -23,17 +23,17 @@ export class ViewReservationsComponent implements OnInit {
       this.reservationsService.getAllReservationsByUserName(username).subscribe(response => {
         this.userReservations = response;
 
-        console.log("RSVP data " , this.userReservations)
-
       })
     }
   }
 
+   /*purpose: navigate to edit reservation by id  */
   editRsvp(rsvpId: number)
   {
     this.router.navigate([`editreserve/${rsvpId}`]);
   }
 
+   /*purpose: deletes reservation by id  */
   deleteRsvp(rsvpId: number)
   {
 

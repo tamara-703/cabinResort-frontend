@@ -14,6 +14,8 @@ export class ReserveService {
   constructor(private http: HttpClient) { }
 
 
+  /*returns: boolean for reservation result
+   purpose: attempts to reserve a cabin and returns result  */
   createReservation(reservation: Reservations) : boolean
   {
     console.log("reservation " , reservation)

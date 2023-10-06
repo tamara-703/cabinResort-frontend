@@ -2,6 +2,7 @@
   <div id="logInForm">
     <h1>{{ 'login.h1' | translate }}</h1>
 
+    <!--Log in form-->
     <div class="logInContainer">
       <span class="p-float-label logInSpan">
         <input class="logInInput" pInputText name="username" [(ngModel)]="logIn.username" />
@@ -21,6 +22,7 @@
       </span>
     </div>
 
+    <!--logs in user and translate to their language-->
     <p-button id="logInSubmit" type="submit" label="{{ 'login.login' | translate }}" styleClass="p-button-raised p-button-primary"
       (click)="logInUser()">
       <mat-icon>login</mat-icon>

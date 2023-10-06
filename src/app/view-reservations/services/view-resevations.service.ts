@@ -14,6 +14,8 @@ export class ViewResevationsService {
   constructor(private http: HttpClient) { }
 
 
+  /*returns: Observable array of reservations
+   purpose: gets all reservations for user */
   getAllReservationsByUserName(username: string) : Observable<Reservations[]>
   {
     const httpOptions = {
@@ -24,11 +26,15 @@ export class ViewResevationsService {
     return this.http.get<Reservations[]>(`${this.base_url}/user/reservations/${username}`,httpOptions);
   }
 
+  /*returns: Observable cabin
+   purpose: this function gets cabin by id  */
   getCabinById(cabinId: number) : Observable<Cabin>
   {
       return this.http.get<Cabin>(`${this.base_url}/homepage/reserve/${cabinId}`)
   }
 
+    /*returns: Observable reservation
+   purpose: gets reservation by id  */
   getRsvpById(rsvpId: number) : Observable<Reservations>
   {
     const httpOptions = {
@@ -37,14 +43,13 @@ export class ViewResevationsService {
                                   })
     };
 
-    console.log("rsvp id ", rsvpId)
     return this.http.get<Reservations>(`${this.base_url}/user/reservations/reservation/${rsvpId}`,httpOptions);
   }
 
+   /*returns: Observable reservation
+   purpose: updates reservation by id  */
   updateRsvp(rsvpId: number, rsvpBody: Reservations): Observable<Reservations>
   {
-    console.log("rsvp id ", rsvpId)
-    console.log("\nreservation data ", rsvpBody)
 
     rsvpBody.check_in = rsvpBody.check_in.substring(0,15)
     rsvpBody.check_out = rsvpBody.check_out.substring(0,15);
@@ -58,6 +63,8 @@ export class ViewResevationsService {
     return this.http.put<Reservations>(`${this.base_url}/user/reservations/${rsvpId}`, rsvpBody, httpOptions)
   }
 
+   /*returns: void
+   purpose: deletes reservation by id  */
   deleteRsvp(rsvpId: number)
   {
     const httpOptions = {
@@ -68,9 +75,7 @@ export class ViewResevationsService {
 
     let result = false;
 
-    this.http.delete(`${this.base_url}/user/reservations/${rsvpId}`,httpOptions).subscribe(response => {
-      console.log("deleted successfully");
-    })
+    this.http.delete(`${this.base_url}/user/reservations/${rsvpId}`,httpOptions).subscribe()
   }
 
 

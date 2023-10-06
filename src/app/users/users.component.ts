@@ -54,6 +54,7 @@ export class UsersComponent {
     }
   }
 
+  /* logs user out and naviagtes bac home  */
   logout()
   {
     if(sessionStorage.getItem('username') != null)
@@ -71,6 +72,7 @@ export class UsersComponent {
   }
 
 
+  //navigates to edit user or edit reservations
   editUser(){
     this.router.navigate(['editAccount']);
   }

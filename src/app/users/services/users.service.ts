@@ -47,7 +47,6 @@ export class UsersService {
 
   /** POST: add a new User to the server */
   addUser(user: newUser): Observable<newUser> {
-    console.log(user);
     const url = `${this.userUrl}/homepage/signup`;
     return this.http.post<newUser>(url, user).pipe(
       tap((newUser: newUser) => this.log(`added User`)),
@@ -55,19 +54,8 @@ export class UsersService {
     );
   }
 
-  /** DELETE: delete the User from the server */
-  deleteUser(id: string): Observable<GuestId> {
-    const url = `${this.userUrl}/${id}`;
-
-    return this.http.delete<GuestId>(url, this.httpOptions).pipe(
-      tap(_ => this.log(`deleted user id=${id}`)),
-      catchError(this.handleError<GuestId>('deleteUser'))
-    );
-  }
-
   /** PUT: update the user on the server */
   updateUser(user: GuestId, id:number): Observable<GuestId> {
-    console.log("user in update ", user)
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json',
       'Authorization': 'Basic ' + btoa(`${sessionStorage.getItem('username')}:${sessionStorage.getItem('unencryptedPass')}`)})

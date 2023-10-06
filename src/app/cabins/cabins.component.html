@@ -1,5 +1,6 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+<!--State filter as well as the state filter-->
 <div>
   <div class="card flex justify-content-center">
     <p-dropdown [options]="states" [(ngModel)]="selectedState" optionLabel="name" [filter]="true" filterBy="name" [showClear]="true" placeholder="{{'cabins.stateOptions' | translate}}" (click)="getByStateId()">
@@ -15,6 +16,7 @@
 
   <div *ngIf="visibleData" class="cabins-container" style="display: flex;">
 
+    <!--If visable shows a list of all cabins for a selected state-->
     <div>
       <ul *ngFor="let item of reserveCabins" style="list-style-type: none;">
         <li><img src={{item.image}} alt="cabinImg" width="300px" style="padding: 10px; margin-top: 150px; border-radius: 20px;"></li>
@@ -28,6 +30,7 @@
 
         <li><p>{{'cabins.sleeps' | translate}} - {{item.sleeps}} . {{'cabins.capacity' | translate}} - {{item.capacity}}</p></li>
 
+        <!--Cabin list info-->
         <li>
           <div style="display: flex; justify-content: space-between;">
             <div>
@@ -46,6 +49,7 @@
 
         <li style="margin-bottom: 10px;"><b><i>${{item.price}}</i></b></li>
 
+        <!--Reserve button-->
         <p-button label="{{'cabins.reserve' | translate}}" styleClass="p-button-raised p-button-secondary" class="navButton" (click)="navigateToReservePage(item.id)"></p-button>
 
       </ul>

@@ -51,7 +51,7 @@
         <p style="font-size: 20px;"><mat-icon>bathroom</mat-icon> {{cabinData.no_bathrooms}} {{ 'reserve.bathrooms' | translate }}</p>
       </div>
 
-
+      <!--Cabin data-->
     <h1 style="border-top: 1px solid black; padding: 10px;">{{ 'reserve.features' | translate }}</h1>
     <ul>
       <li *ngIf="cabinData.amenities_id.fireplace"><h4><mat-icon>fireplace</mat-icon> {{ 'reserve.fireplace' | translate }}</h4><p>-- {{ 'reserve.fdesc' | translate }}</p></li>
@@ -64,6 +64,7 @@
     </ul>
   </div>
 
+  <!--Form to reserve cabin-->
   <div class="card flex justify-content-center" style="margin: 100px 280px;">
     <p-card header="${{cabinData.price}} {{ 'reserve.night' | translate }}" subheader="{{ 'reserve.sleeps' | translate }}: {{cabinData.sleeps}}" [style]="{ width: '360px'}">
         <ng-template pTemplate="header">
@@ -104,6 +105,7 @@
           <p>{{ 'reserve.chVali4' | translate }}</p>
         </span>
 
+        <!--Reserve submit-->
         <ng-template pTemplate="footer">
             <p-toast></p-toast>
             <p-button label="{{ 'reserve.reserve' | translate }}" [loading]="isReservationValid"  icon="pi pi-check" (click)="reserve()"

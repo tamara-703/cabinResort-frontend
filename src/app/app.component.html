@@ -1,3 +1,4 @@
+<!--All toasts will pop up on main component-->
 <p-toast></p-toast>
 <nav>
   <!--navigation buttons and logo that is present throughout the entire app-->
@@ -26,10 +27,11 @@
   <h1 class="title-header">{{ 'home.title' | translate}}</h1>
 </div>
 
+<!--Main components being shown-->
 <router-outlet></router-outlet>
 
 
-
+<!--Popup for log in-->
 <p-dialog [(visible)]="this.logInService.visible" [style]="{ width: '50vw', height: '50vw'}">
 
   <app-log-in></app-log-in>

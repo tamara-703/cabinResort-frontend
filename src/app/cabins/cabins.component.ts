@@ -13,6 +13,8 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./cabins.component.css'],
 })
 export class CabinsComponent implements OnInit {
+
+  //variables to be used in cabin components
   cabinData: any;
   images: string = '';
   firstImages: string[] = [];
@@ -43,6 +45,7 @@ export class CabinsComponent implements OnInit {
     if(sessionStorage.getItem('lang') == 'ar')
     {
 
+      //Sets up the states and translated states for filter
       this.states = [
         {
           name: 'تكساس',
@@ -102,25 +105,22 @@ export class CabinsComponent implements OnInit {
 
   }
 
+    /*purpose: retreives the cabins by selected state. Retreives fromcabin service  */
   getByStateId() {
     if (this.selectedState != null) {
       this.service
         .getCabinByStateId(this.selectedState.code)
         .subscribe((response) => {
           this.cabinData = response;
-
-          console.log("cabin data " , this.cabinData);
-
           this.reserveCabins = this.getCabinForReserve(this.cabinData);
-
           this.visibleData = true;
         });
     }
   }
 
+    /*purpose: gets the cabin to be reserved  */
   getCabinForReserve(cabins: Cabin[]): CabinReserve[] {
-    let tempCabin: CabinReserve;
-
+    let tempCabin: CabinReserve
     let tempCabins: CabinReserve[] = [];
 
     for (let cabin of cabins) {
@@ -174,11 +174,11 @@ export class CabinsComponent implements OnInit {
       }
     }
 
-    console.log('reserve cabin data\n', tempCabins);
 
     return tempCabins;
   }
 
+    /*purpose: navigate to the reserve page for selected cabin  */
   navigateToReservePage(id: number) {
     if (sessionStorage.getItem('username') === null) {
       this.logInService.visible = true;

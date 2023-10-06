@@ -38,16 +38,13 @@ export class AppComponent implements OnInit {
     let lang = sessionStorage.getItem('lang');
   }
 
+  //log in dialog visability
   showDialog() {
     if (sessionStorage.getItem('username')) {
       this.router.navigate(['/users']);
     } else {
       this.logInService.visible = true;
     }
-  }
-
-  goToMap() {
-    this.router.navigate(['/external-redirect']);
   }
 
   selectLang(event: Event) {

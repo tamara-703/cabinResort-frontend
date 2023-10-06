@@ -21,6 +21,7 @@ export class ReserveComponent implements OnInit {
   errorMessage(errorMessage: any) {
     throw new Error('Method not implemented.');
   }
+  //variables for reserving a cabin
   idParam: string = '';
   userId: number = Number(sessionStorage.getItem('userId'));
   username: any = sessionStorage.getItem('username');
@@ -141,15 +142,7 @@ export class ReserveComponent implements OnInit {
       checkOut: [0, Validators.required],
     });
 
-    //getting param id (cabin id)
-    // this.route.params.subscribe(params => {
-    //   this.idParam = params['id'];
-
-    //   console.log("incoming param " , this.idParam);
-    // })
-
     this.idParam = this.route.snapshot.paramMap.get('id') ?? '';
-    console.log('incoming param ', this.idParam);
 
     this.cabinService.getCabinById(this.idParam).subscribe((response) => {
       this.cabinData = response;
@@ -161,12 +154,7 @@ export class ReserveComponent implements OnInit {
         this.cabinData.description = this.cabinData.descAr;
         this.cabinData.cabinloc.city = this.cabinData.cabinloc.cityAr;
 
-        console.log('cabin name now ', this.cabinData.cabin_name);
-        console.log('cabin desc now ', this.cabinData.descAr);
-        console.log('cabin city now ', this.cabinData.descAr);
       }
-
-      console.log('cabin data in reserve component ', this.cabinData);
 
       this.img = this.cabinData.image_id.url;
       this.imgArray_1 = this.img.split(',');
@@ -191,7 +179,6 @@ export class ReserveComponent implements OnInit {
     //get user data by
     this.logInService.getUserById(this.userId).subscribe((response) => {
       this.userData = response;
-      console.log('user data in reserve component ', this.userData);
     });
   }
 
@@ -201,9 +188,8 @@ export class ReserveComponent implements OnInit {
     }
   }
 
+  /*purpose: this function is to reserve a cabin for the user */
   reserve() {
-    console.log('In reserve');
-    console.log('check in: ', this.checkIn, ' check out: ', this.checkOut);
 
     this.reservation = {
       id: 0,
@@ -276,6 +262,7 @@ export class ReserveComponent implements OnInit {
     }, 5000);
   }
 
+  //returns to home
   cancel() {
     this.router.navigate(['home']);
   }

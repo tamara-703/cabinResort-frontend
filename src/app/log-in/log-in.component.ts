@@ -11,6 +11,7 @@ import { MessageService } from 'primeng/api';
   styleUrls: ['./log-in.component.css']
 })
 export class LogInComponent {
+  //log in variables
   logIn: GuestId = {
     id: 0,
     username: "",
@@ -30,9 +31,6 @@ export class LogInComponent {
   };
 
 
-
-
-
   constructor(
     private service: LogInService,
     private router: Router,
@@ -40,7 +38,7 @@ export class LogInComponent {
   ) { }
 
 
-
+    /* purpose: this functionis to attempt to log in user with givenm credentials  */
   logInUser() {
     if (this.logIn.username && this.logIn.password) {
       sessionStorage.setItem('unencryptedPass', this.logIn.password)
@@ -54,8 +52,7 @@ export class LogInComponent {
           this.service.visible = false;
           sessionStorage.setItem('username', this.logIn.username);
           sessionStorage.setItem('password', this.logIn.password);
-          sessionStorage.setItem('userId', String(this.logIn.id))
-          //this.router.navigate(['users'])
+          sessionStorage.setItem('userId', String(this.logIn.id));
           this.messageService.add({ severity: 'success', summary: 'Log-In Successful', detail: 'You Sucessfully logged in!' });
           this.clearUser();
         }
@@ -70,6 +67,7 @@ export class LogInComponent {
     }
   }
 
+  //if invalid user, needed to reset log in info
   clearUser() {
     this.logIn = {
       id: 0,
@@ -90,7 +88,7 @@ export class LogInComponent {
     };
   }
 
-
+  //naviage to create user
   createUser() {
     this.service.visible = false;
     this.logIn.username = "";
