@@ -11,11 +11,11 @@
       <form [formGroup]="calenderForm">
         <div style="display: flex;">
           <span style="flex: 1;">
-            <label for="checkIn">{{ 'editRsvp.checkIn' | translate }}<p-calendar [(ngModel)]="checkIn" [required]="true" formControlName="checkIn"></p-calendar></label>
+            <label for="checkIn">{{ 'editRsvp.checkIn' | translate }}<p-calendar [(ngModel)]="reservationData.check_in" [required]="true" formControlName="checkIn"></p-calendar></label>
           </span>
 
           <span style="flex: 1;">
-            <label for="checkOut">{{ 'editRsvp.checkOut' | translate }}<p-calendar [(ngModel)]="checkOut" [required]="true" formControlName="checkOut"></p-calendar></label>
+            <label for="checkOut">{{ 'editRsvp.checkOut' | translate }}<p-calendar [(ngModel)]="reservationData.check_out" [required]="true" formControlName="checkOut"></p-calendar></label>
           </span>
         </div>
       </form>
