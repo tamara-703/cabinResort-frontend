@@ -95,6 +95,11 @@ export class EditReservationComponent implements OnInit {
     this.rsvpService.getRsvpById(this.paramId).subscribe((response) => {
       this.reservationData = response;
 
+      this.checkIn = Number(this.reservationData.check_in);
+      this.checkOut = Number(this.reservationData.check_out);
+
+
+
       if(sessionStorage.getItem('lang') === 'ar')
       {
         this.reservationData.reserved_cabin_id.cabin_name = this.reservationData.reserved_cabin_id.cabinNameAr;
