@@ -9,7 +9,7 @@
     <p-overlayPanel #op>
       <img src="../assets/cabinAreaMap.png" alt="area-map" />
     </p-overlayPanel>
-  <p-button (click)="op.toggle($event)" label="Show Area Map" styleClass="p-button-raised p-button-secondary" class="navButton"><mat-icon>map</mat-icon></p-button>
+  <p-button (click)="op.toggle($event)" label="{{ 'home.cabinAreaMap' | translate }}" styleClass="p-button-raised p-button-secondary" class="navButton"><mat-icon>map</mat-icon></p-button>
   </div>
   <p-button class="navUser" icon="pi pi-user" styleClass="p-button-rounded p-button-info p-button-outlined"
     (click)="showDialog()"></p-button>
